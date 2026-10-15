@@ -1,0 +1,29 @@
+CloudLabelOntology (CLO)
+Copyright 2026 The CLO authors
+
+This product is licensed under the Apache License, Version 2.0 (LICENSE).
+
+ontology/clo_types.ttl and data/types_report.json are derived from the
+source code of Fix Inventory (https://github.com/someengineering/fixinventory,
+commit 211833381fdd07690bc789d30ffc2bd84a67744e), Copyright Some Engineering
+Inc., licensed under the Apache License, Version 2.0. Only resource kind
+names and class inheritance were extracted; no Fix Inventory code is
+redistributed.
+
+data/labeling_support_curated.csv records, for each resource type, a verdict
+on tag/label support and the URL of the provider documentation it is based
+on. The documentation itself is not redistributed.
+
+tools/vendor/cytoscape.min.js is cytoscape.js 3.30.2, Copyright (c) 2016-2024
+The Cytoscape Consortium, MIT licence (tools/vendor/cytoscape.LICENSE). It is
+embedded in the HTML pages written by tools/clo_viz.py.
+
+data/open/ and ontology/clo_types_ext.ttl are derived from the test fixtures of Cloud
+Custodian (https://github.com/cloud-custodian/cloud-custodian, commit
+8bf784b5debc7aeb590b23899a70ce2c7418f1b6), Copyright the Cloud Custodian Project
+authors, licensed under the Apache License, Version 2.0. Only resource types, tag keys,
+categorical tag values and pseudonymised identifiers were extracted; no Cloud Custodian
+code or fixture file is redistributed.
+
+baselines/ executes Cloud Custodian (c7n, Apache-2.0) and rego-cpp/regopy (MIT) as
+installed packages; they are not redistributed.

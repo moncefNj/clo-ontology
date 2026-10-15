@@ -1,0 +1,10 @@
+owlready2==0.51
+rdflib==7.6.0
+pyoxigraph==0.5.11
+owlrl==7.6.2
+regopy==1.5.2
+c7n==0.9.53
+c7n-azure==0.7.52
+c7n-gcp==0.4.52
+c7n-kube==0.2.52
+pyyaml

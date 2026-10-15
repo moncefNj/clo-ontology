@@ -1,0 +1,207 @@
+@prefix clo:   <http://example.org/clo/ontology/clo#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+
+
+# Small test A-Box for CLO v8 (formerly section [ADD-2] of v7).
+# Load together with clo_ontology_v8.ttl in the same world (no owl:imports,
+# since the ontology IRI is not dereferenceable).
+<http://example.org/clo/ontology/clo-test> a owl:Ontology .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# [ADD-2] SMALL TEST A-BOX
+# Used by the reasoning tests.
+# Coverage: 5 ResourceTypes (3 providers) + 6 CloudResources (3 categories).
+# Exercises C-1, C-2, C-3 and the defined classes D-1 and D-2.
+#
+# Test data only; inventories are loaded from separate A-Box files
+# (tools/ingest_c7n.py or a Fix Inventory export).
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── ResourceTypes (5) ─────────────────────────────────────────────────────────
+
+clo:rt_aws_ec2_instance a clo:ResourceType , owl:NamedIndividual ;
+    rdfs:label "aws_ec2_instance"@en ;
+    clo:resourceTypeName "aws_ec2_instance" ;
+    clo:labelingSupport "full" ;
+    clo:implementsBaseKind clo:InstanceKind ;
+    clo:hostedBy clo:AWS .
+
+clo:rt_aws_s3_bucket a clo:ResourceType , owl:NamedIndividual ;
+    rdfs:label "aws_s3_bucket"@en ;
+    clo:resourceTypeName "aws_s3_bucket" ;
+    clo:labelingSupport "full" ;
+    clo:implementsBaseKind clo:BucketKind ;
+    clo:hostedBy clo:AWS .
+
+clo:rt_gcp_instance a clo:ResourceType , owl:NamedIndividual ;
+    rdfs:label "gcp_instance"@en ;
+    clo:resourceTypeName "gcp_instance" ;
+    clo:labelingSupport "full" ;
+    clo:implementsBaseKind clo:InstanceKind ;
+    clo:hostedBy clo:GCP .
+
+clo:rt_kubernetes_pod a clo:ResourceType , owl:NamedIndividual ;
+    rdfs:label "kubernetes_pod"@en ;
+    clo:resourceTypeName "kubernetes_pod" ;
+    clo:labelingSupport "full" ;
+    clo:implementsBaseKind clo:InstanceKind ;
+    clo:hostedBy clo:Kubernetes .
+
+clo:rt_aws_vpc a clo:ResourceType , owl:NamedIndividual ;
+    rdfs:label "aws_vpc"@en ;
+    clo:resourceTypeName "aws_vpc" ;
+    clo:labelingSupport "full" ;
+    clo:implementsBaseKind clo:NetworkKind ;
+    clo:hostedBy clo:AWS .
+
+# ── Test account ───────────────────────────────────────────────────────────
+
+clo:test_account a clo:Account , owl:NamedIndividual ;
+    clo:accountId "123456789012" ;
+    rdfs:label "Test Account"@en .
+
+# ── Test CloudResources (6) ────────────────────────────────────────────────
+
+# Compute - AWS EC2 with 2 labels (expected: LabeledResource; ComputeResource via C-2)
+clo:res_test_ec2_01 a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-test-001" ;
+    clo:resourceName "web-server-01" ;
+    clo:fixInventoryKind "aws_ec2_instance" ;
+    clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:test_account ;
+    clo:hasLabel clo:lbl_test_ec2_01_env , clo:lbl_test_ec2_01_team .
+
+clo:lbl_test_ec2_01_env a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_environment ;
+    clo:hasLabelValue clo:lv_production .
+
+clo:lbl_test_ec2_01_team a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_team ;
+    clo:hasLabelValue clo:lv_platform .
+
+# Storage - AWS S3 without labels (expected: UnlabeledResource, CriticalNonCompliant via D-1)
+clo:res_test_s3_01 a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "bucket-test-001" ;
+    clo:resourceName "data-archive-eu" ;
+    clo:fixInventoryKind "aws_s3_bucket" ;
+    clo:hasResourceType clo:rt_aws_s3_bucket ;
+    clo:belongsToAccount clo:test_account .
+
+# Compute - GCP instance with 1 label
+clo:res_test_gce_01 a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "gce-test-001" ;
+    clo:resourceName "analytics-worker" ;
+    clo:fixInventoryKind "gcp_instance" ;
+    clo:hasResourceType clo:rt_gcp_instance ;
+    clo:belongsToAccount clo:test_account ;
+    clo:hasLabel clo:lbl_test_gce_01_env .
+
+clo:lbl_test_gce_01_env a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_environment ;
+    clo:hasLabelValue clo:lv_staging .
+
+# Networking - AWS VPC (expected: NetworkingResource via C-2)
+clo:res_test_vpc_01 a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "vpc-test-001" ;
+    clo:resourceName "main-vpc" ;
+    clo:fixInventoryKind "aws_vpc" ;
+    clo:hasResourceType clo:rt_aws_vpc ;
+    clo:belongsToAccount clo:test_account ;
+    clo:hasLabel clo:lbl_test_vpc_01_env .
+
+clo:lbl_test_vpc_01_env a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_environment ;
+    clo:hasLabelValue clo:lv_production .
+
+# Compute - Kubernetes pod (hosted by Kubernetes via C-1)
+clo:res_test_k8s_01 a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "pod-test-001" ;
+    clo:resourceName "api-pod-xyz" ;
+    clo:fixInventoryKind "kubernetes_pod" ;
+    clo:hasResourceType clo:rt_kubernetes_pod ;
+    clo:belongsToAccount clo:test_account ;
+    clo:hasLabel clo:lbl_test_k8s_01_app .
+
+clo:lbl_test_k8s_01_app a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_app ;
+    clo:hasLabelValue clo:lv_api .
+
+# Compute - AWS EC2 child (tests C-3 partOf: policy inheritance)
+clo:res_test_ec2_child a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-test-child-001" ;
+    clo:resourceName "asg-member" ;
+    clo:fixInventoryKind "aws_ec2_instance" ;
+    clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:test_account ;
+    clo:partOf clo:res_test_ec2_01 ;
+    clo:hasLabel clo:lbl_test_ec2_child_env .
+
+clo:lbl_test_ec2_child_env a clo:Label , owl:NamedIndividual ;
+    clo:hasLabelKey clo:lk_environment ;
+    clo:hasLabelValue clo:lv_production .
+
+# ── Shared LabelKeys and LabelValues ────────────────────────────────────────
+
+clo:lk_environment a clo:LabelKey , owl:NamedIndividual ; clo:keyName "environment" .
+clo:lk_team        a clo:LabelKey , owl:NamedIndividual ; clo:keyName "team" .
+clo:lk_app         a clo:LabelKey , owl:NamedIndividual ; clo:keyName "app" .
+
+clo:lv_production a clo:LabelValue , owl:NamedIndividual ; clo:valueName "production" .
+clo:lv_staging    a clo:LabelValue , owl:NamedIndividual ; clo:valueName "staging" .
+clo:lv_platform   a clo:LabelValue , owl:NamedIndividual ; clo:valueName "platform-team" .
+clo:lv_api        a clo:LabelValue , owl:NamedIndividual ; clo:valueName "api" .
+
+# ── Test policy (for C-3) ──────────────────────────────────────
+
+clo:test_compute_policy a clo:LabelingPolicy , owl:NamedIndividual ;
+    rdfs:label "Test Compute Policy"@en ;
+    clo:appliesToCategory clo:Compute ;
+    clo:requiresLabel clo:lk_environment , clo:lk_team .
+
+clo:res_test_ec2_01 clo:governedBy clo:test_compute_policy .
+# => res_test_ec2_child must inherit test_compute_policy via C-3 (partOf)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# END OF clo_test_abox.ttl
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── v8: additional test cases ─────────────────────────────────────────
+# Resource closed explicitly (closure axiom) -> UnlabeledResource expected
+clo:res_test_closed a clo:CloudResource , owl:NamedIndividual ,
+        [ a owl:Restriction ; owl:onProperty clo:hasLabel ; owl:maxCardinality 0 ] ;
+    clo:resourceId "closed-001" ;
+    clo:hasResourceType clo:rt_aws_s3_bucket ;
+    clo:belongsToAccount clo:test_account .
+
+# Type without label support -> resource outside audit scope
+clo:rt_github_team a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "github_team" ;
+    clo:labelingSupport "none" ;
+    clo:implementsBaseKind clo:GroupKind ;
+    clo:hostedBy clo:GitHub .
+
+clo:res_test_gh_team a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "team-001" ;
+    clo:hasResourceType clo:rt_github_team ;
+    clo:belongsToAccount clo:test_account .
+
+# Account policy (tests C-8 / I-10b): every resource of test_account
+clo:test_account_policy a clo:LabelingPolicy , owl:NamedIndividual ;
+    clo:appliesToAccount clo:test_account ;
+    clo:requiresLabel clo:lk_team .
+clo:test_account clo:governedBy clo:test_account_policy .
+
+# Organisational hierarchy (tests C-4 / I-10b)
+clo:test_ou a clo:OrganizationalUnit , owl:NamedIndividual ;
+    clo:governedBy clo:test_ou_policy .
+clo:test_ou_policy a clo:LabelingPolicy , owl:NamedIndividual .
+clo:test_account2 a clo:Account , owl:NamedIndividual ; clo:orgPartOf clo:test_ou .
+clo:res_test_ou_member a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-test-ou-001" ;
+    clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:test_account2 .

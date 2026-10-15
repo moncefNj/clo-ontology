@@ -1,0 +1,33 @@
+{
+ "tbox_triples": 1380,
+ "tbox_org_triples": 1482,
+ "classes": 112,
+ "defined_classes": 22,
+ "object_properties": 33,
+ "datatype_properties": 36,
+ "property_chains": 11,
+ "transitive_properties": 2,
+ "functional_properties": 7,
+ "disjointness_axioms": 127,
+ "functional_categories": 13,
+ "basekinds": 40,
+ "basekinds_used_by_types": 39,
+ "resource_types": 175,
+ "types_by_provider": {
+  "Azure": 61,
+  "AWS": 57,
+  "GCP": 32,
+  "DigitalOcean": 11,
+  "Kubernetes": 6,
+  "Slack": 3,
+  "OneLogin": 2,
+  "GitHub": 2,
+  "DockerHub": 1
+ },
+ "providers": 9,
+ "tag_support": {
+  "full": 111,
+  "none": 47
+ },
+ "governance_roles": 5
+}

@@ -1,0 +1,76 @@
+@prefix clo: <http://example.org/clo/ontology/clo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://example.org/clo/ontology/clo-types-ext> a owl:Ontology ;
+    rdfs:comment "Catalogue extension from the open Cloud Custodian corpus (tools/extend_catalogue.py)." .
+
+clo:rt_aws_bedrock_model_invocation_job a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_bedrock_model_invocation_job" ;
+    clo:implementsBaseKind clo:AIJobKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (bedrock:model-invocation-job). Evidence: 45 of 45 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_comprehend_entity_recognizer a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_comprehend_entity_recognizer" ;
+    clo:implementsBaseKind clo:AIModelKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (comprehend:entity-recognizer). Evidence: 11 of 11 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_dsql_cluster a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_dsql_cluster" ;
+    clo:implementsBaseKind clo:DatabaseKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (dsql:cluster). Evidence: 3 of 3 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_elasticache_cluster a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_elasticache_cluster" ;
+    clo:implementsBaseKind clo:DatabaseKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (elasticache:cluster). Evidence: 9 of 10 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_elasticache_snapshot a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_elasticache_snapshot" ;
+    clo:implementsBaseKind clo:SnapshotKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (elasticache:snapshot). Evidence: 5 of 5 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_fsx_backup a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_fsx_backup" ;
+    clo:implementsBaseKind clo:SnapshotKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (fsx:backup). Evidence: 4 of 41 recorded resources carry tags (E+)."@en .
+
+clo:rt_aws_fsx_file_system a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "aws_fsx_file_system" ;
+    clo:implementsBaseKind clo:NetworkShareKind ;
+    clo:hostedBy clo:AWS ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (fsx:file-system). Evidence: 21 of 21 recorded resources carry tags (E+)."@en .
+
+clo:rt_azure_sql_server a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "azure_sql_server" ;
+    clo:implementsBaseKind clo:DatabaseKind ;
+    clo:hostedBy clo:Azure ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (Microsoft.Sql/servers). Evidence: 4 of 14 recorded resources carry tags (E+)."@en .
+
+clo:rt_azure_storage_account a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "azure_storage_account" ;
+    clo:implementsBaseKind clo:BucketKind ;
+    clo:hostedBy clo:Azure ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (Microsoft.Storage/storageAccounts). Evidence: 14 of 33 recorded resources carry tags (E+). approximation: an account contains containers."@en .
+
+clo:rt_gcp_dns_managed_zone a clo:ResourceType , owl:NamedIndividual ;
+    clo:resourceTypeName "gcp_dns_managed_zone" ;
+    clo:implementsBaseKind clo:DNSZoneKind ;
+    clo:hostedBy clo:GCP ;
+    clo:labelingSupport "full" ;
+    rdfs:comment "Extension type (dns#managedZone). Evidence: 6 of 11 recorded resources carry tags (E+)."@en .

@@ -1,0 +1,1434 @@
+# CloudLabelOntology (CLO) -- T-Box, version 8 (unchanged in 9.x apart from annotations)
+# OWL 2 DL ontology of cloud resources, their labels (tags) and labelling policies.
+# The organisational module is in clo_org.ttl and the resource-type catalogue in
+# clo_types.ttl / clo_types_ext.ttl. Version history: CHANGELOG.md. Licence: Apache-2.0.
+@prefix clo: <http://example.org/clo/ontology/clo#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/clo/ontology/clo> a owl:Ontology ;
+    dc:creator "Anonymous (under double-blind review)" ;
+    dc:date "2026" ;
+    dc:description "OWL 2 DL ontology for the audit, recommendation and repair of labels (tags) on multi-provider cloud resources. Covers 11 providers and 13 functional categories; the BaseKind pivot supports cross-provider inference without external pattern matching. Version 8: inferences I-03/I-04/I-05 made operative, resource-type catalogue in a separate file (clo_types.ttl)." ;
+    dc:title "CloudLabelOntology (CLO)" ;
+    dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    rdfs:comment "OWL 2 DL profile (checked with ROBOT validate-profile). Outside OWL 2 RL because of 9 axioms: 3 exact cardinalities (ResourceType, Label), the union domain of governedBy and 5 definitions (LabeledResource, UnlabeledResource, ConflictingResource, FullyCompliantResource, AuditableResource). Tested with HermiT 1.3.8 via owlready2 0.51."@en ;
+    owl:versionIRI <http://example.org/clo/ontology/clo/8.0> ;
+    owl:versionInfo "8.0" .
+
+clo:AIJobKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "AI Job Kind"@en ;
+    clo:categoryOf clo:AIML ;
+    rdfs:comment "UDM: ai_job. AI training or inference job. E.g.: SageMaker Training Job (AWS), Azure ML Job."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:AIModelKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "AI Model Kind"@en ;
+    clo:categoryOf clo:AIML ;
+    rdfs:comment "UDM: ai_model. Machine learning or AI model. E.g.: SageMaker Model (AWS), Azure ML Model, Vertex AI Model (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:AccessKeyKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Access Key Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: access_key. Programmatic access key. E.g.: IAM Access Key (AWS), Service Account Key (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:AccountKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Account Kind"@en ;
+    clo:categoryOf clo:Identity ;
+    rdfs:comment "UDM: account. Account or project in the UDM hierarchy."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:AuditableResource a owl:Class ;
+    rdfs:label "Auditable Resource"@en ;
+    rdfs:comment "Resource whose type supports labels (full or partial). Defines the audit scope: exclusions are derived, not configured."@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:CloudResource [ a owl:Restriction ;
+                        owl:onProperty clo:hasResourceType ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:unionOf ( clo:FullyTaggableType clo:PartiallyTaggableType ) ] ] ) ] .
+
+clo:AutoScalingGroupKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Auto Scaling Group Kind"@en ;
+    clo:categoryOf clo:Compute ;
+    rdfs:comment "UDM: autoscaling_group. Auto-scaling group. E.g.: Auto Scaling Group (AWS), VMSS (Azure), Managed Instance Group (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:BucketKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Bucket Kind"@en ;
+    clo:categoryOf clo:Storage ;
+    rdfs:comment "UDM: bucket. Object storage. E.g.: S3 Bucket (AWS), Storage Account Blob Container (Azure), Cloud Storage Bucket (GCP), Space (DigitalOcean)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:CertificateKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Certificate Kind"@en ;
+    clo:categoryOf clo:Secret ;
+    rdfs:comment "UDM: certificate. Managed TLS/SSL certificate. E.g.: ACM Certificate (AWS), Key Vault Certificate (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:ComputeResource a owl:Class ;
+    rdfs:label "Compute Resource"@en ;
+    rdfs:comment "Compute resources: virtual machines, serverless functions, auto-scaling groups. BaseKinds: InstanceKind, InstanceTypeKind, AutoScalingGroupKind, ServerlessFunctionKind. v6 note: ManagedKubernetesClusterKind was reassigned to Container because a K8s cluster is primarily a container orchestrator."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:DatabaseResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MessagingResource,
+        clo:MonitoringResource,
+        clo:NetworkingResource,
+        clo:SecretResource,
+        clo:SecurityResource,
+        clo:StorageResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Compute ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:ConflictingResource a owl:Class ;
+    rdfs:label "Conflicting Resource"@en ;
+    rdfs:comment "Resource with at least one label invalidated by a SemanticConflictRule. E.g.: environment=production AND team=test-qa."@en ;
+    rdfs:subClassOf clo:NonCompliant ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty clo:hasLabel ;
+            owl:someValuesFrom [ a owl:Restriction ;
+                    owl:onProperty clo:validatedBy ;
+                    owl:someValuesFrom clo:SemanticConflictRule ] ] .
+
+clo:DNSRecordKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "DNS Record Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: dns_record. DNS record (A, CNAME, MX, TXT...)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:DNSZoneKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "DNS Zone Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: dns_zone. DNS zone. E.g.: Route53 Hosted Zone (AWS), Azure DNS Zone, Cloud DNS Managed Zone (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:DatabaseInstanceTypeKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Database Instance Type Kind"@en ;
+    clo:categoryOf clo:Database ;
+    rdfs:comment "UDM: database_instance_type. Database instance type definition. E.g.: db.t3.medium (AWS RDS)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:DatabaseKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Database Kind"@en ;
+    clo:categoryOf clo:Database ;
+    rdfs:comment "UDM: database. Managed database instance. E.g.: RDS Instance (AWS), Azure SQL / CosmosDB, Cloud SQL (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:EndpointKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Endpoint Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: endpoint. Private network access point. E.g.: VPC Endpoint (AWS), Private Endpoint (Azure), Private Service Connect (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:FirewallKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Firewall Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: firewall. Firewall. E.g.: Network Firewall (AWS), Azure Firewall, Cloud Armor (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:FullyCompliantResource a owl:Class ;
+    rdfs:label "Fully Compliant Resource"@en ;
+    clo:operative false ;
+    rdfs:comment "Resource that has labels and whose validation results are all Compliant. NOT OPERATIVE under OWA: owl:allValuesFrom is only satisfied with an explicit closure of hasValidationResult. Full compliance is established in Cypher."@en ;
+    rdfs:subClassOf clo:Compliant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:LabeledResource [ a owl:Restriction ;
+                        owl:allValuesFrom clo:Compliant ;
+                        owl:onProperty clo:hasValidationResult ] ) ] .
+
+clo:GatewayKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Gateway Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: gateway. Network gateway. E.g.: Internet Gateway, NAT Gateway, VPN Gateway (AWS/Azure/GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:GroupKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Group Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: group. User or permission group. E.g.: IAM Group (AWS), Azure AD Group."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:IPAddressKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "IP Address Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: ip_address. Allocated public IP address. E.g.: Elastic IP (AWS), Public IP (Azure), External IP (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:InstanceKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Instance Kind"@en ;
+    clo:categoryOf clo:Compute ;
+    rdfs:comment "UDM: instance. Virtual machine. E.g.: EC2 Instance (AWS), Virtual Machine (Azure), Compute Engine Instance (GCP), Droplet (DigitalOcean), VM (VMware)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:InstanceTypeKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Instance Type Kind"@en ;
+    clo:categoryOf clo:Compute ;
+    rdfs:comment "UDM: instance_type. Virtual machine type or SKU definition. E.g.: t3.micro (AWS), Standard_D2s_v3 (Azure), n2-standard-2 (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:KeypairKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Keypair Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: keypair. SSH key pair. E.g.: EC2 Key Pair (AWS)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:LoadBalancerKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Load Balancer Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: load_balancer. Load balancer. E.g.: ALB/NLB (AWS), Load Balancer (Azure), Cloud Load Balancing (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:ManagedKubernetesClusterKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Managed Kubernetes Cluster Kind"@en ;
+    clo:categoryOf clo:Container ;
+    rdfs:comment "UDM: managed_kubernetes_cluster_provider. Managed Kubernetes cluster. E.g.: EKS (AWS), AKS (Azure), GKE (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:NetworkACLKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Network ACL Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: network_acl. Subnet-level network access control list. E.g.: NACL (AWS)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:NetworkInterfaceKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Network Interface Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: network_interface. Virtual network interface. E.g.: ENI (AWS), NIC (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:NetworkKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Network Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: network. Virtual network. E.g.: VPC (AWS/GCP), Virtual Network (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:NetworkShareKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Network Share Kind"@en ;
+    clo:categoryOf clo:Storage ;
+    rdfs:comment "UDM: network_share. File-type network share. E.g.: EFS (AWS), Azure Files Share."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:OrganizationalRoot a owl:Class ;
+    rdfs:label "Organizational Root"@en ;
+    rdfs:comment "Top of the organizational hierarchy. E.g.: Management Account in AWS Organizations, Tenant Root Group in Azure."@en ;
+    rdfs:subClassOf clo:OrganizationalEntity ;
+    owl:disjointWith clo:Account,
+        clo:OrganizationalUnit,
+        clo:Region,
+        clo:Zone .
+
+clo:PartiallyCompliantResource a owl:Class ;
+    rdfs:label "Partially Compliant Resource"@en ;
+    rdfs:comment "Resource that has labels but with at least one missing mandatory label or a non-critical error. Requires NonCompliant to be asserted by Cypher."@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:LabeledResource clo:NonCompliant ) ] .
+
+clo:PeeringConnectionKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Peering Connection Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: peering_connection. Peering connection between virtual networks."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:PolicyKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Policy Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: policy. Permissions policy. E.g.: IAM Policy (AWS), Azure Policy Definition."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:QueueKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Queue Kind"@en ;
+    clo:categoryOf clo:Messaging ;
+    rdfs:comment "UDM: queue. Message queue. E.g.: SQS Queue (AWS), Azure Service Bus Queue, Cloud Tasks Queue (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:QuotaKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Quota Kind"@en ;
+    clo:categoryOf clo:Governance ;
+    rdfs:comment "UDM: quota. Auditable service quota. E.g.: Service Quotas (AWS), Azure Subscription Limits."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:RequiredLabel a owl:Class ;
+    rdfs:label "Required Label"@en ;
+    rdfs:comment "Label whose presence is required by a LabelingPolicy applicable to the resource."@en ;
+    rdfs:subClassOf clo:Label ;
+    owl:disjointWith clo:OptionalLabel .
+
+clo:RoleKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Role Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: role. IAM role or service role. E.g.: IAM Role (AWS), Azure Role Definition, IAM Role (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:RouteKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Route Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: route. Individual routing rule."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:RoutingTableKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Routing Table Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: routing_table. Routing table. E.g.: Route Table (AWS/Azure), Cloud Router Route (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:SecurityGroupKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Security Group Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: security_group. Network security group. E.g.: Security Group (AWS), NSG (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:ServerlessFunctionKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Serverless Function Kind"@en ;
+    clo:categoryOf clo:Compute ;
+    rdfs:comment "UDM: serverless_function. Serverless function. E.g.: Lambda (AWS), Azure Function, Cloud Function (GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:SnapshotKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Snapshot Kind"@en ;
+    clo:categoryOf clo:Storage ;
+    rdfs:comment "UDM: snapshot. Disk or volume snapshot. E.g.: EBS Snapshot (AWS), Disk Snapshot (Azure/GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:StackKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Stack Kind"@en ;
+    clo:categoryOf clo:Governance ;
+    rdfs:comment "UDM: stack. Infrastructure as code stack. E.g.: CloudFormation Stack (AWS), ARM Deployment (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:SubnetKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Subnet Kind"@en ;
+    clo:categoryOf clo:Networking ;
+    rdfs:comment "UDM: subnet. Subnet. E.g.: Subnet (AWS/Azure/GCP)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:UnlabeledResource a owl:Class ;
+    rdfs:label "Unlabeled Resource"@en ;
+    clo:operative false ;
+    rdfs:comment "DOCUMENTATION AXIOM, NOT OPERATIVE. Legal in OWL 2 DL but never populated from the absence of hasLabel assertions (OWA). Only fires on an explicit closure axiom (hasLabel max 0). The operative implementation of I-11 is a Cypher query restricted to recordComplete resources."@en ;
+    rdfs:subClassOf clo:CriticalNonCompliant ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:CloudResource [ a owl:Restriction ;
+                        owl:cardinality 0 ;
+                        owl:onProperty clo:hasLabel ] ) ] .
+
+clo:UserKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "User Kind"@en ;
+    clo:categoryOf clo:Security ;
+    rdfs:comment "UDM: user. IAM user. E.g.: IAM User (AWS), Azure AD User, Google Cloud Identity User."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:VolumeKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Volume Kind"@en ;
+    clo:categoryOf clo:Storage ;
+    rdfs:comment "UDM: volume. Block storage. E.g.: EBS Volume (AWS), Managed Disk (Azure), Persistent Disk (GCP), Block Storage (DigitalOcean)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:VolumeTypeKind a owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Volume Type Kind"@en ;
+    clo:categoryOf clo:Storage ;
+    rdfs:comment "UDM: volume_type. Block storage type definition. E.g.: gp3, io2 (AWS), Premium_SSD (Azure)."@en ;
+    rdfs:subClassOf clo:BaseKind .
+
+clo:accessedAt a owl:DatatypeProperty ;
+    rdfs:label "accessed at"@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:dateTime .
+
+clo:accountId a owl:DatatypeProperty ;
+    rdfs:label "account ID"@en ;
+    rdfs:comment "Unique identifier of the account at the provider level. E.g.: AWS account number (12 digits), Azure subscription ID (UUID)."@en ;
+    rdfs:domain clo:Account ;
+    rdfs:range xsd:string .
+
+clo:appliesToAccount a owl:ObjectProperty ;
+    rdfs:label "applies to account"@en ;
+    rdfs:comment "Specific Account targeted by this policy (account-specific override policy)."@en ;
+    rdfs:domain clo:LabelingPolicy ;
+    rdfs:range clo:Account .
+
+clo:auditDate a owl:DatatypeProperty ;
+    rdfs:label "audit date"@en ;
+    rdfs:comment "Timestamp at which the validation result was produced."@en ;
+    rdfs:domain clo:ValidationResult ;
+    rdfs:range xsd:dateTime .
+
+clo:baseKindName a owl:DatatypeProperty ;
+    rdfs:label "base kind name"@en ;
+    rdfs:comment "Name of the UDM abstract type. E.g.: instance, bucket, network. Corresponds to the kind field in Fix Inventory."@en ;
+    rdfs:domain clo:BaseKind ;
+    rdfs:range xsd:string .
+
+clo:canonicalKey a owl:DatatypeProperty ;
+    rdfs:label "canonical key"@en ;
+    rdfs:comment "Canonical reference key of a SynonymGroup. All other member keys are synonyms of this key."@en ;
+    rdfs:domain clo:SynonymGroup ;
+    rdfs:range xsd:string .
+
+clo:caseSensitive a owl:DatatypeProperty ;
+    rdfs:label "case sensitive"@en ;
+    rdfs:comment "Indicates whether label keys are case-sensitive. true: AWS and Kubernetes. false: Azure."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:boolean .
+
+clo:complianceScore a owl:DatatypeProperty ;
+    rdfs:label "compliance score"@en ;
+    rdfs:comment "Compliance score of the resource, from 0 to 100. 100 = all obligations satisfied with no warning."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:integer .
+
+clo:conflictKeyA a owl:DatatypeProperty ;
+    rdfs:label "conflict key A"@en ;
+    rdfs:comment "First key of the conflicting pair. E.g.: environment."@en ;
+    rdfs:domain clo:SemanticConflictRule ;
+    rdfs:range xsd:string .
+
+clo:conflictKeyB a owl:DatatypeProperty ;
+    rdfs:label "conflict key B"@en ;
+    rdfs:comment "Second key of the conflicting pair. E.g.: team."@en ;
+    rdfs:domain clo:SemanticConflictRule ;
+    rdfs:range xsd:string .
+
+clo:conflictValueA a owl:DatatypeProperty ;
+    rdfs:label "conflict value A"@en ;
+    rdfs:comment "Value of the first key triggering the conflict. E.g.: production."@en ;
+    rdfs:domain clo:SemanticConflictRule ;
+    rdfs:range xsd:string .
+
+clo:conflictValueB a owl:DatatypeProperty ;
+    rdfs:label "conflict value B"@en ;
+    rdfs:comment "Value of the second key triggering the conflict. E.g.: test-qa."@en ;
+    rdfs:domain clo:SemanticConflictRule ;
+    rdfs:range xsd:string .
+
+clo:conflictsWith a owl:ObjectProperty ;
+    rdfs:label "conflicts with"@en ;
+    rdfs:comment "Relation between two LabelKeys carrying contradictory combinations. Formalized in SemanticConflictRule via conflictKeyA/B and conflictValueA/B."@en ;
+    rdfs:domain clo:SemanticConflictRule ;
+    rdfs:range clo:LabelKey .
+
+clo:createdAt a owl:DatatypeProperty ;
+    rdfs:label "created at"@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:dateTime .
+
+clo:deployedIn a owl:ObjectProperty ;
+    rdfs:label "deployed in"@en ;
+    rdfs:comment "Deployment environment of the resource. Set by Cypher after semantic resolution of the value of the 'environment' label (lookup in the associated LabelVocabulary). No property chain in v6 because of the range type mismatch LabelValue vs Environment."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Environment .
+
+clo:fixInventoryKind a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "Fix Inventory kind"@en ;
+    rdfs:comment "Type identifier in Fix Inventory (Unified Data Model). E.g.: aws_ec2_instance. Join key with the ResourceType in the Neo4j graph."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:string .
+
+clo:hasAllowedValue a owl:ObjectProperty ;
+    rdfs:label "has allowed value"@en ;
+    rdfs:comment "Allowed value in a LabelVocabulary."@en ;
+    rdfs:domain clo:LabelVocabulary ;
+    rdfs:range clo:AllowedValue .
+
+clo:hasBaseKind a owl:ObjectProperty ;
+    rdfs:label "has base kind"@en ;
+    rdfs:comment "[V8-2] BaseKind of the resource, inferred by chain C-6: hasResourceType o implementsBaseKind. Supports inference I-04 at resource level."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:BaseKind ;
+    owl:propertyChainAxiom ( clo:hasResourceType clo:implementsBaseKind ) .
+
+clo:hasMember a owl:ObjectProperty ;
+    rdfs:label "has member"@en ;
+    rdfs:comment "Member LabelKey of a SynonymGroup. Basis of inference I-22."@en ;
+    rdfs:domain clo:SynonymGroup ;
+    rdfs:range clo:LabelKey .
+
+clo:hasProviderConstraint a owl:ObjectProperty ;
+    rdfs:label "has provider constraint"@en ;
+    rdfs:comment "Technical labelling constraints of an InfraProvider."@en ;
+    rdfs:domain clo:InfraProvider ;
+    rdfs:range clo:ProviderConstraint .
+
+clo:hasVocabulary a owl:ObjectProperty ;
+    rdfs:label "has vocabulary"@en ;
+    rdfs:comment "Controlled vocabulary associated with a LabelKey. Basis of inferences I-09, I-17, I-20."@en ;
+    rdfs:domain clo:LabelKey ;
+    rdfs:range clo:LabelVocabulary .
+
+clo:keyMaxLength a owl:DatatypeProperty ;
+    rdfs:label "key max length"@en ;
+    rdfs:comment "Maximum allowed length for a label key. E.g.: 128 (AWS), 512 (Azure), 63 (GCP/Kubernetes)."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:integer .
+
+clo:keyName a owl:DatatypeProperty ;
+    rdfs:label "key name"@en ;
+    rdfs:comment "String of the label key. E.g.: environment, team, cost-center."@en ;
+    rdfs:domain clo:LabelKey ;
+    rdfs:range xsd:string .
+
+clo:keyPattern a owl:DatatypeProperty ;
+    rdfs:label "key pattern"@en ;
+    rdfs:comment "Regular expression for validating a label key."@en ;
+    rdfs:domain clo:SyntacticRule ;
+    rdfs:range xsd:string .
+
+clo:labelCount a owl:DatatypeProperty ;
+    rdfs:label "label count"@en ;
+    rdfs:comment "Number of labels currently attached to the resource. Computed dynamically."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:integer .
+
+clo:lastCheckedAt a owl:DatatypeProperty ;
+    rdfs:label "last checked at"@en ;
+    rdfs:comment "Timestamp of the last audit of this resource."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:dateTime .
+
+clo:locatedInRegion a owl:ObjectProperty ;
+    rdfs:label "located in region"@en ;
+    rdfs:comment "Deployment region of the resource."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Region .
+
+clo:locatedInZone a owl:ObjectProperty ;
+    rdfs:label "located in zone"@en ;
+    rdfs:comment "Availability zone of the resource."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Zone .
+
+clo:lowercaseOnly a owl:DatatypeProperty ;
+    rdfs:label "lowercase only"@en ;
+    rdfs:comment "Indicates that only lowercase is allowed in keys and values. true: GCP and GitHub (topics). Kubernetes allows uppercase."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:boolean .
+
+clo:maxLabelsPerResource a owl:DatatypeProperty ;
+    rdfs:label "max labels per resource"@en ;
+    rdfs:comment "Maximum number of labels per resource. E.g.: 50 (AWS/Azure), 64 (GCP)."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:integer .
+
+clo:modifiedAt a owl:DatatypeProperty ;
+    rdfs:label "modified at"@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:dateTime .
+
+clo:operative a owl:AnnotationProperty ;
+    rdfs:label "operative"@en ;
+    rdfs:comment "false on axioms kept to document the intended semantics but which cannot fire under OWA."@en .
+
+clo:providerName a owl:DatatypeProperty ;
+    rdfs:label "provider name"@en ;
+    rdfs:comment "Short name of the provider. E.g.: aws, azure, gcp, kubernetes, github."@en ;
+    rdfs:domain clo:InfraProvider ;
+    rdfs:range xsd:string .
+
+clo:recordComplete a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "record complete"@en ;
+    rdfs:comment "[V8-7] true if the full set of the resource's labels was read in its entirety from the authoritative source, within the freshness bound. Only these resources are subject to absence-based rules (I-07, I-11, I-21). Set by the ingester, never inferred."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:boolean .
+
+clo:regionName a owl:DatatypeProperty ;
+    rdfs:label "region name"@en ;
+    rdfs:comment "Technical name of the region. E.g.: us-east-1, westeurope, europe-west1."@en ;
+    rdfs:domain clo:Region ;
+    rdfs:range xsd:string .
+
+clo:requiresLabel a owl:ObjectProperty ;
+    rdfs:label "requires label"@en ;
+    rdfs:comment "LabelKey required by the policy. Basis of inferences I-07 (missing labels) and I-08 (full compliance)."@en ;
+    rdfs:domain clo:LabelingPolicy ;
+    rdfs:range clo:LabelKey .
+
+clo:reservedPrefix a owl:DatatypeProperty ;
+    rdfs:label "reserved prefix"@en ;
+    rdfs:comment "Key prefix reserved by the provider. E.g.: aws: (AWS), goog- and google- (GCP), kubernetes.io/ (Kubernetes)."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:string .
+
+clo:resourceName a owl:DatatypeProperty ;
+    rdfs:label "resource name"@en ;
+    rdfs:comment "Human-readable name of the resource. May differ from the technical identifier."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:string .
+
+clo:resourceTypeName a owl:DatatypeProperty ;
+    rdfs:label "resource type name"@en ;
+    rdfs:comment "Identifier of the resource type in Fix Inventory UDM format. E.g.: aws_ec2_instance, azure_compute_virtual_machine."@en ;
+    rdfs:domain clo:ResourceType ;
+    rdfs:range xsd:string .
+
+clo:runsOn a owl:ObjectProperty ;
+    rdfs:label "runs on"@en ;
+    rdfs:comment "Cloud provider on which a container orchestrator runs. E.g.: EKS cluster runsOn AWS."@en ;
+    rdfs:domain clo:ContainerOrchestrationProvider ;
+    rdfs:range clo:CloudProvider .
+
+clo:sameBaseKindAs a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "same base kind as"@en ;
+    rdfs:comment "[V8-2] Two ResourceTypes (possibly from different providers) implementing the same BaseKind. Chain C-7: implementsBaseKind o inverse(implementsBaseKind). Inference I-04, materialized at type level (quadratic in the number of types, not resources)."@en ;
+    rdfs:domain clo:ResourceType ;
+    rdfs:range clo:ResourceType ;
+    owl:propertyChainAxiom ( clo:implementsBaseKind [ owl:inverseOf clo:implementsBaseKind ] ) .
+
+clo:severity a owl:DatatypeProperty ;
+    rdfs:label "severity"@en ;
+    rdfs:comment "Severity level of the result: critical, error, warning, info."@en ;
+    rdfs:domain clo:ValidationResult ;
+    rdfs:range xsd:string .
+
+clo:supportsLabels a owl:DatatypeProperty ;
+    rdfs:label "supports labels"@en ;
+    rdfs:comment "Indicates whether this provider natively supports labelling of its resources."@en ;
+    rdfs:domain clo:InfraProvider ;
+    rdfs:range xsd:boolean .
+
+clo:valueMaxLength a owl:DatatypeProperty ;
+    rdfs:label "value max length"@en ;
+    rdfs:comment "Maximum allowed length for a label value. E.g.: 256 (AWS/Azure), 63 (GCP/Kubernetes)."@en ;
+    rdfs:domain clo:ProviderConstraint ;
+    rdfs:range xsd:integer .
+
+clo:valueName a owl:DatatypeProperty ;
+    rdfs:label "value name"@en ;
+    rdfs:comment "String of the label value or of an allowed value. E.g.: production, platform-team."@en ;
+    rdfs:domain clo:LabelValue ;
+    rdfs:range xsd:string .
+
+clo:valuePattern a owl:DatatypeProperty ;
+    rdfs:label "value pattern"@en ;
+    rdfs:comment "Regular expression for validating a label value."@en ;
+    rdfs:domain clo:SyntacticRule ;
+    rdfs:range xsd:string .
+
+clo:zoneName a owl:DatatypeProperty ;
+    rdfs:label "zone name"@en ;
+    rdfs:comment "Technical name of the availability zone. E.g.: us-east-1a, europe-west1-b."@en ;
+    rdfs:domain clo:Zone ;
+    rdfs:range xsd:string .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:date a owl:AnnotationProperty .
+
+dc:description a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+skos:prefLabel a owl:AnnotationProperty .
+
+clo:AWS a clo:CloudProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Amazon Web Services"@en ;
+    clo:hasProviderConstraint clo:AWS_Constraint ;
+    clo:providerName "aws" ;
+    clo:supportsLabels true ;
+    rdfs:comment "Amazon Web Services. Key max 128 chars, value max 256 chars, 50 tags/resource. Case-sensitive. Prefix aws: reserved."@en ;
+    rdfs:subClassOf clo:CloudProvider .
+
+clo:AWS_Constraint a clo:ProviderConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "AWS Constraint"@en ;
+    clo:caseSensitive true ;
+    clo:keyMaxLength 128 ;
+    clo:lowercaseOnly false ;
+    clo:maxLabelsPerResource 50 ;
+    clo:reservedPrefix "aws:" ;
+    clo:valueMaxLength 256 .
+
+clo:AllowedValue a owl:Class ;
+    rdfs:label "Allowed Value"@en ;
+    rdfs:comment "Allowed value in a LabelVocabulary. Aligned with skos:Concept. E.g.: prod, staging. Carries the canonical value via clo:valueName."@en ;
+    rdfs:subClassOf skos:Concept .
+
+clo:Azure a clo:CloudProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Microsoft Azure"@en ;
+    clo:hasProviderConstraint clo:Azure_Constraint ;
+    clo:providerName "azure" ;
+    clo:supportsLabels true ;
+    rdfs:comment "Microsoft Azure. Key max 512 chars, value max 256 chars, 50 tags/resource. Case-insensitive keys."@en ;
+    rdfs:subClassOf clo:CloudProvider .
+
+clo:Azure_Constraint a clo:ProviderConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Azure Constraint"@en ;
+    clo:caseSensitive false ;
+    clo:keyMaxLength 512 ;
+    clo:lowercaseOnly false ;
+    clo:maxLabelsPerResource 50 ;
+    clo:reservedPrefix "azure",
+        "microsoft",
+        "windows" ;
+    clo:valueMaxLength 256 .
+
+clo:DigitalOcean a clo:SimpleCloudProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "DigitalOcean"@en ;
+    clo:providerName "digitalocean" ;
+    clo:supportsLabels true ;
+    rdfs:comment "DigitalOcean. Tags supported on Droplets, Volumes, Load Balancers and Firewalls."@en ;
+    rdfs:subClassOf clo:SimpleCloudProvider .
+
+clo:DockerHub a clo:SaaSProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "DockerHub"@en ;
+    clo:providerName "dockerhub" ;
+    clo:supportsLabels true ;
+    rdfs:comment "DockerHub. Governance via Docker image labels (LABEL instruction in Dockerfile)."@en ;
+    rdfs:subClassOf clo:SaaSProvider .
+
+clo:Environment a owl:Class ;
+    rdfs:label "Environment"@en ;
+    rdfs:comment "Deployment environment of a resource. Semantic resolution of the environment label value to an Environment individual is performed by Cypher (no property chain in v6, see [FIX-1])."@en .
+
+clo:FullyTaggableType a owl:Class ;
+    rdfs:label "Fully Taggable Type"@en ;
+    owl:disjointWith clo:PartiallyTaggableType,
+        clo:UntaggableType ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:ResourceType [ a owl:Restriction ;
+                        owl:hasValue "full" ;
+                        owl:onProperty clo:labelingSupport ] ) ] .
+
+clo:GCP a clo:CloudProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Google Cloud Platform"@en ;
+    clo:hasProviderConstraint clo:GCP_Constraint ;
+    clo:providerName "gcp" ;
+    clo:supportsLabels true ;
+    rdfs:comment "Google Cloud Platform. Key max 63 chars, value max 63 chars, 64 labels/resource. Lowercase only. Prefixes goog- and google- reserved."@en ;
+    rdfs:subClassOf clo:CloudProvider .
+
+clo:GCP_Constraint a clo:ProviderConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "GCP Constraint"@en ;
+    clo:caseSensitive true ;
+    clo:keyMaxLength 63 ;
+    clo:lowercaseOnly true ;
+    clo:maxLabelsPerResource 64 ;
+    clo:reservedPrefix "goog-",
+        "google-" ;
+    clo:valueMaxLength 63 .
+
+clo:GitHub a clo:SaaSProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "GitHub"@en ;
+    clo:hasProviderConstraint clo:GitHub_Constraint ;
+    clo:providerName "github" ;
+    clo:supportsLabels true ;
+    rdfs:comment "GitHub. Governance via Topics (repositories), Labels (issues/PR) and organization metadata."@en ;
+    rdfs:subClassOf clo:SaaSProvider .
+
+clo:GitHub_Constraint a clo:ProviderConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "GitHub Constraint"@en ;
+    clo:caseSensitive true ;
+    clo:keyMaxLength 50 ;
+    clo:lowercaseOnly true ;
+    clo:maxLabelsPerResource 20 ;
+    clo:valueMaxLength 50 .
+
+clo:Kubernetes a clo:ContainerOrchestrationProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Kubernetes"@en ;
+    clo:hasProviderConstraint clo:Kubernetes_Constraint ;
+    clo:providerName "kubernetes" ;
+    clo:supportsLabels true ;
+    rdfs:comment "Kubernetes. Labels: key max 63 chars + optional prefix of 253 chars, value max 63 chars. Alphanumeric characters, dashes, underscores, dots. Annotations with no value limit."@en ;
+    rdfs:subClassOf clo:ContainerOrchestrationProvider .
+
+clo:Kubernetes_Constraint a clo:ProviderConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Kubernetes Constraint"@en ;
+    clo:caseSensitive true ;
+    clo:keyMaxLength 63 ;
+    clo:lowercaseOnly false ;
+    clo:maxLabelsPerResource 64 ;
+    clo:reservedPrefix "k8s.io/",
+        "kubernetes.io/" ;
+    clo:valueMaxLength 63 .
+
+clo:OnPremises a clo:OnPremProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "On-Premises Infrastructure"@en ;
+    clo:providerName "onprem" ;
+    clo:supportsLabels false ;
+    rdfs:comment "Self-managed bare-metal or virtualized infrastructure, outside any referenced cloud or SaaS platform."@en ;
+    rdfs:subClassOf clo:OnPremProvider .
+
+clo:OneLogin a clo:SaaSProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "OneLogin"@en ;
+    clo:providerName "onelogin" ;
+    clo:supportsLabels false ;
+    rdfs:comment "OneLogin. Governance via custom attributes on applications, users and groups."@en ;
+    rdfs:subClassOf clo:SaaSProvider .
+
+clo:OptionalLabel a owl:Class ;
+    rdfs:label "Optional Label"@en ;
+    rdfs:comment "Label recommended but not mandatory under the policy in force."@en ;
+    rdfs:subClassOf clo:Label .
+
+clo:OrganizationalUnit a owl:Class ;
+    rdfs:label "Organizational Unit"@en ;
+    rdfs:comment "Intermediate node in the hierarchy. E.g.: OU in AWS Organizations, Management Group in Azure, Folder in GCP."@en ;
+    rdfs:subClassOf clo:OrganizationalEntity ;
+    owl:disjointWith clo:Account,
+        clo:Region,
+        clo:Zone .
+
+clo:SemanticRule a owl:Class ;
+    rdfs:label "Semantic Rule"@en ;
+    rdfs:comment "Validation rule for the meaning of a value: check against a LabelVocabulary, detection of orphan labels. Basis of inferences I-09 and I-17."@en ;
+    rdfs:subClassOf clo:LabelValidationRule ;
+    owl:disjointWith clo:SemanticConflictRule .
+
+clo:Slack a clo:SaaSProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "Slack"@en ;
+    clo:providerName "slack" ;
+    clo:supportsLabels false ;
+    rdfs:comment "Slack. Governance via workspace, channel and application metadata."@en ;
+    rdfs:subClassOf clo:SaaSProvider .
+
+clo:StorageResource a owl:Class ;
+    rdfs:label "Storage Resource"@en ;
+    rdfs:comment "Storage resources: block, object and file storage, and snapshots. BaseKinds: VolumeKind, VolumeTypeKind, SnapshotKind, BucketKind, NetworkShareKind."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:DatabaseResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MessagingResource,
+        clo:MonitoringResource,
+        clo:NetworkingResource,
+        clo:SecretResource,
+        clo:SecurityResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Storage ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:VMware a clo:OnPremProvider,
+        owl:Class,
+        owl:NamedIndividual ;
+    rdfs:label "VMware"@en ;
+    clo:providerName "vmware" ;
+    clo:supportsLabels true ;
+    rdfs:comment "VMware vSphere / vCenter. Governance via Custom Attributes and vSphere Tags on VMs, Datastores, Clusters."@en ;
+    rdfs:subClassOf clo:OnPremProvider .
+
+clo:appliesToCategory a owl:ObjectProperty ;
+    rdfs:label "applies to category"@en ;
+    rdfs:comment "FunctionalCategory targeted by this policy."@en ;
+    rdfs:domain clo:LabelingPolicy ;
+    rdfs:range clo:FunctionalCategory .
+
+clo:categoryOf a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "category of"@en ;
+    rdfs:comment "Link between a BaseKind and its FunctionalCategory. Central link of property chain C-2: hasResourceType o implementsBaseKind o categoryOf => belongsToCategory. FunctionalProperty: a BaseKind has exactly one FunctionalCategory."@en ;
+    rdfs:domain clo:BaseKind ;
+    rdfs:range clo:FunctionalCategory .
+
+clo:hasLabelKey a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has label key"@en ;
+    rdfs:comment "Key of a label. FunctionalProperty: a Label has exactly one LabelKey."@en ;
+    rdfs:domain clo:Label ;
+    rdfs:range clo:LabelKey .
+
+clo:hasLabelValue a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has label value"@en ;
+    rdfs:comment "Value of a label. FunctionalProperty: a Label has exactly one LabelValue."@en ;
+    rdfs:domain clo:Label ;
+    rdfs:range clo:LabelValue .
+
+clo:hasValidationResult a owl:ObjectProperty ;
+    rdfs:label "has validation result"@en ;
+    rdfs:comment "Audit validation result of a resource. Produced by Cypher or by the reasoner via the defined classes (D-1 to D-5), never written directly on the source node."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:ValidationResult .
+
+clo:orgPartOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "org part of"@en ;
+    rdfs:comment "Composition relation in the organizational hierarchy. TransitiveProperty: Account orgPartOf OU orgPartOf Root. Link of property chain C-4 for policy propagation."@en ;
+    rdfs:domain clo:OrganizationalEntity ;
+    rdfs:range clo:OrganizationalEntity .
+
+clo:partOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "part of"@en ;
+    rdfs:comment "Physical parent-child composition relation between cloud resources. TransitiveProperty. Used by property chain C-3 (policy inheritance) and inference I-21 (parent-child propagation of recommendations). E.g.: Instance partOf AutoScalingGroup, Subnet partOf VPC."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:CloudResource .
+
+clo:resourceId a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "resource ID"@en ;
+    rdfs:comment "Unique identifier of the resource within its provider and account. Component of the owl:hasKey uniqueness key."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range xsd:string .
+
+clo:validatedBy a owl:ObjectProperty ;
+    rdfs:label "validated by"@en ;
+    rdfs:comment "Validation rule that produced a result on this label."@en ;
+    rdfs:domain clo:Label ;
+    rdfs:range clo:LabelValidationRule .
+
+skos:ConceptScheme a owl:Class .
+
+clo:Analytics a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Analytics"@en ;
+    rdfs:comment "Functional category of data analytics resources. v6: reserved for future extension (BaseKinds such as AnalyticsJobKind, DataWarehouseKind, StreamKind to be added when a BigQuery/Athena/Snowflake adapter is plugged in). Classification available via owl:equivalentClass."@en ;
+    skos:prefLabel "Analytics"@en .
+
+clo:LabelValue a owl:Class ;
+    rdfs:label "Label Value"@en ;
+    rdfs:comment "Value of a label. E.g.: production, platform-team, CC-1234. Validated against the LabelVocabulary associated with the LabelKey if available."@en .
+
+clo:LabelVocabulary a owl:Class ;
+    rdfs:label "Label Vocabulary"@en ;
+    rdfs:comment "Controlled vocabulary defining the allowed values for a LabelKey. Aligned with skos:ConceptScheme. E.g.: vocabulary of environment = {dev, staging, prod, sandbox}. Basis of inferences I-09 (out-of-vocabulary value) and I-20 (correction by Levenshtein distance)."@en ;
+    rdfs:subClassOf skos:ConceptScheme .
+
+clo:LabeledResource a owl:Class ;
+    rdfs:label "Labeled Resource"@en ;
+    rdfs:comment "Resource that has at least one label. Precondition for advanced compliance inferences."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty clo:hasLabel ] .
+
+clo:Monitoring a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Monitoring"@en ;
+    rdfs:comment "Functional category of monitoring resources. v6: reserved for future extension (BaseKinds such as MetricKind, AlertKind, DashboardKind to be added when a Prometheus/CloudWatch adapter is plugged in). Classification remains possible via owl:equivalentClass MonitoringResource <-> belongsToCategory hasValue Monitoring if a resource is explicitly typed."@en ;
+    skos:prefLabel "Monitoring"@en .
+
+clo:NetworkingResource a owl:Class ;
+    rdfs:label "Networking Resource"@en ;
+    rdfs:comment "Network resources: VPCs, subnets, firewalls, gateways, load balancers, DNS, public IPs, endpoints."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:DatabaseResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MessagingResource,
+        clo:MonitoringResource,
+        clo:SecretResource,
+        clo:SecurityResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Networking ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:PartiallyTaggableType a owl:Class ;
+    rdfs:label "Partially Taggable Type"@en ;
+    owl:disjointWith clo:UntaggableType ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:ResourceType [ a owl:Restriction ;
+                        owl:hasValue "partial" ;
+                        owl:onProperty clo:labelingSupport ] ) ] .
+
+clo:SynonymGroup a owl:Class ;
+    rdfs:label "Synonym Group"@en ;
+    rdfs:comment "Group of LabelKeys considered synonyms. E.g.: {env, environment, environnement}. Carries a canonical key via clo:canonicalKey. Basis of inference I-22 (detection of redundant labels)."@en .
+
+clo:SyntacticRule a owl:Class ;
+    rdfs:label "Syntactic Rule"@en ;
+    rdfs:comment "Validation rule for the form of a key or value: regex, length, case, forbidden characters. References the constraints of the associated ProviderConstraint."@en ;
+    rdfs:subClassOf clo:LabelValidationRule ;
+    owl:disjointWith clo:SemanticConflictRule,
+        clo:SemanticRule .
+
+clo:UntaggableType a owl:Class ;
+    rdfs:label "Untaggable Type"@en ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( clo:ResourceType [ a owl:Restriction ;
+                        owl:hasValue "none" ;
+                        owl:onProperty clo:labelingSupport ] ) ] .
+
+clo:Warning a owl:Class ;
+    rdfs:label "Warning"@en ;
+    rdfs:comment "Non-blocking alert: probably erroneous value, orphan label (unrecognized key), redundant label."@en ;
+    rdfs:subClassOf clo:ValidationResult ;
+    owl:disjointWith clo:AtRisk,
+        clo:Compliant,
+        clo:CriticalNonCompliant .
+
+clo:hostedBy a owl:ObjectProperty ;
+    rdfs:label "hosted by"@en ;
+    rdfs:comment "Provider hosting the resource or the resource type. Can be set directly or inferred by property chain C-1: hasResourceType o hostedBy. Domain deliberately unrestricted to allow use on ResourceType (T-Box) and CloudResource (A-Box)."@en ;
+    rdfs:range clo:InfraProvider ;
+    owl:propertyChainAxiom ( clo:hasResourceType clo:hostedBy ) .
+
+skos:Concept a owl:Class .
+
+clo:AtRisk a owl:Class ;
+    rdfs:label "At Risk"@en ;
+    rdfs:comment "Aggregate result applied to an Account or an Environment whose non-compliance rate exceeds the configured threshold (default 20%)."@en ;
+    rdfs:subClassOf clo:ValidationResult ;
+    owl:disjointWith clo:Compliant,
+        clo:CriticalNonCompliant .
+
+clo:Container a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Container"@en ;
+    rdfs:comment "Functional category of container orchestrators and registries. v6: ManagedKubernetesClusterKind was reassigned here from Compute (a K8s cluster is primarily an orchestrator, not a VM). BaseKinds reserved for extension: ContainerRegistryKind, ContainerImageKind."@en ;
+    skos:prefLabel "Container"@en .
+
+clo:DatabaseResource a owl:Class ;
+    rdfs:label "Database Resource"@en ;
+    rdfs:comment "Managed data resources: relational databases, NoSQL, caches. BaseKinds: DatabaseKind, DatabaseInstanceTypeKind."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MessagingResource,
+        clo:MonitoringResource,
+        clo:SecretResource,
+        clo:SecurityResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Database ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:Identity a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Identity"@en ;
+    rdfs:comment "Functional category of organizational identity resources."@en ;
+    skos:prefLabel "Identity"@en .
+
+clo:Messaging a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Messaging"@en ;
+    rdfs:comment "Functional category of messaging resources."@en ;
+    skos:prefLabel "Messaging"@en .
+
+clo:Secret a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Secret"@en ;
+    rdfs:comment "Functional category of secrets and cryptographic material management resources. v6: CertificateKind was reassigned here from Security (a TLS certificate is secret cryptographic material, not a security control). Reserved BaseKinds: SecretKind, KeyKind."@en ;
+    skos:prefLabel "Secret"@en .
+
+clo:SimpleCloudProvider a owl:Class ;
+    rdfs:label "Simple Cloud Provider"@en ;
+    rdfs:comment "Second-tier cloud provider: subset of IaaS services with tag support on the main resources."@en ;
+    rdfs:subClassOf clo:InfraProvider ;
+    owl:disjointWith clo:ContainerOrchestrationProvider,
+        clo:OnPremProvider,
+        clo:SaaSProvider .
+
+clo:belongsToAccount a owl:ObjectProperty ;
+    rdfs:label "belongs to account"@en ;
+    rdfs:comment "Account to which the resource belongs. Component of the uniqueness key (owl:hasKey). Link of property chain C-4."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Account .
+
+clo:governedBy a owl:ObjectProperty ;
+    rdfs:label "governed by"@en ;
+    rdfs:comment "Labelling policy applicable to the resource. Propagated by two property chains: C-3 (partOf o governedBy) for inheritance via physical composition, C-4 (belongsToAccount o orgPartOf o governedBy) for inheritance via the organizational hierarchy. v7 [DT-1]: domain widened to CloudResource ∪ OrganizationalEntity to allow applying policies to OUs/Accounts without erroneous reclassification."@en ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( clo:CloudResource clo:OrganizationalEntity ) ] ;
+    rdfs:range clo:LabelingPolicy ;
+    owl:propertyChainAxiom ( clo:partOf clo:governedBy ),
+        ( clo:belongsToAccount clo:orgPartOf clo:governedBy ),
+        ( clo:belongsToCategory [ owl:inverseOf clo:appliesToCategory ] ),
+        ( clo:belongsToAccount clo:governedBy ) .
+
+clo:hasLabel a owl:ObjectProperty ;
+    rdfs:label "has label"@en ;
+    rdfs:comment "Label attached to the resource. Cardinality 0..n. The absence of a label is NOT inferable under OWA: I-11 is performed in Cypher on recordComplete resources (see D-1)."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Label .
+
+clo:labelingSupport a owl:DatatypeProperty ;
+    rdfs:label "labeling support"@en ;
+    rdfs:comment "Level of labelling support for this type: full (full tag support), partial (partial tags or on sub-resources), none (no native tag support)."@en ;
+    rdfs:domain clo:ResourceType ;
+    rdfs:range xsd:string .
+
+clo:AIML a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "AI/ML"@en ;
+    rdfs:comment "Functional category of machine learning resources."@en ;
+    skos:prefLabel "AI/ML"@en .
+
+clo:CriticalNonCompliant a owl:Class ;
+    rdfs:label "Critical Non Compliant"@en ;
+    rdfs:comment "Resource with no label at all (cardinality 0 on hasLabel). Maximum severity: resource created outside the governance process."@en ;
+    rdfs:subClassOf clo:NonCompliant ;
+    owl:disjointWith clo:AtRisk,
+        clo:Warning .
+
+clo:Database a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Database"@en ;
+    rdfs:comment "Functional category of database resources."@en ;
+    skos:prefLabel "Database"@en .
+
+clo:Governance a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Governance"@en ;
+    rdfs:comment "Functional category of IaC and governance resources."@en ;
+    skos:prefLabel "Governance"@en .
+
+clo:LabelValidationRule a owl:Class ;
+    rdfs:label "Label Validation Rule"@en ;
+    rdfs:comment "Abstract validation rule for a label or a set of labels. Specialized into SyntacticRule, SemanticRule or SemanticConflictRule."@en .
+
+clo:LabelingPolicy a owl:Class ;
+    rdfs:label "Labeling Policy"@en ;
+    rdfs:comment "Policy defining the required and optional labels applicable to a set of resources. Can apply to a FunctionalCategory, an Account or an InfraProvider. Propagates by inheritance via clo:partOf (property chain C-3) and via the organizational hierarchy (property chain C-4)."@en .
+
+clo:NonCompliant a owl:Class ;
+    rdfs:label "Non Compliant"@en ;
+    rdfs:comment "Resource with at least one missing required label or at least one non-critical syntactic or semantic error."@en ;
+    rdfs:subClassOf clo:ValidationResult ;
+    owl:disjointWith clo:Compliant .
+
+clo:SecurityResource a owl:Class ;
+    rdfs:label "Security Resource"@en ;
+    rdfs:comment "Security and identity management resources: users, groups, roles, policies, certificates, keys."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MessagingResource,
+        clo:MonitoringResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Security ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:hasResourceType a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "has resource type"@en ;
+    rdfs:comment "Concrete type of the resource as it appears in the Fix Inventory inventory. FunctionalProperty: a CloudResource has exactly one ResourceType. If several are asserted, the reasoner unifies them."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:ResourceType .
+
+clo:Account a owl:Class ;
+    rdfs:label "Account"@en ;
+    rdfs:comment "Billing and isolation scope within a provider. E.g.: AWS Account, GCP Project, Azure Subscription, DigitalOcean Project."@en ;
+    rdfs:subClassOf clo:OrganizationalEntity ;
+    owl:disjointWith clo:Region,
+        clo:Zone .
+
+clo:Compliant a owl:Class ;
+    rdfs:label "Compliant"@en ;
+    rdfs:comment "Resource compliant with all rules of the applicable policy: all required labels are present, with no syntactic or semantic error."@en ;
+    rdfs:subClassOf clo:ValidationResult ;
+    owl:disjointWith clo:AtRisk,
+        clo:CriticalNonCompliant,
+        clo:NonCompliant,
+        clo:Warning .
+
+clo:ContainerOrchestrationProvider a owl:Class ;
+    rdfs:label "Container Orchestration Provider"@en ;
+    rdfs:comment "Container orchestrator. Can run on a CloudProvider (EKS, GKE, AKS) or on-premises. Supports Kubernetes labels and annotations."@en ;
+    rdfs:subClassOf clo:InfraProvider ;
+    owl:disjointWith clo:OnPremProvider,
+        clo:SaaSProvider .
+
+clo:MessagingResource a owl:Class ;
+    rdfs:label "Messaging Resource"@en ;
+    rdfs:comment "Messaging and asynchronous integration resources: queues, topics, streams. BaseKind: QueueKind."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:GovernanceResource,
+        clo:IdentityResource,
+        clo:MonitoringResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Messaging ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:Region a owl:Class ;
+    rdfs:label "Region"@en ;
+    rdfs:comment "Geographic region of a cloud provider. E.g.: us-east-1 (AWS), westeurope (Azure), europe-west1 (GCP)."@en ;
+    rdfs:subClassOf clo:OrganizationalEntity ;
+    owl:disjointWith clo:Zone .
+
+clo:implementsBaseKind a owl:ObjectProperty ;
+    rdfs:label "implements base kind"@en ;
+    rdfs:comment "Link between a ResourceType and its UDM BaseKind. Pivot of cross-provider equivalences. Cardinality exactly 1 (restriction A-1). Enables inferences I-01, I-02, I-04, I-19."@en ;
+    rdfs:domain clo:ResourceType ;
+    rdfs:range clo:BaseKind .
+
+clo:Compute a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Compute"@en ;
+    rdfs:comment "Functional category of compute resources."@en ;
+    skos:prefLabel "Compute"@en .
+
+clo:GovernanceResource a owl:Class ;
+    rdfs:label "Governance Resource"@en ;
+    rdfs:comment "Infrastructure as code and governance resources: stacks, deployments, quotas. BaseKinds: StackKind, QuotaKind."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:IdentityResource,
+        clo:MonitoringResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Governance ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:Label a owl:Class ;
+    rdfs:label "Label"@en ;
+    rdfs:comment "Key-value pair attached to a CloudResource. A first-class entity allowing individual audit of each tag. A Label has exactly one LabelKey (FunctionalProperty) and exactly one LabelValue (FunctionalProperty)."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty clo:hasLabelKey ],
+        [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty clo:hasLabelValue ] .
+
+clo:LabelKey a owl:Class ;
+    rdfs:label "Label Key"@en ;
+    rdfs:comment "Key of a label. E.g.: environment, team, cost-center. A LabelKey can be associated with a LabelVocabulary defining its allowed values."@en .
+
+clo:Zone a owl:Class ;
+    rdfs:label "Zone"@en ;
+    rdfs:comment "Availability zone within a region. E.g.: us-east-1a (AWS), europe-west1-b (GCP)."@en ;
+    rdfs:subClassOf clo:OrganizationalEntity .
+
+clo:CloudProvider a owl:Class ;
+    rdfs:label "Cloud Provider"@en ;
+    rdfs:comment "Hyperscaler-level public cloud provider: full IaaS/PaaS/SaaS offering with native tag/label support on most resources."@en ;
+    rdfs:subClassOf clo:InfraProvider ;
+    owl:disjointWith clo:ContainerOrchestrationProvider,
+        clo:OnPremProvider,
+        clo:SaaSProvider,
+        clo:SimpleCloudProvider .
+
+clo:MonitoringResource a owl:Class ;
+    rdfs:label "Monitoring Resource"@en ;
+    rdfs:comment "Monitoring and observability resources: alerts, dashboards, log groups, event rules."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AIMLResource,
+        clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:IdentityResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Monitoring ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:Storage a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Storage"@en ;
+    rdfs:comment "Functional category of storage resources."@en ;
+    skos:prefLabel "Storage"@en .
+
+clo:ValidationResult a owl:Class ;
+    rdfs:label "Validation Result"@en ;
+    rdfs:comment "Abstract class representing the result of an audit operation on a CloudResource. The subclasses are mutually exclusive (owl:disjointWith declared in the OWL 2 DL section)."@en .
+
+clo:AIMLResource a owl:Class ;
+    rdfs:label "AI/ML Resource"@en ;
+    rdfs:comment "Machine learning and artificial intelligence resources: models, inference endpoints, training jobs. BaseKinds: AIModelKind, AIJobKind."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:AnalyticsResource,
+        clo:ContainerResource,
+        clo:IdentityResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:AIML ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:OnPremProvider a owl:Class ;
+    rdfs:label "On-Premises Provider"@en ;
+    rdfs:comment "Infrastructure hosted on-site, outside the public cloud. Includes virtualization platforms and bare-metal servers."@en ;
+    rdfs:subClassOf clo:InfraProvider .
+
+clo:OrganizationalEntity a owl:Class ;
+    rdfs:label "Organizational Entity"@en ;
+    rdfs:comment "Abstract class representing a node in the organizational hierarchy. Instances form a tree navigable via clo:orgPartOf (TransitiveProperty). Labelling policies propagate from the top to the leaves by property chain C-4."@en .
+
+clo:Security a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Security"@en ;
+    rdfs:comment "Functional category of security and IAM resources."@en ;
+    skos:prefLabel "Security"@en .
+
+clo:SemanticConflictRule a owl:Class ;
+    rdfs:label "Semantic Conflict Rule"@en ;
+    rdfs:comment "Rule detecting a contradictory combination of labels. E.g.: environment=production AND team=test-qa. Carries the properties conflictKeyA, conflictValueA, conflictKeyB, conflictValueB."@en ;
+    rdfs:subClassOf clo:LabelValidationRule .
+
+clo:AnalyticsResource a owl:Class ;
+    rdfs:label "Analytics Resource"@en ;
+    rdfs:comment "Data analytics and processing resources: data warehouses, Spark clusters, ETL pipelines."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:ContainerResource,
+        clo:IdentityResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Analytics ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:InfraProvider a owl:Class ;
+    rdfs:label "Infrastructure Provider"@en ;
+    rdfs:comment "Abstract class representing any supported infrastructure provider. Every auditable resource is linked to exactly one InfraProvider via clo:hostedBy."@en .
+
+clo:ContainerResource a owl:Class ;
+    rdfs:label "Container Resource"@en ;
+    rdfs:comment "Container-related resources: image registries, repositories, Kubernetes namespaces. Covers ECR (AWS), ACR (Azure), GCR/Artifact Registry (GCP), GitHub Container Registry, DockerHub."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:IdentityResource,
+        clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Container ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:ResourceType a owl:Class ;
+    rdfs:label "Resource Type"@en ;
+    rdfs:comment "Concrete type of a resource as it appears in the Fix Inventory inventory (fixInventoryKind). E.g.: aws_ec2_instance, azure_compute_virtual_machine, gcp_instance. Each ResourceType implements exactly one BaseKind via clo:implementsBaseKind, which allows inferring its functional category and its provider without pattern matching."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality 1 ;
+            owl:onProperty clo:implementsBaseKind ] .
+
+clo:IdentityResource a owl:Class ;
+    rdfs:label "Identity Resource"@en ;
+    rdfs:comment "Organization-level identity management resources: organizations, tenants, SSO workspaces."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:disjointWith clo:SecretResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Identity ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:SaaSProvider a owl:Class ;
+    rdfs:label "SaaS Provider"@en ;
+    rdfs:comment "SaaS service provider exposing governable resources via labels, topics, custom attributes or structured metadata."@en ;
+    rdfs:subClassOf clo:InfraProvider ;
+    owl:disjointWith clo:OnPremProvider .
+
+clo:ProviderConstraint a owl:Class ;
+    rdfs:label "Provider Constraint"@en ;
+    rdfs:comment "Technical labelling constraints specific to an InfraProvider: maximum lengths, case, reserved prefixes, maximum number of labels. Basis of syntactic inferences I-13 (case error), I-14 (length exceeded), I-15 (reserved prefix)."@en .
+
+clo:SecretResource a owl:Class ;
+    rdfs:label "Secret Resource"@en ;
+    rdfs:comment "Secrets management and encryption resources. E.g.: Secrets Manager (AWS), Key Vault (Azure), Secret Manager (GCP)."@en ;
+    rdfs:subClassOf clo:CloudResource ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue clo:Secret ;
+            owl:onProperty clo:belongsToCategory ] .
+
+clo:belongsToCategory a owl:ObjectProperty ;
+    rdfs:label "belongs to category"@en ;
+    rdfs:comment "Functional category of the resource. Inferred by property chain C-2: hasResourceType o implementsBaseKind o categoryOf. Combined with the equivalentClass axioms of the CloudResource subclasses (EQUIV section), triggers automatic classification into ComputeResource/StorageResource/etc."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:FunctionalCategory ;
+    owl:propertyChainAxiom ( clo:hasResourceType clo:implementsBaseKind clo:categoryOf ) .
+
+clo:FunctionalCategory a owl:Class ;
+    rdfs:label "Functional Category"@en ;
+    rdfs:comment "Abstract functional category of a resource. Aligned with skos:Concept. The 13 FunctionalCategory individuals (clo:Compute, clo:Storage, clo:Networking...) are declared below and serve as targets of property chain C-2."@en ;
+    rdfs:subClassOf skos:Concept .
+
+clo:Networking a clo:FunctionalCategory,
+        owl:NamedIndividual ;
+    rdfs:label "Networking"@en ;
+    rdfs:comment "Functional category of network resources."@en ;
+    skos:prefLabel "Networking"@en .
+
+clo:CloudResource a owl:Class ;
+    rdfs:label "Cloud Resource"@en ;
+    rdfs:comment "Central class representing any infrastructure resource auditable for its labels and tags. A resource belongs to exactly one FunctionalCategory (inferred via its BaseKind), is hosted by an InfraProvider (inferred via property chain), and belongs to an Account."@en ;
+    owl:disjointWith clo:ResourceType ;
+    owl:hasKey ( clo:resourceId clo:hostedBy clo:belongsToAccount ) .
+
+clo:BaseKind a owl:Class ;
+    rdfs:label "Base Kind"@en ;
+    rdfs:comment "Abstract type from the Unified Data Model (Fix Inventory). Central pivot of cross-provider equivalences. A ResourceType implements exactly one BaseKind (owl:cardinality 1). The BaseKind points to exactly one FunctionalCategory via clo:categoryOf (owl:FunctionalProperty). Class/NamedIndividual punning allows its use as a relation target in the T-Box."@en .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( clo:AWS clo:Azure clo:GCP clo:DigitalOcean clo:Kubernetes clo:GitHub clo:DockerHub clo:Slack clo:OneLogin clo:VMware clo:OnPremises ) .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( clo:Compute clo:Storage clo:Networking clo:Database clo:Security clo:Messaging clo:Governance clo:Monitoring clo:AIML clo:Analytics clo:Container clo:Identity clo:Secret ) .
+

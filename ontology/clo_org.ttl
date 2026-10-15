@@ -1,0 +1,129 @@
+@prefix clo:   <http://example.org/clo/ontology/clo#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# ══════════════════════════════════════════════════════════════════════════════
+# CLO organisational module (v8.1): teams, roles and the shared label standard
+#
+# Load together with clo_ontology_v8.ttl (same namespace). Every axiom below is
+# exercised by tests/test_org.py.
+#
+# v9: ownedBy is no longer functional. OWL has no unique-name assumption, so a
+# functional ownedBy made HermiT silently merge two teams asserted as owners of
+# one resource (and, with owl:differentFrom, made the whole knowledge base
+# inconsistent). Several owners are now a closed-world finding (rule I-27).
+#
+# Idea: per-provider tag policies already exist (AWS Organizations tag
+# policies, Azure Policy, Google Cloud organisation policies). What they do not
+# capture is *why* a label is required and *who* needs it. Here a label key is
+# required because a governance role consumes it (FinOps needs cost-center,
+# Security needs data-classification, ...). The company-wide recommended
+# standard is then derived from the roles a policy serves (chain C-9), team
+# policies reach the resources a team owns (C-11), and the keys each team
+# actually uses are derived from its resources (C-10), which makes divergent
+# team conventions visible.
+# ══════════════════════════════════════════════════════════════════════════════
+
+<http://example.org/clo/ontology/clo-org> a owl:Ontology ;
+    owl:versionInfo "9.0" ;
+    dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    rdfs:comment "CLO organisational module: teams, governance roles, and the shared recommended label standard derived from role needs."@en .
+dcterms:license a owl:AnnotationProperty .
+
+# ── Classes ──────────────────────────────────────────────────────────────────
+
+clo:Team a owl:Class ;
+    rdfs:subClassOf clo:OrganizationalEntity ;
+    rdfs:label "Team"@en ;
+    rdfs:comment "A team that owns cloud resources (product, platform or data team). As an OrganizationalEntity it can be governedBy a policy and orgPartOf a business unit."@en .
+
+clo:Team owl:disjointWith clo:Account , clo:OrganizationalUnit , clo:OrganizationalRoot ,
+                          clo:Region , clo:Zone .
+
+clo:GovernanceRole a owl:Class ;
+    rdfs:label "Governance role"@en ;
+    rdfs:comment "A profile that consumes resource labels for its own purpose: cost allocation, security, operations, development, platform engineering. A team can play several roles."@en .
+
+clo:GovernanceRole owl:disjointWith clo:OrganizationalEntity , clo:CloudResource ,
+                                    clo:LabelKey , clo:LabelingPolicy .
+
+# ── Properties ───────────────────────────────────────────────────────────────
+
+clo:ownedBy a owl:ObjectProperty ;
+    rdfs:label "owned by"@en ;
+    rdfs:comment "The team accountable for a resource. Asserted from the inventory or a CMDB. One owning team is expected; several are reported by the closed-world rule I-27 rather than declared functional (no unique-name assumption in OWL)."@en ;
+    rdfs:domain clo:CloudResource ;
+    rdfs:range clo:Team .
+
+clo:playsRole a owl:ObjectProperty ;
+    rdfs:label "plays role"@en ;
+    rdfs:domain clo:Team ;
+    rdfs:range clo:GovernanceRole .
+
+clo:needsLabel a owl:ObjectProperty ;
+    rdfs:label "needs label"@en ;
+    rdfs:comment "A label key that a governance role consumes (FinOps needs cost-center)."@en ;
+    rdfs:domain clo:GovernanceRole ;
+    rdfs:range clo:LabelKey .
+
+clo:servesRole a owl:ObjectProperty ;
+    rdfs:label "serves role"@en ;
+    rdfs:comment "A policy is written for the needs of these roles. Its required keys follow by chain C-9."@en ;
+    rdfs:domain clo:LabelingPolicy ;
+    rdfs:range clo:GovernanceRole .
+
+clo:usesKey a owl:ObjectProperty ;
+    rdfs:label "uses key"@en ;
+    rdfs:comment "A label key that appears on at least one resource the team owns. Derived by chain C-10, never asserted."@en ;
+    rdfs:domain clo:Team ;
+    rdfs:range clo:LabelKey .
+
+clo:valueSource a owl:DatatypeProperty ;
+    rdfs:label "value source"@en ;
+    rdfs:comment "Where a repair may take a missing value of this key from: \"inherit\" (a partOf parent), \"account-default\" (the dominant value in the resource's account), \"team-default\" (the owning team's dominant value). A dominant value covers at least 80 % of at least two uses. Keys without a value source are never filled in automatically: the owner is asked (e.g. data-classification)."@en ;
+    rdfs:domain clo:LabelKey ;
+    rdfs:range xsd:string .
+
+# ── Property chains ──────────────────────────────────────────────────────────
+
+# C-9  shared standard derived from role needs:
+#      Policy -servesRole-> Role -needsLabel-> Key  =>  Policy -requiresLabel-> Key
+clo:requiresLabel owl:propertyChainAxiom ( clo:servesRole clo:needsLabel ) .
+
+# C-10 observed team convention:
+#      Team <-ownedBy- Resource -hasLabel-> Label -hasLabelKey-> Key  =>  Team -usesKey-> Key
+clo:usesKey owl:propertyChainAxiom ( [ owl:inverseOf clo:ownedBy ] clo:hasLabel clo:hasLabelKey ) .
+
+# C-11 team policies reach the resources the team owns
+clo:governedBy owl:propertyChainAxiom ( clo:ownedBy clo:governedBy ) .
+
+# ── Reference governance roles (extend as needed) ────────────────────────────
+
+clo:FinOpsRole a clo:GovernanceRole , owl:NamedIndividual ;
+    rdfs:label "FinOps"@en ;
+    rdfs:comment "Cost allocation, chargeback and budgets."@en .
+clo:SecurityRole a clo:GovernanceRole , owl:NamedIndividual ;
+    rdfs:label "Security"@en ;
+    rdfs:comment "Data classification, exposure and incident scope."@en .
+clo:OperationsRole a clo:GovernanceRole , owl:NamedIndividual ;
+    rdfs:label "Operations"@en ;
+    rdfs:comment "Ownership, on-call routing, environment separation."@en .
+clo:DeveloperRole a clo:GovernanceRole , owl:NamedIndividual ;
+    rdfs:label "Development"@en ;
+    rdfs:comment "Application and service identification."@en .
+clo:PlatformRole a clo:GovernanceRole , owl:NamedIndividual ;
+    rdfs:label "Platform engineering"@en ;
+    rdfs:comment "Provisioning tool and lifecycle automation."@en .
+
+[] a owl:AllDifferent ;
+   owl:distinctMembers ( clo:FinOpsRole clo:SecurityRole clo:OperationsRole
+                         clo:DeveloperRole clo:PlatformRole ) .
+
+# 9.1: provenance of ownership. When teams are derived from a tag (e.g. a CMDB merge that
+# reads the owner tag), a missing owner key and "no owning team" (I-26) are one root cause.
+clo:ownershipFromKey a owl:AnnotationProperty ;
+    rdfs:label "ownership derived from key"@en ;
+    rdfs:comment "Declares that ownedBy assertions were derived from the values of this label key. Used by root-cause grouping only; not part of the operative entailments."@en .
