@@ -1,0 +1,1874 @@
+{
+ "summary": {
+  "I-07": {
+   "expected": 1815,
+   "reported": 1815,
+   "tp": 1815,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-09": {
+   "expected": 310,
+   "reported": 310,
+   "tp": 310,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-11": {
+   "expected": 430,
+   "reported": 430,
+   "tp": 430,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-12": {
+   "expected": 30,
+   "reported": 30,
+   "tp": 30,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-13": {
+   "expected": 601,
+   "reported": 601,
+   "tp": 601,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-14": {
+   "expected": 79,
+   "reported": 79,
+   "tp": 79,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-15": {
+   "expected": 44,
+   "reported": 44,
+   "tp": 44,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-16": {
+   "expected": 687,
+   "reported": 687,
+   "tp": 687,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-17": {
+   "expected": 1965,
+   "reported": 1965,
+   "tp": 1965,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-19": {
+   "expected": 106,
+   "reported": 106,
+   "tp": 106,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-20": {
+   "expected": 499,
+   "reported": 499,
+   "tp": 499,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-21": {
+   "expected": 1914,
+   "reported": 1914,
+   "tp": 1914,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-22": {
+   "expected": 2873,
+   "reported": 2873,
+   "tp": 2873,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-22r": {
+   "expected": 142,
+   "reported": 142,
+   "tp": 142,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-25": {
+   "expected": 442,
+   "reported": 442,
+   "tp": 442,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-26": {
+   "expected": 269,
+   "reported": 269,
+   "tp": 269,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-27": {
+   "expected": 120,
+   "reported": 120,
+   "tp": 120,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-28": {
+   "expected": 27,
+   "reported": 27,
+   "tp": 27,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  }
+ },
+ "runs": [
+  {
+   "seed": 1,
+   "n": 2000,
+   "engine": "clo-r",
+   "resources": 2000,
+   "labels": 10039,
+   "teams": 16,
+   "per_rule": {
+    "I-07": {
+     "expected": 360,
+     "reported": 360,
+     "tp": 360,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 63,
+     "reported": 63,
+     "tp": 63,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 87,
+     "reported": 87,
+     "tp": 87,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 138,
+     "reported": 138,
+     "tp": 138,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 14,
+     "reported": 14,
+     "tp": 14,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 11,
+     "reported": 11,
+     "tp": 11,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 126,
+     "reported": 126,
+     "tp": 126,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 322,
+     "reported": 322,
+     "tp": 322,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-19": {
+     "expected": 21,
+     "reported": 21,
+     "tp": 21,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 103,
+     "reported": 103,
+     "tp": 103,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-21": {
+     "expected": 369,
+     "reported": 369,
+     "tp": 369,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 523,
+     "reported": 523,
+     "tp": 523,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 34,
+     "reported": 34,
+     "tp": 34,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 90,
+     "reported": 90,
+     "tp": 90,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 61,
+     "reported": 61,
+     "tp": 61,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 25,
+     "reported": 25,
+     "tp": 25,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-28": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "missing": {
+     "planted": 449,
+     "detected": 317,
+     "detected_team_level": 0,
+     "missed": {
+      "key not required on this resource (spec)": 100,
+      "record incomplete (withheld, R4)": 30,
+      "type not in audit scope": 2
+     }
+    },
+    "convention": {
+     "planted": 611,
+     "detected": 440,
+     "detected_team_level": 165,
+     "missed": {
+      "key not required on this resource (spec)": 5,
+      "record incomplete (withheld, R4)": 1
+     }
+    },
+    "vocab": {
+     "planted": 68,
+     "detected": 63,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 5
+     }
+    },
+    "unmanaged": {
+     "planted": 251,
+     "detected": 243,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 8
+     }
+    },
+    "variant": {
+     "planted": 107,
+     "detected": 83,
+     "detected_team_level": 9,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 14,
+      "record incomplete (withheld, R4)": 1
+     }
+    },
+    "unlabelled": {
+     "planted": 98,
+     "detected": 87,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 11
+     }
+    },
+    "long": {
+     "planted": 16,
+     "detected": 14,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 2
+     }
+    },
+    "typo_key": {
+     "planted": 40,
+     "detected": 40,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "redundant": {
+     "planted": 40,
+     "detected": 34,
+     "detected_team_level": 0,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 5,
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "case": {
+     "planted": 48,
+     "detected": 47,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "conflict": {
+     "planted": 12,
+     "detected": 10,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect": 2
+     }
+    },
+    "foreign_prefix": {
+     "planted": 12,
+     "detected": 11,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "two_owners": {
+     "planted": 25,
+     "detected": 25,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "no_owner": {
+     "planted": 74,
+     "detected": 61,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 5,
+      "type not in audit scope": 8
+     }
+    },
+    "two_types": {
+     "planted": 6,
+     "detected": 6,
+     "detected_team_level": 0,
+     "missed": {}
+    }
+   },
+   "withheld": {
+    "incomplete": 175,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 750,
+    "I-09": 63,
+    "I-11": 87,
+    "I-12": 6,
+    "I-13": 138,
+    "I-14": 14,
+    "I-15": 11,
+    "I-16": 126,
+    "I-17": 322,
+    "I-20": 103,
+    "I-22": 523,
+    "I-22r": 34,
+    "I-25": 90,
+    "I-26": 61,
+    "I-27": 25,
+    "I-28": 6
+   },
+   "root_cause_counts": {
+    "I-07": 360,
+    "I-09": 63,
+    "I-11": 87,
+    "I-12": 6,
+    "I-13": 138,
+    "I-14": 14,
+    "I-15": 11,
+    "I-16": 126,
+    "I-17": 322,
+    "I-20": 103,
+    "I-22": 523,
+    "I-22r": 34,
+    "I-25": 90,
+    "I-26": 61,
+    "I-27": 25,
+    "I-28": 6
+   },
+   "timing": {
+    "engine": "clo-r",
+    "materialise_s": 0.418,
+    "audit_s": 1.728,
+    "load_s": 0.12994908199971178,
+    "reason_s": 0.2876050800000485,
+    "rounds": 2
+   }
+  },
+  {
+   "seed": 2,
+   "n": 2000,
+   "engine": "clo-r",
+   "resources": 2000,
+   "labels": 10369,
+   "teams": 16,
+   "per_rule": {
+    "I-07": {
+     "expected": 326,
+     "reported": 326,
+     "tp": 326,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 81,
+     "reported": 81,
+     "tp": 81,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 87,
+     "reported": 87,
+     "tp": 87,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 98,
+     "reported": 98,
+     "tp": 98,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 23,
+     "reported": 23,
+     "tp": 23,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 11,
+     "reported": 11,
+     "tp": 11,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 153,
+     "reported": 153,
+     "tp": 153,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 330,
+     "reported": 330,
+     "tp": 330,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-19": {
+     "expected": 21,
+     "reported": 21,
+     "tp": 21,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 118,
+     "reported": 118,
+     "tp": 118,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-21": {
+     "expected": 337,
+     "reported": 337,
+     "tp": 337,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 547,
+     "reported": 547,
+     "tp": 547,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 26,
+     "reported": 26,
+     "tp": 26,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 92,
+     "reported": 92,
+     "tp": 92,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 50,
+     "reported": 50,
+     "tp": 50,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 23,
+     "reported": 23,
+     "tp": 23,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-28": {
+     "expected": 4,
+     "reported": 4,
+     "tp": 4,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "missing": {
+     "planted": 441,
+     "detected": 286,
+     "detected_team_level": 0,
+     "missed": {
+      "key not required on this resource (spec)": 116,
+      "record incomplete (withheld, R4)": 38,
+      "type not in audit scope": 1
+     }
+    },
+    "convention": {
+     "planted": 639,
+     "detected": 470,
+     "detected_team_level": 163,
+     "missed": {
+      "key not required on this resource (spec)": 4,
+      "overwritten by a later defect or truncated listing": 1,
+      "record incomplete (withheld, R4)": 1
+     }
+    },
+    "unmanaged": {
+     "planted": 246,
+     "detected": 240,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 6
+     }
+    },
+    "typo_key": {
+     "planted": 38,
+     "detected": 37,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "variant": {
+     "planted": 104,
+     "detected": 77,
+     "detected_team_level": 12,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 15
+     }
+    },
+    "vocab": {
+     "planted": 83,
+     "detected": 81,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 2
+     }
+    },
+    "unlabelled": {
+     "planted": 98,
+     "detected": 87,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 11
+     }
+    },
+    "long": {
+     "planted": 23,
+     "detected": 23,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "conflict": {
+     "planted": 8,
+     "detected": 7,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect": 1
+     }
+    },
+    "redundant": {
+     "planted": 34,
+     "detected": 26,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3,
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 5
+     }
+    },
+    "case": {
+     "planted": 50,
+     "detected": 47,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3
+     }
+    },
+    "foreign_prefix": {
+     "planted": 12,
+     "detected": 11,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "two_owners": {
+     "planted": 23,
+     "detected": 23,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "no_owner": {
+     "planted": 56,
+     "detected": 50,
+     "detected_team_level": 0,
+     "missed": {
+      "type not in audit scope": 4,
+      "record incomplete (withheld, R4)": 2
+     }
+    },
+    "two_types": {
+     "planted": 4,
+     "detected": 4,
+     "detected_team_level": 0,
+     "missed": {}
+    }
+   },
+   "withheld": {
+    "incomplete": 141,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 727,
+    "I-09": 81,
+    "I-11": 87,
+    "I-12": 6,
+    "I-13": 98,
+    "I-14": 23,
+    "I-15": 11,
+    "I-16": 153,
+    "I-17": 330,
+    "I-20": 118,
+    "I-22": 547,
+    "I-22r": 26,
+    "I-25": 92,
+    "I-26": 50,
+    "I-27": 23,
+    "I-28": 4
+   },
+   "root_cause_counts": {
+    "I-07": 326,
+    "I-09": 81,
+    "I-11": 87,
+    "I-12": 6,
+    "I-13": 98,
+    "I-14": 23,
+    "I-15": 11,
+    "I-16": 153,
+    "I-17": 330,
+    "I-20": 118,
+    "I-22": 547,
+    "I-22r": 26,
+    "I-25": 92,
+    "I-26": 50,
+    "I-27": 23,
+    "I-28": 4
+   },
+   "timing": {
+    "engine": "clo-r",
+    "materialise_s": 0.507,
+    "audit_s": 1.613,
+    "load_s": 0.19814297599987185,
+    "reason_s": 0.30880020600034186,
+    "rounds": 2
+   }
+  },
+  {
+   "seed": 3,
+   "n": 2000,
+   "engine": "clo-r",
+   "resources": 2000,
+   "labels": 10271,
+   "teams": 16,
+   "per_rule": {
+    "I-07": {
+     "expected": 426,
+     "reported": 426,
+     "tp": 426,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 58,
+     "reported": 58,
+     "tp": 58,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 92,
+     "reported": 92,
+     "tp": 92,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 96,
+     "reported": 96,
+     "tp": 96,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 16,
+     "reported": 16,
+     "tp": 16,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 12,
+     "reported": 12,
+     "tp": 12,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 155,
+     "reported": 155,
+     "tp": 155,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 528,
+     "reported": 528,
+     "tp": 528,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-19": {
+     "expected": 21,
+     "reported": 21,
+     "tp": 21,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 90,
+     "reported": 90,
+     "tp": 90,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-21": {
+     "expected": 359,
+     "reported": 359,
+     "tp": 359,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 364,
+     "reported": 364,
+     "tp": 364,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 35,
+     "reported": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 85,
+     "reported": 85,
+     "tp": 85,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 47,
+     "reported": 47,
+     "tp": 47,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 24,
+     "reported": 24,
+     "tp": 24,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-28": {
+     "expected": 9,
+     "reported": 9,
+     "tp": 9,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "convention": {
+     "planted": 626,
+     "detected": 283,
+     "detected_team_level": 128,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 210,
+      "type not in audit scope": 1,
+      "key not required on this resource (spec)": 2,
+      "record incomplete (withheld, R4)": 2
+     }
+    },
+    "unmanaged": {
+     "planted": 271,
+     "detected": 255,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 16
+     }
+    },
+    "missing": {
+     "planted": 433,
+     "detected": 291,
+     "detected_team_level": 0,
+     "missed": {
+      "key not required on this resource (spec)": 101,
+      "record incomplete (withheld, R4)": 40,
+      "type not in audit scope": 1
+     }
+    },
+    "unlabelled": {
+     "planted": 99,
+     "detected": 92,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 6,
+      "type not in audit scope": 1
+     }
+    },
+    "variant": {
+     "planted": 106,
+     "detected": 81,
+     "detected_team_level": 11,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 12,
+      "record incomplete (withheld, R4)": 2
+     }
+    },
+    "foreign_prefix": {
+     "planted": 12,
+     "detected": 12,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "redundant": {
+     "planted": 46,
+     "detected": 35,
+     "detected_team_level": 0,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 5,
+      "overwritten by a later defect or truncated listing": 6
+     }
+    },
+    "vocab": {
+     "planted": 61,
+     "detected": 58,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3
+     }
+    },
+    "long": {
+     "planted": 17,
+     "detected": 16,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "typo_key": {
+     "planted": 33,
+     "detected": 32,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "case": {
+     "planted": 53,
+     "detected": 48,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 5
+     }
+    },
+    "conflict": {
+     "planted": 13,
+     "detected": 13,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "two_types": {
+     "planted": 9,
+     "detected": 9,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "no_owner": {
+     "planted": 59,
+     "detected": 47,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 5,
+      "type not in audit scope": 7
+     }
+    },
+    "two_owners": {
+     "planted": 24,
+     "detected": 24,
+     "detected_team_level": 0,
+     "missed": {}
+    }
+   },
+   "withheld": {
+    "incomplete": 159,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 854,
+    "I-09": 58,
+    "I-11": 92,
+    "I-12": 6,
+    "I-13": 96,
+    "I-14": 16,
+    "I-15": 12,
+    "I-16": 155,
+    "I-17": 528,
+    "I-20": 90,
+    "I-22": 364,
+    "I-22r": 35,
+    "I-25": 85,
+    "I-26": 47,
+    "I-27": 24,
+    "I-28": 9
+   },
+   "root_cause_counts": {
+    "I-07": 426,
+    "I-09": 58,
+    "I-11": 92,
+    "I-12": 6,
+    "I-13": 96,
+    "I-14": 16,
+    "I-15": 12,
+    "I-16": 155,
+    "I-17": 528,
+    "I-20": 90,
+    "I-22": 364,
+    "I-22r": 35,
+    "I-25": 85,
+    "I-26": 47,
+    "I-27": 24,
+    "I-28": 9
+   },
+   "timing": {
+    "engine": "clo-r",
+    "materialise_s": 0.625,
+    "audit_s": 1.635,
+    "load_s": 0.22424660100023175,
+    "reason_s": 0.40079421199970966,
+    "rounds": 2
+   }
+  },
+  {
+   "seed": 4,
+   "n": 2000,
+   "engine": "clo-r",
+   "resources": 2000,
+   "labels": 10340,
+   "teams": 16,
+   "per_rule": {
+    "I-07": {
+     "expected": 376,
+     "reported": 376,
+     "tp": 376,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 46,
+     "reported": 46,
+     "tp": 46,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 72,
+     "reported": 72,
+     "tp": 72,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 132,
+     "reported": 132,
+     "tp": 132,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 18,
+     "reported": 18,
+     "tp": 18,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 3,
+     "reported": 3,
+     "tp": 3,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 107,
+     "reported": 107,
+     "tp": 107,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 438,
+     "reported": 438,
+     "tp": 438,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-19": {
+     "expected": 22,
+     "reported": 22,
+     "tp": 22,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 94,
+     "reported": 94,
+     "tp": 94,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-21": {
+     "expected": 443,
+     "reported": 443,
+     "tp": 443,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 720,
+     "reported": 720,
+     "tp": 720,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 27,
+     "reported": 27,
+     "tp": 27,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 89,
+     "reported": 89,
+     "tp": 89,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 65,
+     "reported": 65,
+     "tp": 65,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 26,
+     "reported": 26,
+     "tp": 26,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-28": {
+     "expected": 5,
+     "reported": 5,
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "convention": {
+     "planted": 927,
+     "detected": 644,
+     "detected_team_level": 176,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 102,
+      "key not required on this resource (spec)": 4,
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "missing": {
+     "planted": 473,
+     "detected": 328,
+     "detected_team_level": 0,
+     "missed": {
+      "key not required on this resource (spec)": 108,
+      "record incomplete (withheld, R4)": 37
+     }
+    },
+    "unmanaged": {
+     "planted": 266,
+     "detected": 255,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 11
+     }
+    },
+    "unlabelled": {
+     "planted": 78,
+     "detected": 71,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 6,
+      "type not in audit scope": 1
+     }
+    },
+    "variant": {
+     "planted": 102,
+     "detected": 75,
+     "detected_team_level": 16,
+     "missed": {
+      "record incomplete (withheld, R4)": 2,
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 8,
+      "key not required on this resource (spec)": 1
+     }
+    },
+    "typo_key": {
+     "planted": 51,
+     "detected": 48,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3
+     }
+    },
+    "case": {
+     "planted": 60,
+     "detected": 55,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 5
+     }
+    },
+    "vocab": {
+     "planted": 46,
+     "detected": 46,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "redundant": {
+     "planted": 39,
+     "detected": 27,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 7,
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 5
+     }
+    },
+    "long": {
+     "planted": 18,
+     "detected": 18,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "conflict": {
+     "planted": 14,
+     "detected": 13,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect": 1
+     }
+    },
+    "foreign_prefix": {
+     "planted": 3,
+     "detected": 3,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "no_owner": {
+     "planted": 73,
+     "detected": 65,
+     "detected_team_level": 0,
+     "missed": {
+      "type not in audit scope": 5,
+      "record incomplete (withheld, R4)": 3
+     }
+    },
+    "two_owners": {
+     "planted": 26,
+     "detected": 26,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "two_types": {
+     "planted": 5,
+     "detected": 5,
+     "detected_team_level": 0,
+     "missed": {}
+    }
+   },
+   "withheld": {
+    "incomplete": 158,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 705,
+    "I-09": 46,
+    "I-11": 72,
+    "I-12": 6,
+    "I-13": 132,
+    "I-14": 18,
+    "I-15": 3,
+    "I-16": 107,
+    "I-17": 438,
+    "I-20": 94,
+    "I-22": 720,
+    "I-22r": 27,
+    "I-25": 89,
+    "I-26": 65,
+    "I-27": 26,
+    "I-28": 5
+   },
+   "root_cause_counts": {
+    "I-07": 376,
+    "I-09": 46,
+    "I-11": 72,
+    "I-12": 6,
+    "I-13": 132,
+    "I-14": 18,
+    "I-15": 3,
+    "I-16": 107,
+    "I-17": 438,
+    "I-20": 94,
+    "I-22": 720,
+    "I-22r": 27,
+    "I-25": 89,
+    "I-26": 65,
+    "I-27": 26,
+    "I-28": 5
+   },
+   "timing": {
+    "engine": "clo-r",
+    "materialise_s": 0.461,
+    "audit_s": 2.176,
+    "load_s": 0.1919514149999486,
+    "reason_s": 0.2694175629999336,
+    "rounds": 2
+   }
+  },
+  {
+   "seed": 5,
+   "n": 2000,
+   "engine": "clo-r",
+   "resources": 2000,
+   "labels": 10258,
+   "teams": 16,
+   "per_rule": {
+    "I-07": {
+     "expected": 327,
+     "reported": 327,
+     "tp": 327,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 62,
+     "reported": 62,
+     "tp": 62,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 92,
+     "reported": 92,
+     "tp": 92,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 137,
+     "reported": 137,
+     "tp": 137,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 8,
+     "reported": 8,
+     "tp": 8,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 7,
+     "reported": 7,
+     "tp": 7,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 146,
+     "reported": 146,
+     "tp": 146,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 347,
+     "reported": 347,
+     "tp": 347,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-19": {
+     "expected": 21,
+     "reported": 21,
+     "tp": 21,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 94,
+     "reported": 94,
+     "tp": 94,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-21": {
+     "expected": 406,
+     "reported": 406,
+     "tp": 406,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 719,
+     "reported": 719,
+     "tp": 719,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 20,
+     "reported": 20,
+     "tp": 20,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 86,
+     "reported": 86,
+     "tp": 86,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 46,
+     "reported": 46,
+     "tp": 46,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 22,
+     "reported": 22,
+     "tp": 22,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-28": {
+     "expected": 3,
+     "reported": 3,
+     "tp": 3,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "missing": {
+     "planted": 462,
+     "detected": 293,
+     "detected_team_level": 0,
+     "missed": {
+      "key not required on this resource (spec)": 131,
+      "record incomplete (withheld, R4)": 37,
+      "type not in audit scope": 1
+     }
+    },
+    "redundant": {
+     "planted": 32,
+     "detected": 20,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 7,
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 5
+     }
+    },
+    "convention": {
+     "planted": 722,
+     "detected": 631,
+     "detected_team_level": 90,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "unlabelled": {
+     "planted": 100,
+     "detected": 92,
+     "detected_team_level": 0,
+     "missed": {
+      "record incomplete (withheld, R4)": 8
+     }
+    },
+    "typo_key": {
+     "planted": 33,
+     "detected": 32,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "unmanaged": {
+     "planted": 285,
+     "detected": 275,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 10
+     }
+    },
+    "variant": {
+     "planted": 121,
+     "detected": 88,
+     "detected_team_level": 14,
+     "missed": {
+      "spelling outside the declared synonym groups (reported as I-17/I-20)": 18,
+      "key not required on this resource (spec)": 1
+     }
+    },
+    "case": {
+     "planted": 45,
+     "detected": 42,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3
+     }
+    },
+    "vocab": {
+     "planted": 65,
+     "detected": 62,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 3
+     }
+    },
+    "conflict": {
+     "planted": 11,
+     "detected": 11,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "foreign_prefix": {
+     "planted": 7,
+     "detected": 7,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "long": {
+     "planted": 9,
+     "detected": 8,
+     "detected_team_level": 0,
+     "missed": {
+      "overwritten by a later defect or truncated listing": 1
+     }
+    },
+    "no_owner": {
+     "planted": 53,
+     "detected": 46,
+     "detected_team_level": 0,
+     "missed": {
+      "type not in audit scope": 6,
+      "record incomplete (withheld, R4)": 1
+     }
+    },
+    "two_owners": {
+     "planted": 22,
+     "detected": 22,
+     "detected_team_level": 0,
+     "missed": {}
+    },
+    "two_types": {
+     "planted": 3,
+     "detected": 3,
+     "detected_team_level": 0,
+     "missed": {}
+    }
+   },
+   "withheld": {
+    "incomplete": 166,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 752,
+    "I-09": 62,
+    "I-11": 92,
+    "I-12": 6,
+    "I-13": 137,
+    "I-14": 8,
+    "I-15": 7,
+    "I-16": 146,
+    "I-17": 347,
+    "I-20": 94,
+    "I-22": 719,
+    "I-22r": 20,
+    "I-25": 86,
+    "I-26": 46,
+    "I-27": 22,
+    "I-28": 3
+   },
+   "root_cause_counts": {
+    "I-07": 327,
+    "I-09": 62,
+    "I-11": 92,
+    "I-12": 6,
+    "I-13": 137,
+    "I-14": 8,
+    "I-15": 7,
+    "I-16": 146,
+    "I-17": 347,
+    "I-20": 94,
+    "I-22": 719,
+    "I-22r": 20,
+    "I-25": 86,
+    "I-26": 46,
+    "I-27": 22,
+    "I-28": 3
+   },
+   "timing": {
+    "engine": "clo-r",
+    "materialise_s": 0.6,
+    "audit_s": 1.543,
+    "load_s": 0.17760263199988913,
+    "reason_s": 0.422712041000068,
+    "rounds": 2
+   }
+  }
+ ]
+}

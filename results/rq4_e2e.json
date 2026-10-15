@@ -1,0 +1,53 @@
+{
+ "seed": 1,
+ "rows": [
+  {
+   "n": 2000,
+   "labels": 10039,
+   "wall_s": 1.88,
+   "materialise_s": 0.35,
+   "audit_s": 1.42,
+   "findings": 1934
+  },
+  {
+   "n": 4000,
+   "labels": 20561,
+   "wall_s": 4.24,
+   "materialise_s": 0.74,
+   "audit_s": 3.21,
+   "findings": 3741
+  },
+  {
+   "n": 8000,
+   "labels": 41082,
+   "wall_s": 8.93,
+   "materialise_s": 1.95,
+   "audit_s": 6.52,
+   "findings": 7745
+  },
+  {
+   "n": 16000,
+   "labels": 81920,
+   "wall_s": 18.17,
+   "materialise_s": 3.94,
+   "audit_s": 13.01,
+   "findings": 15949
+  },
+  {
+   "n": 32000,
+   "labels": 164304,
+   "wall_s": 36.79,
+   "materialise_s": 8.37,
+   "audit_s": 26.31,
+   "findings": 31442
+  },
+  {
+   "n": 64000,
+   "labels": 328075,
+   "wall_s": 78.91,
+   "materialise_s": 17.7,
+   "audit_s": 56.62,
+   "findings": 64028
+  }
+ ]
+}

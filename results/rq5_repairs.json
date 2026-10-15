@@ -1,0 +1,98 @@
+{
+ "naive": {
+  "per_key": {
+   "app": {
+    "findings": 240,
+    "proposed": 231,
+    "correct": 134,
+    "wrong": 97
+   },
+   "backup-tier": {
+    "findings": 31,
+    "proposed": 27,
+    "wrong": 13,
+    "correct": 14
+   },
+   "cost-center": {
+    "findings": 353,
+    "proposed": 343,
+    "correct": 313,
+    "wrong": 30
+   },
+   "data-classification": {
+    "findings": 381,
+    "proposed": 373,
+    "correct": 159,
+    "wrong": 214
+   },
+   "environment": {
+    "findings": 369,
+    "proposed": 350,
+    "wrong": 139,
+    "correct": 211
+   },
+   "managed-by": {
+    "findings": 25,
+    "proposed": 25,
+    "correct": 21,
+    "wrong": 4
+   },
+   "owner": {
+    "findings": 416,
+    "proposed": 403,
+    "correct": 392,
+    "wrong": 11
+   }
+  },
+  "all": {
+   "findings": 1815,
+   "proposed": 1752,
+   "correct": 1244,
+   "wrong": 508
+  }
+ },
+ "safe": {
+  "per_key": {
+   "app": {
+    "findings": 240,
+    "proposed": 73,
+    "correct": 72,
+    "wrong": 1
+   },
+   "backup-tier": {
+    "findings": 31
+   },
+   "cost-center": {
+    "findings": 353,
+    "proposed": 100,
+    "correct": 98,
+    "wrong": 2
+   },
+   "data-classification": {
+    "findings": 381
+   },
+   "environment": {
+    "findings": 369,
+    "proposed": 369,
+    "correct": 363,
+    "wrong": 6
+   },
+   "managed-by": {
+    "findings": 25,
+    "proposed": 25,
+    "correct": 25
+   },
+   "owner": {
+    "findings": 416,
+    "proposed": 109,
+    "correct": 109
+   }
+  },
+  "all": {
+   "findings": 1815,
+   "proposed": 676,
+   "correct": 667,
+   "wrong": 9
+  }
+ }
+}

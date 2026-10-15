@@ -1,0 +1,329 @@
+{
+ "per_rule": {
+  "A1": {
+   "observations": 1347,
+   "with_sibling": 428,
+   "contradicted": 52,
+   "contradicted_witness_before": 15,
+   "contradicted_witness_after_only": 37,
+   "contradiction_rate_upper_bound": 0.1215,
+   "contradiction_rate_witness_before": 0.035
+  },
+  "A2": {
+   "observations": 601,
+   "with_sibling": 274,
+   "contradicted": 22,
+   "contradicted_witness_before": 8,
+   "contradicted_witness_after_only": 14,
+   "contradiction_rate_upper_bound": 0.0803,
+   "contradiction_rate_witness_before": 0.0292
+  },
+  "A3": {
+   "observations": 452,
+   "with_sibling": 185,
+   "contradicted": 12,
+   "contradicted_witness_before": 2,
+   "contradicted_witness_after_only": 10,
+   "contradiction_rate_upper_bound": 0.0649,
+   "contradiction_rate_witness_before": 0.0108
+  },
+  "G1": {
+   "observations": 126,
+   "with_sibling": 59,
+   "contradicted": 3,
+   "contradicted_witness_before": 0,
+   "contradicted_witness_after_only": 3,
+   "contradiction_rate_upper_bound": 0.0508,
+   "contradiction_rate_witness_before": 0.0
+  },
+  "N": {
+   "observations": 1090,
+   "with_sibling": 432,
+   "sibling_shows_tags": 86,
+   "withholding_necessary_rate": 0.1991
+  },
+  "Z1": {
+   "observations": 533,
+   "with_sibling": 186,
+   "contradicted": 9,
+   "contradicted_witness_before": 2,
+   "contradicted_witness_after_only": 7,
+   "contradiction_rate_upper_bound": 0.0484,
+   "contradiction_rate_witness_before": 0.0108
+  }
+ },
+ "complete_rules_total": {
+  "with_sibling": 1132,
+  "contradicted": 98,
+  "contradicted_witness_before": 27
+ },
+ "complete_rules_contradiction_upper_bound": 0.0866,
+ "complete_rules_contradiction_witness_before": 0.0239,
+ "examples": {
+  "A3": [
+   {
+    "kind": "aws_bedrock_evaluation_job",
+    "flight": "bedrock_evaluation_job_tag_actions",
+    "src": "bedrock_evaluation_job_tag_actions/tagging.GetResources_1.json",
+    "witness": "bedrock_evaluation_job_tag_actions/tagging.GetResources_2.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "TestTag"
+    ]
+   },
+   {
+    "kind": "aws_s3_bucket",
+    "flight": "test_s3_storage_lens_mark_for_op",
+    "src": "test_s3_storage_lens_mark_for_op/tagging.GetResources_1.json",
+    "witness": "test_s3_storage_lens_mark_for_op/tagging.GetResources_2.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "custodian_cleanup",
+     "owner"
+    ]
+   },
+   {
+    "kind": "aws_s3_bucket",
+    "flight": "test_s3_storage_lens_mark_for_op",
+    "src": "test_s3_storage_lens_mark_for_op/tagging.GetResources_1.json",
+    "witness": "test_s3_storage_lens_mark_for_op/tagging.GetResources_2.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "CostCenter",
+     "Environment",
+     "a",
+     "d",
+     "e"
+    ]
+   },
+   {
+    "kind": "aws_s3_bucket",
+    "flight": "test_s3_storage_lens_mark_for_op",
+    "src": "test_s3_storage_lens_mark_for_op/tagging.GetResources_2.json",
+    "witness": "test_s3_storage_lens_mark_for_op/tagging.GetResources_1.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "owner"
+    ]
+   },
+   {
+    "kind": "aws_s3_bucket",
+    "flight": "test_s3_storage_lens_mark_for_op",
+    "src": "test_s3_storage_lens_mark_for_op/tagging.GetResources_2.json",
+    "witness": "test_s3_storage_lens_mark_for_op/tagging.GetResources_1.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "CostCenter",
+     "Environment",
+     "a",
+     "d",
+     "e"
+    ]
+   }
+  ],
+  "A1": [
+   {
+    "kind": "aws_alb",
+    "flight": "test_appelb_wafv2",
+    "src": "test_appelb_wafv2/elasticloadbalancing.DescribeTags_2.json",
+    "witness": "test_appelb_wafv2/elasticloadbalancing.DescribeTags_1.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "WAF"
+    ]
+   },
+   {
+    "kind": "aws_autoscaling_group",
+    "flight": "test_asg_remove_tag",
+    "src": "test_asg_remove_tag/autoscaling.DescribeAutoScalingGroups_2.json",
+    "witness": "test_asg_remove_tag/autoscaling.DescribeAutoScalingGroups_1.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "CustomerId"
+    ]
+   },
+   {
+    "kind": "aws_autoscaling_group",
+    "flight": "test_asg_tag",
+    "src": "test_asg_tag/autoscaling.DescribeAutoScalingGroups_1.json",
+    "witness": "test_asg_tag/autoscaling.DescribeAutoScalingGroups_3.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "CustomerId"
+    ]
+   },
+   {
+    "kind": "aws_autoscaling_group",
+    "flight": "test_asg_tag",
+    "src": "test_asg_tag/autoscaling.DescribeAutoScalingGroups_2.json",
+    "witness": "test_asg_tag/autoscaling.DescribeAutoScalingGroups_3.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "CustomerId"
+    ]
+   },
+   {
+    "kind": "aws_autoscaling_group",
+    "flight": "test_asg_mark_for_op_hours",
+    "src": "test_asg_mark_for_op_hours/autoscaling.DescribeAutoScalingGroups_1.json",
+    "witness": "test_asg_mark_for_op_hours/autoscaling.DescribeAutoScalingGroups_2.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "maid_status"
+    ]
+   }
+  ],
+  "A2": [
+   {
+    "kind": "aws_ec2_snapshot",
+    "flight": "test_copy_related_resource_tag_multi_ref",
+    "src": "test_copy_related_resource_tag_multi_ref/ec2.DescribeSnapshots_1.json",
+    "witness": "test_copy_related_resource_tag_multi_ref/ec2.DescribeSnapshots_2.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "test"
+    ]
+   },
+   {
+    "kind": "aws_ec2_snapshot",
+    "flight": "test_copy_related_resource_tag_multi_ref",
+    "src": "test_copy_related_resource_tag_multi_ref/ec2.DescribeSnapshots_1.json",
+    "witness": "test_copy_related_resource_tag_multi_ref/ec2.DescribeSnapshots_2.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "test"
+    ]
+   },
+   {
+    "kind": "aws_ec2_instance",
+    "flight": "test_native_tag_skips_gone_instance",
+    "src": "test_native_tag_skips_gone_instance/ec2.DescribeInstances_2.json",
+    "witness": "test_native_tag_skips_gone_instance/ec2.DescribeInstances_1.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "App"
+    ]
+   },
+   {
+    "kind": "aws_ec2_instance",
+    "flight": "test_native_tag_skips_gone_instance",
+    "src": "test_native_tag_skips_gone_instance/ec2.DescribeInstances_2.json",
+    "witness": "test_native_tag_skips_gone_instance/ec2.DescribeInstances_1.json",
+    "witness_rule": "A1",
+    "keys_missing": [
+     "App"
+    ]
+   },
+   {
+    "kind": "aws_rds_instance",
+    "flight": "test_rds_mark_hours",
+    "src": "test_rds_mark_hours/rds.DescribeDBInstances_1.json",
+    "witness": "test_rds_mark_hours/tagging.GetResources_1.json",
+    "witness_rule": "A3",
+    "keys_missing": [
+     "workload-type"
+    ]
+   }
+  ],
+  "Z1": [
+   {
+    "kind": "azure_compute_virtual_machine",
+    "flight": "FunctionalActionsTagsTest.test_autotag_user_and_date.json",
+    "src": "FunctionalActionsTagsTest.test_autotag_user_and_date.json#0",
+    "witness": "FunctionalActionsTagsTest.test_autotag_user_and_date.json#4",
+    "witness_rule": "Z1",
+    "keys_missing": [
+     "cctest_date",
+     "cctest_email"
+    ]
+   },
+   {
+    "kind": "azure_compute_virtual_machine",
+    "flight": "FunctionalActionsTagsTest.test_mark_for_op.json",
+    "src": "FunctionalActionsTagsTest.test_mark_for_op.json#0",
+    "witness": "FunctionalActionsTagsTest.test_mark_for_op.json#2",
+    "witness_rule": "Z1",
+    "keys_missing": [
+     "cctest_mark"
+    ]
+   },
+   {
+    "kind": "azure_compute_virtual_machine",
+    "flight": "FunctionalActionsTagsTest.test_tag.json",
+    "src": "FunctionalActionsTagsTest.test_tag.json#0",
+    "witness": "FunctionalActionsTagsTest.test_tag.json#2",
+    "witness_rule": "Z1",
+    "keys_missing": [
+     "cctest_tag"
+    ]
+   },
+   {
+    "kind": "azure_compute_virtual_machine",
+    "flight": "FunctionalActionsTagsTest.test_trim.json",
+    "src": "FunctionalActionsTagsTest.test_trim.json#4",
+    "witness": "FunctionalActionsTagsTest.test_trim.json#0",
+    "witness_rule": "Z1",
+    "keys_missing": [
+     "cctest_trim"
+    ]
+   },
+   {
+    "kind": "azure_compute_virtual_machine",
+    "flight": "FunctionalActionsTagsTest.test_untag.json",
+    "src": "FunctionalActionsTagsTest.test_untag.json#4",
+    "witness": "FunctionalActionsTagsTest.test_untag.json#0",
+    "witness_rule": "Z1",
+    "keys_missing": [
+     "cctest_untag"
+    ]
+   }
+  ],
+  "G1": [
+   {
+    "kind": "gcp_disk",
+    "flight": "disk-label",
+    "src": "disk-label/get-compute-v1-projects-cloud-custodian-aggregated-disks_1.json",
+    "witness": "disk-label/get-compute-v1-projects-cloud-custodian-zones-us-central1-c-disks_1.json",
+    "witness_rule": "G1",
+    "keys_missing": [
+     "test_label"
+    ]
+   },
+   {
+    "kind": "gcp_disk",
+    "flight": "disk-regional-label",
+    "src": "disk-regional-label/get-compute.googleapis.com-compute-v1-projects-cloud-custodian-aggregated-disks_1.json",
+    "witness": "disk-regional-label/get-compute.googleapis.com-compute-v1-projects-cloud-custodian-regions-us-central1-disks_1.json",
+    "witness_rule": "G1",
+    "keys_missing": [
+     "test_label"
+    ]
+   },
+   {
+    "kind": "gcp_instance",
+    "flight": "instance-label",
+    "src": "instance-label/get-compute-v1-projects-cloud-custodian-aggregated-instances_1.json",
+    "witness": "instance-label/get-compute-v1-projects-cloud-custodian-zones-us-central1-c-instances_1.json",
+    "witness_rule": "G1",
+    "keys_missing": [
+     "test_label"
+    ]
+   }
+  ]
+ },
+ "pairs": {
+  "A1->A1": 502,
+  "Z1->Z1": 470,
+  "A2->A2": 414,
+  "A3->A3": 126,
+  "G1->G1": 94,
+  "A3->N": 62,
+  "A1->N": 49,
+  "A1->A3": 28,
+  "A3->A1": 28,
+  "A2->A3": 16,
+  "A3->A2": 16,
+  "A2->A1": 9,
+  "A1->A2": 9
+ }
+}

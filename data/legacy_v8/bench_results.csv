@@ -1,0 +1,21 @@
+# Measured on clo_ontology_v8.ttl + gen_abox.py A-Boxes (seed 1), HermiT via
+# Owlready2 0.51 (HermiT 1.3.8) sync_reasoner_hermit(infer_property_values=True), one run per
+# cell, 2-core cloud VM, 7 GB RAM, JVM -Xmx2000M, Oct 2026.
+# Rows marked v8-final use the released clo_ontology_v8.ttl; the others an
+# earlier v8 draft (before C-8, the V8-12/13 axioms and English comments).
+# mode: whole = one HermiT run over the full A-Box; batch100 = batch_reason.py
+# --batch 100. "identical" = batched entailments byte-identical to whole run.
+resources,labels,mode,wall_s,tbox,note
+100,198,whole,22.8,v8-draft,
+200,404,whole,42.7,v8-draft,
+400,846,whole,136.2,v8-draft,
+800,1760,whole,625.2,v8-draft,
+1584,3604,whole,3068.0,v8-draft,peak RSS 866 MB; T-Box at start of run lacked chain C-8 and the V8-12 declarations
+400,846,batch100,94.4,v8-draft,identical
+800,1760,batch100,151.1,v8-draft,identical
+1584,3604,batch100,226.0,v8-draft,
+400,846,whole,185.7,v8-final,rerun 181.5 s
+400,846,batch100,95.4,v8-final,batched has 1 extra entailed policy assertion (rb_344 governedBy polb_Networking via C-5); whole run misses it in 2 of 2 runs
+800,1760,whole,802.5,v8-final,
+800,1760,batch100,185.7,v8-final,identical (2996 class + 681 policy assertions)
+1584,3604,batch100,382.5,v8-final,

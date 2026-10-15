@@ -1,0 +1,1230 @@
+{
+ "aggregate": {
+  "A:CLO": {
+   "reported": 7241,
+   "tp": 7241,
+   "fp": 0,
+   "fn": 0,
+   "fp_on_incomplete": 0,
+   "tp_flat": 7169,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 1.0,
+   "recall": 1.0,
+   "recall_flat": 1.0
+  },
+  "A:NATIVE": {
+   "reported": 4360,
+   "tp": 4360,
+   "fp": 0,
+   "fn": 2881,
+   "fp_on_incomplete": 0,
+   "tp_flat": 4360,
+   "truth_flat": 7169,
+   "fn_causes": {
+    "provider/type not covered (GCP)": 1514,
+    "provider/type not covered (Kubernetes)": 636,
+    "provider/type not covered (DigitalOcean)": 329,
+    "provider/type not covered (AWS)": 257,
+    "case variant": 81,
+    "team policy": 37,
+    "two-type record": 14,
+    "inherited from a parent": 13
+   },
+   "precision": 1.0,
+   "recall": 0.6021,
+   "recall_flat": 0.6082
+  },
+  "A:CUSTODIAN": {
+   "reported": 6835,
+   "tp": 6835,
+   "fp": 0,
+   "fn": 406,
+   "fp_on_incomplete": 0,
+   "tp_flat": 6835,
+   "truth_flat": 7169,
+   "fn_causes": {
+    "provider/type not covered (DigitalOcean)": 329,
+    "team policy": 55,
+    "inherited from a parent": 14,
+    "two-type record": 8
+   },
+   "precision": 1.0,
+   "recall": 0.9439,
+   "recall_flat": 0.9534
+  },
+  "A:OPA-idiom": {
+   "reported": 7165,
+   "tp": 7165,
+   "fp": 0,
+   "fn": 76,
+   "fp_on_incomplete": 0,
+   "tp_flat": 7165,
+   "truth_flat": 7169,
+   "fn_causes": {
+    "team policy": 56,
+    "inherited from a parent": 16,
+    "two-type record": 4
+   },
+   "precision": 1.0,
+   "recall": 0.9895,
+   "recall_flat": 0.9994
+  },
+  "A:OPA-team": {
+   "reported": 7225,
+   "tp": 7225,
+   "fp": 0,
+   "fn": 16,
+   "fp_on_incomplete": 0,
+   "tp_flat": 7169,
+   "truth_flat": 7169,
+   "fn_causes": {
+    "inherited from a parent": 16
+   },
+   "precision": 1.0,
+   "recall": 0.9978,
+   "recall_flat": 1.0
+  },
+  "A:NATIVE+": {
+   "reported": 5689,
+   "tp": 5689,
+   "fp": 0,
+   "fn": 1552,
+   "fp_on_incomplete": 0,
+   "tp_flat": 5689,
+   "truth_flat": 7169,
+   "fn_causes": {
+    "provider/type not covered (Kubernetes)": 636,
+    "provider/type not covered (DigitalOcean)": 329,
+    "provider/type not covered (AWS)": 257,
+    "provider/type not covered (GCP)": 175,
+    "case variant": 81,
+    "team policy": 47,
+    "inherited from a parent": 14,
+    "two-type record": 13
+   },
+   "precision": 1.0,
+   "recall": 0.7857,
+   "recall_flat": 0.7936
+  },
+  "A:OPA-full": {
+   "reported": 7241,
+   "tp": 7241,
+   "fp": 0,
+   "fn": 0,
+   "fp_on_incomplete": 0,
+   "tp_flat": 7169,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 1.0,
+   "recall": 1.0,
+   "recall_flat": 1.0
+  },
+  "B:CLO": {
+   "reported": 6661,
+   "tp": 6661,
+   "fp": 0,
+   "fn": 580,
+   "fp_on_incomplete": 0,
+   "tp_flat": 6601,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 1.0,
+   "recall": 0.9199,
+   "recall_flat": 0.9208
+  },
+  "B:CLO-noLC": {
+   "reported": 8527,
+   "tp": 7241,
+   "fp": 1286,
+   "fn": 0,
+   "fp_on_incomplete": 1286,
+   "tp_flat": 7169,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 0.8492,
+   "recall": 1.0,
+   "recall_flat": 1.0
+  },
+  "B:OPA-idiom": {
+   "reported": 8429,
+   "tp": 7165,
+   "fp": 1264,
+   "fn": 76,
+   "fp_on_incomplete": 1264,
+   "tp_flat": 7165,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 0.85,
+   "recall": 0.9895,
+   "recall_flat": 0.9994
+  },
+  "B:OPA-team": {
+   "reported": 8510,
+   "tp": 7225,
+   "fp": 1285,
+   "fn": 16,
+   "fp_on_incomplete": 1285,
+   "tp_flat": 7169,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 0.849,
+   "recall": 0.9978,
+   "recall_flat": 1.0
+  },
+  "B:OPA-full": {
+   "reported": 6661,
+   "tp": 6661,
+   "fp": 0,
+   "fn": 580,
+   "fp_on_incomplete": 0,
+   "tp_flat": 6601,
+   "truth_flat": 7169,
+   "fn_causes": {},
+   "precision": 1.0,
+   "recall": 0.9199,
+   "recall_flat": 0.9208
+  }
+ },
+ "runs": [
+  {
+   "A:CLO": {
+    "reported": 1389,
+    "tp": 1389,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376
+   },
+   "A:NATIVE": {
+    "reported": 840,
+    "tp": 840,
+    "fp": 0,
+    "fn": 549,
+    "precision": 1.0,
+    "recall": 0.6048,
+    "recall_complete_records": 0.5931,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.6105,
+    "tp_flat": 840,
+    "truth_flat": 1376,
+    "fn_causes": {
+     "provider/type not covered (GCP)": 283,
+     "provider/type not covered (Kubernetes)": 114,
+     "provider/type not covered (DigitalOcean)": 70,
+     "provider/type not covered (AWS)": 47,
+     "case variant": 24,
+     "team policy": 7,
+     "inherited from a parent": 2,
+     "two-type record": 2
+    }
+   },
+   "A:CUSTODIAN": {
+    "reported": 1307,
+    "tp": 1307,
+    "fp": 0,
+    "fn": 82,
+    "precision": 1.0,
+    "recall": 0.941,
+    "recall_complete_records": 0.9403,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9499,
+    "tp_flat": 1307,
+    "truth_flat": 1376,
+    "fn_causes": {
+     "provider/type not covered (DigitalOcean)": 70,
+     "team policy": 10,
+     "inherited from a parent": 2
+    }
+   },
+   "A:OPA-idiom": {
+    "reported": 1376,
+    "tp": 1376,
+    "fp": 0,
+    "fn": 13,
+    "precision": 1.0,
+    "recall": 0.9906,
+    "recall_complete_records": 0.9929,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376,
+    "fn_causes": {
+     "team policy": 10,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-team": {
+    "reported": 1386,
+    "tp": 1386,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.9978,
+    "recall_complete_records": 0.9976,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376,
+    "fn_causes": {
+     "inherited from a parent": 3
+    }
+   },
+   "A:NATIVE+": {
+    "reported": 1089,
+    "tp": 1089,
+    "fp": 0,
+    "fn": 300,
+    "precision": 1.0,
+    "recall": 0.784,
+    "recall_complete_records": 0.7722,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.7914,
+    "tp_flat": 1089,
+    "truth_flat": 1376,
+    "fn_causes": {
+     "provider/type not covered (Kubernetes)": 114,
+     "provider/type not covered (DigitalOcean)": 70,
+     "provider/type not covered (AWS)": 47,
+     "provider/type not covered (GCP)": 32,
+     "case variant": 24,
+     "team policy": 9,
+     "inherited from a parent": 2,
+     "two-type record": 2
+    }
+   },
+   "A:OPA-full": {
+    "reported": 1389,
+    "tp": 1389,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376
+   },
+   "B:CLO": {
+    "reported": 1273,
+    "tp": 1273,
+    "fp": 0,
+    "fn": 116,
+    "precision": 1.0,
+    "recall": 0.9165,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9186,
+    "tp_flat": 1264,
+    "truth_flat": 1376
+   },
+   "B:CLO-noLC": {
+    "reported": 1687,
+    "tp": 1389,
+    "fp": 298,
+    "fn": 0,
+    "precision": 0.8234,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 298,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376
+   },
+   "B:OPA-idiom": {
+    "reported": 1668,
+    "tp": 1376,
+    "fp": 292,
+    "fn": 13,
+    "precision": 0.8249,
+    "recall": 0.9906,
+    "recall_complete_records": 0.9929,
+    "fp_on_incomplete": 292,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376
+   },
+   "B:OPA-team": {
+    "reported": 1684,
+    "tp": 1386,
+    "fp": 298,
+    "fn": 3,
+    "precision": 0.823,
+    "recall": 0.9978,
+    "recall_complete_records": 0.9976,
+    "fp_on_incomplete": 298,
+    "recall_flat": 1.0,
+    "tp_flat": 1376,
+    "truth_flat": 1376
+   },
+   "B:OPA-full": {
+    "reported": 1273,
+    "tp": 1273,
+    "fp": 0,
+    "fn": 116,
+    "precision": 1.0,
+    "recall": 0.9165,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9186,
+    "tp_flat": 1264,
+    "truth_flat": 1376,
+    "identical_to_CLO": true
+   },
+   "_truth": 1389,
+   "_truth_flat": 1376,
+   "_truth_on_incomplete": 116
+  },
+  {
+   "A:CLO": {
+    "reported": 1395,
+    "tp": 1395,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382
+   },
+   "A:NATIVE": {
+    "reported": 835,
+    "tp": 835,
+    "fp": 0,
+    "fn": 560,
+    "precision": 1.0,
+    "recall": 0.5986,
+    "recall_complete_records": 0.606,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.6042,
+    "tp_flat": 835,
+    "truth_flat": 1382,
+    "fn_causes": {
+     "provider/type not covered (GCP)": 306,
+     "provider/type not covered (Kubernetes)": 112,
+     "provider/type not covered (AWS)": 56,
+     "provider/type not covered (DigitalOcean)": 53,
+     "case variant": 23,
+     "team policy": 7,
+     "inherited from a parent": 3
+    }
+   },
+   "A:CUSTODIAN": {
+    "reported": 1329,
+    "tp": 1329,
+    "fp": 0,
+    "fn": 66,
+    "precision": 1.0,
+    "recall": 0.9527,
+    "recall_complete_records": 0.9521,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9616,
+    "tp_flat": 1329,
+    "truth_flat": 1382,
+    "fn_causes": {
+     "provider/type not covered (DigitalOcean)": 53,
+     "team policy": 10,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-idiom": {
+    "reported": 1382,
+    "tp": 1382,
+    "fp": 0,
+    "fn": 13,
+    "precision": 1.0,
+    "recall": 0.9907,
+    "recall_complete_records": 0.9922,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382,
+    "fn_causes": {
+     "team policy": 10,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-team": {
+    "reported": 1392,
+    "tp": 1392,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.9978,
+    "recall_complete_records": 0.9976,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382,
+    "fn_causes": {
+     "inherited from a parent": 3
+    }
+   },
+   "A:NATIVE+": {
+    "reported": 1105,
+    "tp": 1105,
+    "fp": 0,
+    "fn": 290,
+    "precision": 1.0,
+    "recall": 0.7921,
+    "recall_complete_records": 0.7983,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.7996,
+    "tp_flat": 1105,
+    "truth_flat": 1382,
+    "fn_causes": {
+     "provider/type not covered (Kubernetes)": 112,
+     "provider/type not covered (AWS)": 56,
+     "provider/type not covered (DigitalOcean)": 53,
+     "provider/type not covered (GCP)": 34,
+     "case variant": 23,
+     "team policy": 9,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-full": {
+    "reported": 1395,
+    "tp": 1395,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382
+   },
+   "B:CLO": {
+    "reported": 1274,
+    "tp": 1274,
+    "fp": 0,
+    "fn": 121,
+    "precision": 1.0,
+    "recall": 0.9133,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9146,
+    "tp_flat": 1264,
+    "truth_flat": 1382
+   },
+   "B:CLO-noLC": {
+    "reported": 1627,
+    "tp": 1395,
+    "fp": 232,
+    "fn": 0,
+    "precision": 0.8574,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 232,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382
+   },
+   "B:OPA-idiom": {
+    "reported": 1612,
+    "tp": 1382,
+    "fp": 230,
+    "fn": 13,
+    "precision": 0.8573,
+    "recall": 0.9907,
+    "recall_complete_records": 0.9922,
+    "fp_on_incomplete": 230,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382
+   },
+   "B:OPA-team": {
+    "reported": 1624,
+    "tp": 1392,
+    "fp": 232,
+    "fn": 3,
+    "precision": 0.8571,
+    "recall": 0.9978,
+    "recall_complete_records": 0.9976,
+    "fp_on_incomplete": 232,
+    "recall_flat": 1.0,
+    "tp_flat": 1382,
+    "truth_flat": 1382
+   },
+   "B:OPA-full": {
+    "reported": 1274,
+    "tp": 1274,
+    "fp": 0,
+    "fn": 121,
+    "precision": 1.0,
+    "recall": 0.9133,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9146,
+    "tp_flat": 1264,
+    "truth_flat": 1382,
+    "identical_to_CLO": true
+   },
+   "_truth": 1395,
+   "_truth_flat": 1382,
+   "_truth_on_incomplete": 121
+  },
+  {
+   "A:CLO": {
+    "reported": 1318,
+    "tp": 1318,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302
+   },
+   "A:NATIVE": {
+    "reported": 803,
+    "tp": 803,
+    "fp": 0,
+    "fn": 515,
+    "precision": 1.0,
+    "recall": 0.6093,
+    "recall_complete_records": 0.61,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.6167,
+    "tp_flat": 803,
+    "truth_flat": 1302,
+    "fn_causes": {
+     "provider/type not covered (GCP)": 307,
+     "provider/type not covered (Kubernetes)": 107,
+     "provider/type not covered (DigitalOcean)": 49,
+     "provider/type not covered (AWS)": 36,
+     "team policy": 8,
+     "case variant": 4,
+     "inherited from a parent": 3,
+     "two-type record": 1
+    }
+   },
+   "A:CUSTODIAN": {
+    "reported": 1254,
+    "tp": 1254,
+    "fp": 0,
+    "fn": 64,
+    "precision": 1.0,
+    "recall": 0.9514,
+    "recall_complete_records": 0.9548,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9631,
+    "tp_flat": 1254,
+    "truth_flat": 1302,
+    "fn_causes": {
+     "provider/type not covered (DigitalOcean)": 49,
+     "team policy": 12,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-idiom": {
+    "reported": 1302,
+    "tp": 1302,
+    "fp": 0,
+    "fn": 16,
+    "precision": 1.0,
+    "recall": 0.9879,
+    "recall_complete_records": 0.9885,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302,
+    "fn_causes": {
+     "team policy": 13,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-team": {
+    "reported": 1315,
+    "tp": 1315,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.9977,
+    "recall_complete_records": 0.9975,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302,
+    "fn_causes": {
+     "inherited from a parent": 3
+    }
+   },
+   "A:NATIVE+": {
+    "reported": 1072,
+    "tp": 1072,
+    "fp": 0,
+    "fn": 246,
+    "precision": 1.0,
+    "recall": 0.8134,
+    "recall_complete_records": 0.8128,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.8233,
+    "tp_flat": 1072,
+    "truth_flat": 1302,
+    "fn_causes": {
+     "provider/type not covered (Kubernetes)": 107,
+     "provider/type not covered (DigitalOcean)": 49,
+     "provider/type not covered (AWS)": 36,
+     "provider/type not covered (GCP)": 35,
+     "team policy": 11,
+     "case variant": 4,
+     "inherited from a parent": 3,
+     "two-type record": 1
+    }
+   },
+   "A:OPA-full": {
+    "reported": 1318,
+    "tp": 1318,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302
+   },
+   "B:CLO": {
+    "reported": 1218,
+    "tp": 1218,
+    "fp": 0,
+    "fn": 100,
+    "precision": 1.0,
+    "recall": 0.9241,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9247,
+    "tp_flat": 1204,
+    "truth_flat": 1302
+   },
+   "B:CLO-noLC": {
+    "reported": 1568,
+    "tp": 1318,
+    "fp": 250,
+    "fn": 0,
+    "precision": 0.8406,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 250,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302
+   },
+   "B:OPA-idiom": {
+    "reported": 1549,
+    "tp": 1302,
+    "fp": 247,
+    "fn": 16,
+    "precision": 0.8405,
+    "recall": 0.9879,
+    "recall_complete_records": 0.9885,
+    "fp_on_incomplete": 247,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302
+   },
+   "B:OPA-team": {
+    "reported": 1565,
+    "tp": 1315,
+    "fp": 250,
+    "fn": 3,
+    "precision": 0.8403,
+    "recall": 0.9977,
+    "recall_complete_records": 0.9975,
+    "fp_on_incomplete": 250,
+    "recall_flat": 1.0,
+    "tp_flat": 1302,
+    "truth_flat": 1302
+   },
+   "B:OPA-full": {
+    "reported": 1218,
+    "tp": 1218,
+    "fp": 0,
+    "fn": 100,
+    "precision": 1.0,
+    "recall": 0.9241,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9247,
+    "tp_flat": 1204,
+    "truth_flat": 1302,
+    "identical_to_CLO": true
+   },
+   "_truth": 1318,
+   "_truth_flat": 1302,
+   "_truth_on_incomplete": 100
+  },
+  {
+   "A:CLO": {
+    "reported": 1544,
+    "tp": 1544,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1528,
+    "truth_flat": 1528
+   },
+   "A:NATIVE": {
+    "reported": 939,
+    "tp": 939,
+    "fp": 0,
+    "fn": 605,
+    "precision": 1.0,
+    "recall": 0.6082,
+    "recall_complete_records": 0.607,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.6145,
+    "tp_flat": 939,
+    "truth_flat": 1528,
+    "fn_causes": {
+     "provider/type not covered (GCP)": 308,
+     "provider/type not covered (Kubernetes)": 145,
+     "provider/type not covered (DigitalOcean)": 73,
+     "provider/type not covered (AWS)": 58,
+     "team policy": 8,
+     "two-type record": 7,
+     "inherited from a parent": 3,
+     "case variant": 3
+    }
+   },
+   "A:CUSTODIAN": {
+    "reported": 1451,
+    "tp": 1451,
+    "fp": 0,
+    "fn": 93,
+    "precision": 1.0,
+    "recall": 0.9398,
+    "recall_complete_records": 0.9361,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9496,
+    "tp_flat": 1451,
+    "truth_flat": 1528,
+    "fn_causes": {
+     "provider/type not covered (DigitalOcean)": 73,
+     "team policy": 12,
+     "two-type record": 4,
+     "inherited from a parent": 4
+    }
+   },
+   "A:OPA-idiom": {
+    "reported": 1524,
+    "tp": 1524,
+    "fp": 0,
+    "fn": 20,
+    "precision": 1.0,
+    "recall": 0.987,
+    "recall_complete_records": 0.9867,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9974,
+    "tp_flat": 1524,
+    "truth_flat": 1528,
+    "fn_causes": {
+     "team policy": 12,
+     "two-type record": 4,
+     "inherited from a parent": 4
+    }
+   },
+   "A:OPA-team": {
+    "reported": 1540,
+    "tp": 1540,
+    "fp": 0,
+    "fn": 4,
+    "precision": 1.0,
+    "recall": 0.9974,
+    "recall_complete_records": 0.9972,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1528,
+    "truth_flat": 1528,
+    "fn_causes": {
+     "inherited from a parent": 4
+    }
+   },
+   "A:NATIVE+": {
+    "reported": 1207,
+    "tp": 1207,
+    "fp": 0,
+    "fn": 337,
+    "precision": 1.0,
+    "recall": 0.7817,
+    "recall_complete_records": 0.7768,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.7899,
+    "tp_flat": 1207,
+    "truth_flat": 1528,
+    "fn_causes": {
+     "provider/type not covered (Kubernetes)": 145,
+     "provider/type not covered (DigitalOcean)": 73,
+     "provider/type not covered (AWS)": 58,
+     "provider/type not covered (GCP)": 39,
+     "team policy": 9,
+     "two-type record": 6,
+     "inherited from a parent": 4,
+     "case variant": 3
+    }
+   },
+   "A:OPA-full": {
+    "reported": 1544,
+    "tp": 1544,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1528,
+    "truth_flat": 1528
+   },
+   "B:CLO": {
+    "reported": 1425,
+    "tp": 1425,
+    "fp": 0,
+    "fn": 119,
+    "precision": 1.0,
+    "recall": 0.9229,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9228,
+    "tp_flat": 1410,
+    "truth_flat": 1528
+   },
+   "B:CLO-noLC": {
+    "reported": 1794,
+    "tp": 1544,
+    "fp": 250,
+    "fn": 0,
+    "precision": 0.8606,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 250,
+    "recall_flat": 1.0,
+    "tp_flat": 1528,
+    "truth_flat": 1528
+   },
+   "B:OPA-idiom": {
+    "reported": 1770,
+    "tp": 1524,
+    "fp": 246,
+    "fn": 20,
+    "precision": 0.861,
+    "recall": 0.987,
+    "recall_complete_records": 0.9867,
+    "fp_on_incomplete": 246,
+    "recall_flat": 0.9974,
+    "tp_flat": 1524,
+    "truth_flat": 1528
+   },
+   "B:OPA-team": {
+    "reported": 1789,
+    "tp": 1540,
+    "fp": 249,
+    "fn": 4,
+    "precision": 0.8608,
+    "recall": 0.9974,
+    "recall_complete_records": 0.9972,
+    "fp_on_incomplete": 249,
+    "recall_flat": 1.0,
+    "tp_flat": 1528,
+    "truth_flat": 1528
+   },
+   "B:OPA-full": {
+    "reported": 1425,
+    "tp": 1425,
+    "fp": 0,
+    "fn": 119,
+    "precision": 1.0,
+    "recall": 0.9229,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9228,
+    "tp_flat": 1410,
+    "truth_flat": 1528,
+    "identical_to_CLO": true
+   },
+   "_truth": 1544,
+   "_truth_flat": 1528,
+   "_truth_on_incomplete": 119
+  },
+  {
+   "A:CLO": {
+    "reported": 1595,
+    "tp": 1595,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581
+   },
+   "A:NATIVE": {
+    "reported": 943,
+    "tp": 943,
+    "fp": 0,
+    "fn": 652,
+    "precision": 1.0,
+    "recall": 0.5912,
+    "recall_complete_records": 0.5833,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.5965,
+    "tp_flat": 943,
+    "truth_flat": 1581,
+    "fn_causes": {
+     "provider/type not covered (GCP)": 310,
+     "provider/type not covered (Kubernetes)": 158,
+     "provider/type not covered (DigitalOcean)": 84,
+     "provider/type not covered (AWS)": 60,
+     "case variant": 27,
+     "team policy": 7,
+     "two-type record": 4,
+     "inherited from a parent": 2
+    }
+   },
+   "A:CUSTODIAN": {
+    "reported": 1494,
+    "tp": 1494,
+    "fp": 0,
+    "fn": 101,
+    "precision": 1.0,
+    "recall": 0.9367,
+    "recall_complete_records": 0.9334,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.945,
+    "tp_flat": 1494,
+    "truth_flat": 1581,
+    "fn_causes": {
+     "provider/type not covered (DigitalOcean)": 84,
+     "team policy": 11,
+     "two-type record": 4,
+     "inherited from a parent": 2
+    }
+   },
+   "A:OPA-idiom": {
+    "reported": 1581,
+    "tp": 1581,
+    "fp": 0,
+    "fn": 14,
+    "precision": 1.0,
+    "recall": 0.9912,
+    "recall_complete_records": 0.9918,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581,
+    "fn_causes": {
+     "team policy": 11,
+     "inherited from a parent": 3
+    }
+   },
+   "A:OPA-team": {
+    "reported": 1592,
+    "tp": 1592,
+    "fp": 0,
+    "fn": 3,
+    "precision": 1.0,
+    "recall": 0.9981,
+    "recall_complete_records": 0.998,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581,
+    "fn_causes": {
+     "inherited from a parent": 3
+    }
+   },
+   "A:NATIVE+": {
+    "reported": 1216,
+    "tp": 1216,
+    "fp": 0,
+    "fn": 379,
+    "precision": 1.0,
+    "recall": 0.7624,
+    "recall_complete_records": 0.7593,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.7691,
+    "tp_flat": 1216,
+    "truth_flat": 1581,
+    "fn_causes": {
+     "provider/type not covered (Kubernetes)": 158,
+     "provider/type not covered (DigitalOcean)": 84,
+     "provider/type not covered (AWS)": 60,
+     "provider/type not covered (GCP)": 35,
+     "case variant": 27,
+     "team policy": 9,
+     "two-type record": 4,
+     "inherited from a parent": 2
+    }
+   },
+   "A:OPA-full": {
+    "reported": 1595,
+    "tp": 1595,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581
+   },
+   "B:CLO": {
+    "reported": 1471,
+    "tp": 1471,
+    "fp": 0,
+    "fn": 124,
+    "precision": 1.0,
+    "recall": 0.9223,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9228,
+    "tp_flat": 1459,
+    "truth_flat": 1581
+   },
+   "B:CLO-noLC": {
+    "reported": 1851,
+    "tp": 1595,
+    "fp": 256,
+    "fn": 0,
+    "precision": 0.8617,
+    "recall": 1.0,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 256,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581
+   },
+   "B:OPA-idiom": {
+    "reported": 1830,
+    "tp": 1581,
+    "fp": 249,
+    "fn": 14,
+    "precision": 0.8639,
+    "recall": 0.9912,
+    "recall_complete_records": 0.9918,
+    "fp_on_incomplete": 249,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581
+   },
+   "B:OPA-team": {
+    "reported": 1848,
+    "tp": 1592,
+    "fp": 256,
+    "fn": 3,
+    "precision": 0.8615,
+    "recall": 0.9981,
+    "recall_complete_records": 0.998,
+    "fp_on_incomplete": 256,
+    "recall_flat": 1.0,
+    "tp_flat": 1581,
+    "truth_flat": 1581
+   },
+   "B:OPA-full": {
+    "reported": 1471,
+    "tp": 1471,
+    "fp": 0,
+    "fn": 124,
+    "precision": 1.0,
+    "recall": 0.9223,
+    "recall_complete_records": 1.0,
+    "fp_on_incomplete": 0,
+    "recall_flat": 0.9228,
+    "tp_flat": 1459,
+    "truth_flat": 1581,
+    "identical_to_CLO": true
+   },
+   "_truth": 1595,
+   "_truth_flat": 1581,
+   "_truth_on_incomplete": 124
+  }
+ ],
+ "effort": {
+  "size_lines": {
+   "CLO": 68,
+   "NATIVE": 194,
+   "OPA-idiom": 81,
+   "OPA-full": 192,
+   "CUSTODIAN": 541
+  },
+  "scenarios": {
+   "S1 new role, served by the shared standard": {
+    "CLO": 3,
+    "NATIVE": 17,
+    "OPA-idiom": 1,
+    "OPA-full": 2,
+    "CUSTODIAN": 19
+   },
+   "S2 a role needs one more key": {
+    "CLO": 2,
+    "NATIVE": 17,
+    "OPA-idiom": 1,
+    "OPA-full": 2,
+    "CUSTODIAN": 19
+   },
+   "S3 accept a new synonym spelling": {
+    "CLO": 3,
+    "NATIVE": null,
+    "OPA-idiom": null,
+    "OPA-full": 3,
+    "CUSTODIAN": null
+   },
+   "S4 a new resource type in a governed category": {
+    "CLO": 0,
+    "NATIVE": 1,
+    "OPA-idiom": 2,
+    "OPA-full": 2,
+    "CUSTODIAN": 28
+   },
+   "S5 a team-level policy": {
+    "CLO": 3,
+    "NATIVE": null,
+    "OPA-idiom": 3,
+    "OPA-full": 3,
+    "CUSTODIAN": null
+   }
+  }
+ },
+ "custodian_validate": {
+  "aws": {
+   "policies": 24,
+   "valid": true,
+   "msg": "2026-10-15 20:31:29,371: custodian.commands:INFO Configuration valid: /tmp/tmpbleyw5m1/c7n_aws.yml"
+  },
+  "azure": {
+   "policies": 12,
+   "valid": true,
+   "msg": "2026-10-15 20:31:30,690: custodian.commands:INFO Configuration valid: /tmp/tmpbleyw5m1/c7n_azure.yml"
+  },
+  "gcp": {
+   "policies": 12,
+   "valid": true,
+   "msg": "2026-10-15 20:31:31,729: custodian.commands:INFO Configuration valid: /tmp/tmpbleyw5m1/c7n_gcp.yml"
+  },
+  "k8s": {
+   "policies": 9,
+   "valid": true,
+   "msg": "2026-10-15 20:31:32,547: custodian.commands:INFO Configuration valid: /tmp/tmpbleyw5m1/c7n_k8s.yml"
+  }
+ }
+}

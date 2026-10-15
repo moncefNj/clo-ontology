@@ -1,0 +1,148 @@
+{
+ "levels": [
+  0.0,
+  0.1,
+  0.25,
+  0.5
+ ],
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "n": 2000,
+ "rows": [
+  {
+   "violate": 0.0,
+   "naive": {
+    "findings": 1112,
+    "proposed": 1086,
+    "correct": 757,
+    "wrong": 329,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.9766,
+    "accuracy": 0.6971
+   },
+   "majority": {
+    "findings": 1112,
+    "proposed": 1092,
+    "correct": 850,
+    "wrong": 242,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.982,
+    "accuracy": 0.7784
+   },
+   "safe": {
+    "findings": 1112,
+    "proposed": 420,
+    "correct": 418,
+    "wrong": 2,
+    "dc_proposed": 0,
+    "dc_wrong": 0,
+    "coverage": 0.3777,
+    "accuracy": 0.9952
+   }
+  },
+  {
+   "violate": 0.1,
+   "naive": {
+    "findings": 1112,
+    "proposed": 1086,
+    "correct": 718,
+    "wrong": 368,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.9766,
+    "accuracy": 0.6611
+   },
+   "majority": {
+    "findings": 1112,
+    "proposed": 1092,
+    "correct": 805,
+    "wrong": 287,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.982,
+    "accuracy": 0.7372
+   },
+   "safe": {
+    "findings": 1112,
+    "proposed": 410,
+    "correct": 372,
+    "wrong": 38,
+    "dc_proposed": 0,
+    "dc_wrong": 0,
+    "coverage": 0.3687,
+    "accuracy": 0.9073
+   }
+  },
+  {
+   "violate": 0.25,
+   "naive": {
+    "findings": 1112,
+    "proposed": 1086,
+    "correct": 681,
+    "wrong": 405,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.9766,
+    "accuracy": 0.6271
+   },
+   "majority": {
+    "findings": 1112,
+    "proposed": 1092,
+    "correct": 747,
+    "wrong": 345,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.982,
+    "accuracy": 0.6841
+   },
+   "safe": {
+    "findings": 1112,
+    "proposed": 344,
+    "correct": 282,
+    "wrong": 62,
+    "dc_proposed": 0,
+    "dc_wrong": 0,
+    "coverage": 0.3094,
+    "accuracy": 0.8198
+   }
+  },
+  {
+   "violate": 0.5,
+   "naive": {
+    "findings": 1112,
+    "proposed": 1086,
+    "correct": 581,
+    "wrong": 505,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.9766,
+    "accuracy": 0.535
+   },
+   "majority": {
+    "findings": 1112,
+    "proposed": 1092,
+    "correct": 628,
+    "wrong": 464,
+    "dc_proposed": 214,
+    "dc_wrong": 122,
+    "coverage": 0.982,
+    "accuracy": 0.5751
+   },
+   "safe": {
+    "findings": 1112,
+    "proposed": 285,
+    "correct": 150,
+    "wrong": 135,
+    "dc_proposed": 0,
+    "dc_wrong": 0,
+    "coverage": 0.2563,
+    "accuracy": 0.5263
+   }
+  }
+ ]
+}

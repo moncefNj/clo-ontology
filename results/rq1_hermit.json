@@ -1,0 +1,677 @@
+{
+ "summary": {
+  "I-07": {
+   "expected": 93,
+   "reported": 93,
+   "tp": 93,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-09": {
+   "expected": 17,
+   "reported": 17,
+   "tp": 17,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-11": {
+   "expected": 19,
+   "reported": 19,
+   "tp": 19,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-12": {
+   "expected": 11,
+   "reported": 11,
+   "tp": 11,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-13": {
+   "expected": 54,
+   "reported": 54,
+   "tp": 54,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-14": {
+   "expected": 5,
+   "reported": 5,
+   "tp": 5,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-15": {
+   "expected": 3,
+   "reported": 3,
+   "tp": 3,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-16": {
+   "expected": 49,
+   "reported": 49,
+   "tp": 49,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-17": {
+   "expected": 119,
+   "reported": 119,
+   "tp": 119,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-20": {
+   "expected": 24,
+   "reported": 24,
+   "tp": 24,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-22": {
+   "expected": 269,
+   "reported": 269,
+   "tp": 269,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-22r": {
+   "expected": 5,
+   "reported": 5,
+   "tp": 5,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-25": {
+   "expected": 35,
+   "reported": 35,
+   "tp": 35,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-26": {
+   "expected": 13,
+   "reported": 13,
+   "tp": 13,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  },
+  "I-27": {
+   "expected": 5,
+   "reported": 5,
+   "tp": 5,
+   "fp": 0,
+   "fn": 0,
+   "precision": 1.0,
+   "recall": 1.0
+  }
+ },
+ "runs": [
+  {
+   "seed": 1,
+   "n": 300,
+   "engine": "hermit",
+   "resources": 300,
+   "labels": 1528,
+   "teams": 4,
+   "per_rule": {
+    "I-07": {
+     "expected": 49,
+     "reported": 49,
+     "tp": 49,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 10,
+     "reported": 10,
+     "tp": 10,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 5,
+     "reported": 5,
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 48,
+     "reported": 48,
+     "tp": 48,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 1,
+     "reported": 1,
+     "tp": 1,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 2,
+     "reported": 2,
+     "tp": 2,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 19,
+     "reported": 19,
+     "tp": 19,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 52,
+     "reported": 52,
+     "tp": 52,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 8,
+     "reported": 8,
+     "tp": 8,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 133,
+     "reported": 133,
+     "tp": 133,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 3,
+     "reported": 3,
+     "tp": 3,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 15,
+     "reported": 15,
+     "tp": 15,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 5,
+     "reported": 5,
+     "tp": 5,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 2,
+     "reported": 2,
+     "tp": 2,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "missing": {
+     "planted": 68,
+     "applicable": 55,
+     "detected": 55
+    },
+    "convention": {
+     "planted": 129,
+     "applicable": 129,
+     "detected": 129
+    },
+    "unmanaged": {
+     "planted": 34,
+     "applicable": 33,
+     "detected": 33
+    },
+    "variant": {
+     "planted": 18,
+     "applicable": 17,
+     "detected": 17
+    },
+    "redundant": {
+     "planted": 5,
+     "applicable": 3,
+     "detected": 3
+    },
+    "unlabelled": {
+     "planted": 12,
+     "applicable": 10,
+     "detected": 10
+    },
+    "conflict": {
+     "planted": 3,
+     "applicable": 3,
+     "detected": 3
+    },
+    "foreign_prefix": {
+     "planted": 2,
+     "applicable": 2,
+     "detected": 2
+    },
+    "case": {
+     "planted": 13,
+     "applicable": 13,
+     "detected": 13
+    },
+    "vocab": {
+     "planted": 6,
+     "applicable": 6,
+     "detected": 6
+    },
+    "long": {
+     "planted": 1,
+     "applicable": 1,
+     "detected": 1
+    },
+    "typo_key": {
+     "planted": 2,
+     "applicable": 2,
+     "detected": 2
+    },
+    "two_owners": {
+     "planted": 2,
+     "applicable": 2,
+     "detected": 2
+    },
+    "incomplete": {
+     "planted": 18,
+     "applicable": 0,
+     "detected": 0
+    },
+    "no_owner": {
+     "planted": 6,
+     "applicable": 5,
+     "detected": 5
+    }
+   },
+   "withheld": {
+    "incomplete": 18,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 97,
+    "I-09": 6,
+    "I-11": 10,
+    "I-12": 5,
+    "I-13": 48,
+    "I-14": 1,
+    "I-15": 2,
+    "I-16": 19,
+    "I-17": 52,
+    "I-20": 8,
+    "I-22": 133,
+    "I-22r": 3,
+    "I-25": 15,
+    "I-26": 5,
+    "I-27": 2
+   },
+   "root_cause_counts": {
+    "I-07": 49,
+    "I-09": 6,
+    "I-11": 10,
+    "I-12": 5,
+    "I-13": 48,
+    "I-14": 1,
+    "I-15": 2,
+    "I-16": 19,
+    "I-17": 52,
+    "I-20": 8,
+    "I-22": 133,
+    "I-22r": 3,
+    "I-25": 15,
+    "I-26": 5,
+    "I-27": 2
+   },
+   "timing": {
+    "engine": "hermit",
+    "materialise_s": 223.262,
+    "audit_s": 0.362,
+    "reason_s": 221.60591489699982,
+    "status": "ok",
+    "wall_s": 222.19792263800082
+   }
+  },
+  {
+   "seed": 2,
+   "n": 300,
+   "engine": "hermit",
+   "resources": 300,
+   "labels": 1609,
+   "teams": 4,
+   "per_rule": {
+    "I-07": {
+     "expected": 44,
+     "reported": 44,
+     "tp": 44,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-09": {
+     "expected": 11,
+     "reported": 11,
+     "tp": 11,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-11": {
+     "expected": 9,
+     "reported": 9,
+     "tp": 9,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-12": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-13": {
+     "expected": 6,
+     "reported": 6,
+     "tp": 6,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-14": {
+     "expected": 4,
+     "reported": 4,
+     "tp": 4,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-15": {
+     "expected": 1,
+     "reported": 1,
+     "tp": 1,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-16": {
+     "expected": 30,
+     "reported": 30,
+     "tp": 30,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-17": {
+     "expected": 67,
+     "reported": 67,
+     "tp": 67,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-20": {
+     "expected": 16,
+     "reported": 16,
+     "tp": 16,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22": {
+     "expected": 136,
+     "reported": 136,
+     "tp": 136,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-22r": {
+     "expected": 2,
+     "reported": 2,
+     "tp": 2,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-25": {
+     "expected": 20,
+     "reported": 20,
+     "tp": 20,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-26": {
+     "expected": 8,
+     "reported": 8,
+     "tp": 8,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    },
+    "I-27": {
+     "expected": 3,
+     "reported": 3,
+     "tp": 3,
+     "fp": 0,
+     "fn": 0,
+     "fp_examples": [],
+     "fn_examples": []
+    }
+   },
+   "planted": {
+    "convention": {
+     "planted": 135,
+     "applicable": 134,
+     "detected": 134
+    },
+    "unmanaged": {
+     "planted": 51,
+     "applicable": 51,
+     "detected": 51
+    },
+    "variant": {
+     "planted": 24,
+     "applicable": 22,
+     "detected": 22
+    },
+    "missing": {
+     "planted": 53,
+     "applicable": 47,
+     "detected": 47
+    },
+    "vocab": {
+     "planted": 11,
+     "applicable": 11,
+     "detected": 11
+    },
+    "typo_key": {
+     "planted": 5,
+     "applicable": 5,
+     "detected": 5
+    },
+    "conflict": {
+     "planted": 4,
+     "applicable": 4,
+     "detected": 4
+    },
+    "case": {
+     "planted": 4,
+     "applicable": 4,
+     "detected": 4
+    },
+    "long": {
+     "planted": 4,
+     "applicable": 4,
+     "detected": 4
+    },
+    "redundant": {
+     "planted": 4,
+     "applicable": 2,
+     "detected": 2
+    },
+    "unlabelled": {
+     "planted": 11,
+     "applicable": 9,
+     "detected": 9
+    },
+    "foreign_prefix": {
+     "planted": 1,
+     "applicable": 1,
+     "detected": 1
+    },
+    "incomplete": {
+     "planted": 20,
+     "applicable": 0,
+     "detected": 0
+    },
+    "two_owners": {
+     "planted": 3,
+     "applicable": 3,
+     "detected": 3
+    },
+    "no_owner": {
+     "planted": 10,
+     "applicable": 8,
+     "detected": 8
+    }
+   },
+   "withheld": {
+    "incomplete": 20,
+    "absence_findings_on_incomplete": 0
+   },
+   "raw_counts": {
+    "I-07": 82,
+    "I-09": 11,
+    "I-11": 9,
+    "I-12": 6,
+    "I-13": 6,
+    "I-14": 4,
+    "I-15": 1,
+    "I-16": 30,
+    "I-17": 67,
+    "I-20": 16,
+    "I-22": 136,
+    "I-22r": 2,
+    "I-25": 20,
+    "I-26": 8,
+    "I-27": 3
+   },
+   "root_cause_counts": {
+    "I-07": 44,
+    "I-09": 11,
+    "I-11": 9,
+    "I-12": 6,
+    "I-13": 6,
+    "I-14": 4,
+    "I-15": 1,
+    "I-16": 30,
+    "I-17": 67,
+    "I-20": 16,
+    "I-22": 136,
+    "I-22r": 2,
+    "I-25": 20,
+    "I-26": 8,
+    "I-27": 3
+   },
+   "timing": {
+    "engine": "hermit",
+    "materialise_s": 209.856,
+    "audit_s": 0.453,
+    "reason_s": 208.35236075399916,
+    "status": "ok",
+    "wall_s": 208.8630188570005
+   }
+  }
+ ]
+}

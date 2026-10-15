@@ -1,0 +1,432 @@
+<title>CLO Studio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: an audit console. Scenario switches on top, then a three-pane workbench
+   (estate list | explanation | derived standard); other tabs hold the loop, the open corpus
+   and the compiled artefacts. Tags are drawn as punched asset labels. */
+:root{
+  --bg:#EEF2F1; --surface:#FFFFFF; --sunk:#E3E9E7; --ink:#14212A; --muted:#566570; --line:#CBD5D2;
+  --accent:#0A6B66; --accent-soft:#D5ECE9; --accent-ink:#FFFFFF;
+  --crit:#B42318; --crit-soft:#FDE4E1; --warn:#9A5B00; --warn-soft:#FDF0D5; --ok:#1C7343; --ok-soft:#DDF2E5;
+  --nov:#5F6B73; --hatch:#C9D1CE;
+  --s1:#0A6B66; --s2:#C2410C; --s3:#4C6EF5;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1417; --surface:#151D21; --sunk:#1B252A; --ink:#E4ECE9; --muted:#9AA9A5; --line:#2B373C;
+  --accent:#4CC0B5; --accent-soft:#123431; --accent-ink:#06201E;
+  --crit:#F97066; --crit-soft:#3A1715; --warn:#F5B547; --warn-soft:#3A2A0C; --ok:#4BC985; --ok-soft:#10301F;
+  --nov:#9AA6AD; --hatch:#33414A; --s1:#4CC0B5; --s2:#FB923C; --s3:#8EA6FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1417; --surface:#151D21; --sunk:#1B252A; --ink:#E4ECE9; --muted:#9AA9A5; --line:#2B373C;
+  --accent:#4CC0B5; --accent-soft:#123431; --accent-ink:#06201E;
+  --crit:#F97066; --crit-soft:#3A1715; --warn:#F5B547; --warn-soft:#3A2A0C; --ok:#4BC985; --ok-soft:#10301F;
+  --nov:#9AA6AD; --hatch:#33414A; --s1:#4CC0B5; --s2:#FB923C; --s3:#8EA6FF; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);margin:0}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:grid;gap:16px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:.01em}
+h1{font-size:26px;line-height:1.1}
+h2{font-size:18px}
+h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+p{margin:0}
+code,.mono{font-family:var(--f-mono);font-size:12.5px}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+.brand{display:grid;gap:4px;min-width:0}
+.brand p{color:var(--muted);max-width:70ch}
+.tally{display:flex;flex-wrap:wrap;gap:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:8px 12px;min-width:96px}
+.tile b{display:block;font:600 20px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.tile span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.delta{font:500 12px var(--f-mono);margin-left:4px}
+.delta.up{color:var(--crit)} .delta.down{color:var(--ok)}
+
+/* switches */
+.switches{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:8px}
+.sw{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;cursor:pointer;text-align:left}
+.sw[aria-checked="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.knob{width:34px;height:20px;border-radius:10px;background:var(--sunk);border:1px solid var(--line);position:relative;margin-top:1px;transition:background .15s}
+.knob::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--muted);transition:transform .15s}
+.sw[aria-checked="true"] .knob{background:var(--accent);border-color:var(--accent)}
+.sw[aria-checked="true"] .knob::after{transform:translateX(14px);background:var(--accent-ink)}
+.sw b{font-weight:600}
+.sw small{grid-column:2;color:var(--muted);font-size:12px;line-height:1.4}
+
+/* tabs */
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;cursor:pointer;color:var(--muted);font-weight:500;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* workbench */
+.bench{display:grid;grid-template-columns:270px minmax(0,1fr) 320px;gap:16px;align-items:start}
+@media (max-width:1100px){.bench{grid-template-columns:250px minmax(0,1fr)}.bench .std{grid-column:1/-1}}
+@media (max-width:720px){.bench{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:12px;min-width:0}
+.lens{display:flex;flex-wrap:wrap;gap:4px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 10px;font-size:12.5px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.team{display:grid;gap:4px}
+.team > span{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.res{display:grid;grid-template-columns:6px 1fr auto;gap:0 10px;align-items:center;border:1px solid var(--line);border-radius:var(--r);padding:6px 10px 6px 0;background:var(--surface);cursor:pointer;text-align:left;width:100%}
+.res .stripe{align-self:stretch;border-radius:var(--r) 0 0 var(--r)}
+.res[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.res .id{font:500 13px var(--f-mono)}
+.res .meta{grid-column:2;font-size:11.5px;color:var(--muted)}
+.res .n{grid-row:1/3;grid-column:3;font:600 12px var(--f-mono);font-variant-numeric:tabular-nums}
+.res.dim{opacity:.45}
+.st-crit .stripe{background:var(--crit)} .st-find .stripe{background:var(--warn)} .st-ok .stripe{background:var(--ok)}
+.st-nov .stripe{background:repeating-linear-gradient(45deg,var(--nov) 0 3px,var(--hatch) 3px 6px)} .st-out .stripe{background:var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:11.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+
+/* detail */
+.dhead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
+.dhead h2{font:600 20px var(--f-mono)}
+.facts{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:500;border:1px solid transparent}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.crit{background:var(--crit-soft);color:var(--crit)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.nov{background:var(--sunk);color:var(--nov);border-color:var(--line)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tagl{position:relative;font:12.5px var(--f-mono);background:var(--sunk);border:1px solid var(--line);border-radius:3px 8px 8px 3px;padding:3px 10px 3px 18px}
+.tagl::before{content:"";position:absolute;left:6px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--surface);border:1px solid var(--line)}
+.tagl.var{border-color:var(--warn);background:var(--warn-soft)}
+.tagl em{font-style:normal;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;border-bottom:1px solid var(--line)}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tscroll{overflow-x:auto}
+.state-ok{color:var(--ok);font-weight:500} .state-miss{color:var(--crit);font-weight:500} .state-var{color:var(--warn);font-weight:500} .state-nov{color:var(--nov)}
+.cchip{display:inline-block;font:500 11px var(--f-mono);border:1px solid var(--accent);color:var(--accent);border-radius:3px;padding:0 5px;margin-left:4px}
+.finding{border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:var(--r);padding:10px 12px;display:grid;gap:8px}
+.finding.sev-error.crit{border-left-color:var(--crit)}
+.finding.sev-info{border-left-color:var(--line)} .finding.sev-warning{border-left-color:var(--warn)}
+.finding.new{box-shadow:0 0 0 2px var(--accent-soft)}
+.fhead{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.fhead b{font-weight:600}
+.rule{font:500 11.5px var(--f-mono);color:var(--muted)}
+.badge{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:12.5px}
+.node{font:12px var(--f-mono);background:var(--sunk);border:1px solid var(--line);border-radius:4px;padding:1px 7px}
+.node.k{background:var(--accent-soft);border-color:var(--accent)}
+.edge{font:11px var(--f-mono);color:var(--muted)}
+.edge::after{content:" \2192"}
+.why{display:grid;gap:6px}
+.why > div{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.why .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);min-width:78px}
+.repair{background:var(--sunk);border-radius:var(--r);padding:8px 10px;display:grid;gap:6px}
+.cmd{font:12px var(--f-mono);white-space:pre-wrap;word-break:break-all;color:var(--muted)}
+.empty{color:var(--muted);font-style:italic}
+
+/* standard */
+.pol{display:grid;gap:6px;border-top:1px solid var(--line);padding-top:10px}
+.pol:first-of-type{border-top:0;padding-top:0}
+.pol .att{font-size:12px;color:var(--muted)}
+.rk{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:12.5px}
+.rk .role{font-weight:500;min-width:96px}
+.kchip{font:12px var(--f-mono);border:1px solid var(--line);border-radius:3px;padding:0 6px;background:var(--surface)}
+.kchip.new{border-color:var(--accent);background:var(--accent-soft)}
+.cov{display:grid;grid-template-columns:96px 1fr 44px;gap:6px;align-items:center;font-size:12.5px}
+.bar{height:8px;background:var(--sunk);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+
+/* charts and other tabs */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{fill:var(--muted);font:11px var(--f-body)}
+.chart .gridl{stroke:var(--line);stroke-width:1}
+.chart .axis{stroke:var(--muted);stroke-width:1}
+.keyrow{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}
+.keyrow i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:3px}
+.note{font-size:12.5px;color:var(--muted);max-width:75ch}
+.files{display:flex;flex-wrap:wrap;gap:4px}
+pre.code{margin:0;background:var(--sunk);border:1px solid var(--line);border-radius:var(--r);padding:12px;overflow:auto;max-height:520px;font:12px/1.5 var(--f-mono);white-space:pre}
+.copy{justify-self:start;border:1px solid var(--line);background:var(--surface);border-radius:var(--r);padding:3px 10px;cursor:pointer;font-size:12.5px}
+.sp{display:grid;grid-template-columns:110px 1fr 40px;gap:6px;align-items:center;font-size:12.5px}
+footer{font-size:12px;color:var(--muted);max-width:90ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>CLO Studio</h1>
+      <p>Diagnosis and repair of multi-cloud resource tags on the company example: 10 resources on AWS, Azure and GCP,
+        four teams, five governance roles. Every finding, explanation and artefact below is the output of a real CLO run.</p>
+    </div>
+    <div class="tally" id="tally"></div>
+  </header>
+
+  <section class="switches" id="switches" aria-label="What-if scenario"></section>
+
+  <nav class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" id="t-audit" aria-selected="true" data-tab="audit">Audit</button>
+    <button class="tab" role="tab" id="t-loop" aria-selected="false" data-tab="loop">Closed loop</button>
+    <button class="tab" role="tab" id="t-corpus" aria-selected="false" data-tab="corpus">Open corpus</button>
+    <button class="tab" role="tab" id="t-enforce" aria-selected="false" data-tab="enforce">Enforce</button>
+  </nav>
+
+  <main>
+    <section id="p-audit" class="bench">
+      <aside class="panel" aria-label="Estate">
+        <h3>View as role</h3>
+        <div class="lens" id="lens"></div>
+        <div id="estate" style="display:grid;gap:10px"></div>
+        <div class="legend">
+          <span><i style="background:var(--crit)"></i>unlabelled or unowned</span>
+          <span><i style="background:var(--warn)"></i>findings</span>
+          <span><i style="background:var(--ok)"></i>compliant</span>
+          <span><i style="background:repeating-linear-gradient(45deg,var(--nov) 0 3px,var(--hatch) 3px 6px)"></i>no verdict</span>
+          <span><i style="background:var(--line)"></i>out of scope</span>
+        </div>
+      </aside>
+      <article class="panel" id="detail" aria-live="polite"></article>
+      <aside class="panel std" id="std" aria-label="Derived standard"></aside>
+    </section>
+
+    <section id="p-loop" hidden style="display:grid;gap:16px"></section>
+    <section id="p-corpus" hidden style="display:grid;gap:16px"></section>
+    <section id="p-enforce" hidden style="display:grid;gap:16px"></section>
+  </main>
+
+  <footer>Generated by <code>tools/clo_demo.py</code> from the released artefact: each switch combination is a full run of
+    <code>tools/clo_audit.py</code> and <code>tools/clo_compile.py</code>; the loop, sensitivity and corpus tabs read
+    <code>results/*.json</code>. Rule identifiers (I-xx) and property chains (C-x) refer to the paper's inference catalogue.</footer>
+</div>
+
+<script>
+const D=/*__CLO_DATA__*/null;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const S={bits:[0,0,0,0],tab:"audit",lens:"All",sel:"db-pay",file:"coverage.json"};
+try{const t=localStorage.getItem("clo-tab"); if(t) S.tab=t;}catch(e){}
+const key=()=>S.bits.join("");
+const sc=()=>D.scenarios[key()];
+const base=()=>D.scenarios["0000"];
+const fid=f=>[f.rule,f.resource,f.key,f.team,f.used,f.value].join("|");
+const CRIT=new Set(["I-11","I-26","I-27","I-28"]);
+
+function lensKeys(){ if(S.lens==="All") return null; const r=sc().roles.find(x=>x.role===S.lens); return new Set(r?r.needs:[]); }
+function fInLens(f){ const lk=lensKeys(); if(!lk) return true;
+  if(f.roles&&f.roles.length) return f.roles.includes(S.lens);
+  if(f.missing) return f.missing.some(k=>lk.has(k));
+  return f.rule==="I-26"||f.rule==="I-27"; }
+function resFindings(id){ return sc().findings.filter(f=>f.resource===id); }
+function status(id){ const r=sc().resources[id]; const fs=resFindings(id);
+  if(!r.in_scope) return "out"; if(!r.complete&&!fs.length) return "nov";
+  if(fs.some(f=>CRIT.has(f.rule))) return "crit"; if(fs.some(f=>f.severity==="error")) return "find"; return "ok"; }
+
+function renderSwitches(){
+  $("#switches").innerHTML=D.switches.map((s,i)=>`<button class="sw" id="sw-${s.id}" role="switch" aria-checked="${!!S.bits[i]}" data-i="${i}">
+    <span class="knob" aria-hidden="true"></span><b>${esc(s.label)}</b><small>${esc(s.hint)}</small></button>`).join("");
+  document.querySelectorAll(".sw").forEach(b=>b.onclick=()=>{const i=+b.dataset.i; S.bits[i]=S.bits[i]?0:1; render();});
+}
+function renderTally(){
+  const cur=sc(), b=base();
+  const err=x=>x.findings.filter(f=>f.severity==="error").length;
+  const vals=x=>x.findings.filter(f=>f.repair_value!=null).length;
+  const nov=x=>Object.values(x.resources).filter(r=>r.in_scope&&!r.complete).length;
+  const raw=x=>Object.entries(x.raw_counts).filter(([k])=>["I-07","I-11","I-22","I-26"].includes(k)).reduce((a,[,v])=>a+v,0);
+  const t=(label,v,bv,good)=>{const d=v-bv; const cls=d===0?"":((d>0)!==good?"up":"down");
+    return `<div class="tile"><b>${v}${d?`<span class="delta ${cls}">${d>0?"+":""}${d}</span>`:""}</b><span>${label}</span></div>`;};
+  $("#tally").innerHTML=t("error findings",err(cur),err(b),false)+t("raw, before grouping",raw(cur),raw(b),false)
+    +t("values proposed",vals(cur),vals(b),true)+t("records without verdict",nov(cur),nov(b),true);
+}
+function renderLens(){
+  const roles=["All",...sc().roles.map(r=>r.role)];
+  if(!roles.includes(S.lens)) S.lens="All";
+  $("#lens").innerHTML=roles.map(r=>`<button class="chip" aria-pressed="${r===S.lens}" data-r="${esc(r)}">${esc(r)}</button>`).join("");
+  document.querySelectorAll("#lens .chip").forEach(b=>b.onclick=()=>{S.lens=b.dataset.r; render();});
+}
+function renderEstate(){
+  const R=sc().resources; const groups={};
+  Object.entries(R).forEach(([id,r])=>{const t=r.teams.length?r.teams.join(" + "):"No owning team"; (groups[t]=groups[t]||[]).push(id);});
+  $("#estate").innerHTML=Object.keys(groups).sort().map(t=>`<div class="team"><span>${esc(t)}</span>${groups[t].sort().map(id=>{
+    const r=R[id], st=status(id), fs=resFindings(id).filter(fInLens), dim=S.lens!=="All"&&!fs.length;
+    return `<button class="res st-${st}${dim?" dim":""}" id="res-${esc(id)}" aria-current="${id===S.sel}" data-id="${esc(id)}">
+      <span class="stripe"></span><span class="id">${esc(id)}</span><span class="n">${fs.length||""}</span>
+      <span class="meta">${esc(r.provider)} · ${esc(r.category||"—")}${r.complete?"":" · no verdict"}</span></button>`;}).join("")}</div>`).join("");
+  document.querySelectorAll(".res").forEach(b=>b.onclick=()=>{S.sel=b.dataset.id; render();});
+}
+function chain(steps,tailKey){ let h=""; steps.forEach(([s,p,o],i)=>{ if(i===0) h+=`<span class="node">${esc(s)}</span>`;
+  h+=`<span class="edge">${esc(p)}</span><span class="node${o===tailKey?" k":""}">${esc(o)}</span>`;}); return `<div class="chain">${h}</div>`; }
+function pathTo(r,policy){ const g=r.governing.find(x=>x.policy===policy); return g&&g.paths[0]; }
+function repairNote(f,r){
+  const vs=sc().value_source[f.key]||[];
+  const prov={"inherit":"inherited from a partOf parent","account-default":"the account's dominant value","team-default":"the owning team's dominant value"};
+  if(f.repair_action==="rename") return `Rename the variant; the value is kept as it is.`;
+  if(f.repair_value!=null){ const naive=S.bits[3];
+    return naive?`Team-majority policy: the team's most frequent value, whatever the key.`
+      :`Allowed by the key's value sources (${vs.map(esc).join(", ")}): ${esc(prov[f.repair_action]||f.repair_action)}, covering at least 80 % of at least two uses.`; }
+  if(f.repair_action==="ask-owner") return vs.length?`No value source yields a dominant value, so CLO asks the owner.`
+      :`<code>${esc(f.key)}</code> declares no value source, so CLO never guesses it and asks the owner.`;
+  if(f.repair_action==="assign-owner") return `Nobody owns this resource yet: assign an owning team first.`;
+  return "";
+}
+function renderDetail(){
+  const id=S.sel, r=sc().resources[id]; if(!r){$("#detail").innerHTML="";return;}
+  const fs=resFindings(id), bset=new Set(base().findings.map(fid)), st=status(id);
+  const pill={crit:`<span class="pill crit">needs attention</span>`,find:`<span class="pill warn">findings</span>`,ok:`<span class="pill ok">compliant</span>`,
+    nov:`<span class="pill nov">no closed-world verdict</span>`,out:`<span class="pill nov">out of audit scope</span>`}[st];
+  const forced=r.complete&&base().resources[id]&&!base().resources[id].complete;   /* complete only because the world was closed */
+  const comp=forced?`<span class="pill warn">treated as complete</span>`:r.complete?`<span class="pill ok">record complete</span>`:`<span class="pill nov">listing did not return the tag set</span>`;
+  const canon={}; sc().synonyms.forEach(g=>g.members.forEach(m=>{if(m!==g.canonical) canon[m]=g.canonical;}));
+  const tags=Object.entries(r.tags).sort();
+  let h=`<div class="dhead"><h2>${esc(id)}</h2><div style="display:flex;gap:6px;flex-wrap:wrap">${pill}${r.in_scope?comp:""}</div></div>
+   <div class="facts"><span>type <b class="mono">${esc(r.type)}</b></span><span>provider <b>${esc(r.provider)}</b></span><span>category <b>${esc(r.category||"—")}</b></span>
+   <span>account <b>${esc(r.account)}</b></span><span>owner <b>${esc(r.teams.join(", ")||"none")}</b></span></div>
+   <div class="tags">${tags.length?tags.map(([k,v])=>`<span class="tagl${canon[k]?" var":""}">${esc(k)}<em>=</em>${esc(v)}</span>`).join(""):`<span class="empty">No tags on this record.</span>`}</div>`;
+  if(!r.in_scope){ h+=`<p class="note">Its type does not support tags (curated from provider documentation), so no tag rule applies to it.</p>`; }
+  const req=Object.entries(r.required);
+  if(r.in_scope&&req.length){
+    h+=`<h3>What the standard requires here</h3><div class="tscroll"><table><thead><tr><th>Key</th><th>On the record</th><th>Needed by</th><th>Through</th></tr></thead><tbody>`;
+    req.forEach(([k,via])=>{ const present=k in r.tags; const variant=Object.keys(r.tags).find(t=>canon[t]===k);
+      const state=!r.complete&&!present?`<span class="state-nov">not concluded</span>`:present?`<span class="state-ok">present</span>`:variant?`<span class="state-var">as <code>${esc(variant)}</code></span>`:`<span class="state-miss">missing</span>`;
+      const roles=[...new Set(via.map(v=>v.role||"policy"))].join(", ");
+      const how=[...new Set(via.map(v=>{const p=pathTo(r,v.policy); return `${esc(v.policy)} <span class="cchip" title="${esc(D.chains[p?p.chain:""]||"")}">${p?p.chain:"?"}</span>`;}))].join("<br>");
+      h+=`<tr><td><code>${esc(k)}</code></td><td>${state}</td><td>${esc(roles)}</td><td>${how}</td></tr>`;});
+    h+=`</tbody></table></div>`;
+  }
+  h+=`<h3>Findings (root causes)</h3>`;
+  if(!fs.length){ h+=r.in_scope&&!r.complete?`<p class="note">The response this record came from never carries tags, so an absent key proves nothing. CLO reports no absence here and the monitor re-reads the record; an export-based check would report every required key as missing.</p>`
+      :`<p class="empty">None.</p>`; }
+  fs.forEach(f=>{ const isNew=!bset.has(fid(f)); const keys=f.missing||(f.key?[f.key]:[]);
+    let why="";
+    if(["I-07","I-22","I-11"].includes(f.rule)){
+      const k0=keys[0]; const via=(r.required[k0]||[])[0];
+      if(via){ const p=pathTo(r,via.policy);
+        why+=`<div><span class="lbl">Reach ${p?p.chain:""}</span>${p?chain(p.steps):""}</div>`;
+        why+=`<div><span class="lbl">Need ${via.chain}</span>${chain(via.role?[[via.policy,"servesRole",via.role],[via.role,"needsLabel",k0]]:[[via.policy,"requiresLabel",k0]],k0)}</div>`; }
+      why+=`<div><span class="lbl">Absence</span><span class="small">${f.rule==="I-22"?`Spelt <code>${esc(f.used||"")}</code>, a declared synonym: one rename, not a missing key.`
+        :forced?`The listing behind this record never returns tags. The key is concluded absent only because the world was closed everywhere: the response carries no evidence for this finding.`
+        :`The record is complete, so the closed world may conclude the key is absent (${f.rule} runs on complete records only).`}</span></div>`;
+    } else if(f.rule==="I-26"){ why=`<div><span class="lbl">Absence</span><span class="small">No ownedBy assertion on a complete record.</span></div>`; }
+    const rep=f.repair?`<div class="repair"><div><b>Repair</b> · ${esc(f.repair)}</div><div class="small muted">${repairNote(f,r)}</div>${
+      (sc().repairs_by_resource[id]||[]).filter(x=>x.what.includes(f.key||"\u0000")).map(x=>`<div class="cmd">${esc(x.cmd)}</div>`).join("")}</div>`:"";
+    h+=`<div class="finding sev-${f.severity}${CRIT.has(f.rule)?" crit":""}${isNew?" new":""}">
+      <div class="fhead"><span class="rule">${f.rule}</span><b>${esc(D.rules[f.rule]||f.rule)}</b>${keys.length?`<code>${keys.map(esc).join(", ")}</code>`:""}
+      ${f.roles&&f.roles.length?`<span class="small muted">for ${esc(f.roles.join(", "))}</span>`:""}${isNew?`<span class="badge">new in this scenario</span>`:""}</div>
+      ${why?`<div class="why">${why}</div>`:""}${rep}</div>`;});
+  $("#detail").innerHTML=h;
+}
+function renderStd(){
+  const cur=sc(), b=base(); const bk=new Set(); b.policies.forEach(p=>p.keys.forEach(k=>bk.add(p.policy+"|"+k)));
+  let h=`<h3>Derived standard</h3><p class="small muted">A policy lists the roles it serves; the keys follow from what the roles need (C-9). Highlighted keys are new in this scenario.</p>`;
+  cur.policies.forEach(p=>{ h+=`<div class="pol"><b>${esc(p.policy)}</b><span class="att">attached to ${esc(p.attached_to.join(", ")||"—")}</span>`;
+    Object.entries(p.by_role).sort().forEach(([ro,ks])=>{h+=`<div class="rk"><span class="role">${esc(ro)}</span>${ks.map(k=>`<span class="kchip${bk.has(p.policy+"|"+k)?"":" new"}">${esc(k)}</span>`).join("")}</div>`;});
+    p.asserted.forEach(k=>{h+=`<div class="rk"><span class="role muted">asserted</span><span class="kchip">${esc(k)}</span></div>`;});
+    h+=`</div>`;});
+  h+=`<h3>Coverage per role</h3><p class="small muted">Complete, in-scope resources governed by a policy serving the role that carry all its keys.</p>`;
+  cur.coverage.filter(c=>c.governed).forEach(c=>{const pct=c.governed?100*c.covered/c.governed:0;
+    h+=`<div class="cov"><span>${esc(c.role)}</span><span class="bar"><i style="width:${pct}%"></i></span><span class="mono" style="text-align:right">${c.covered}/${c.governed}</span></div>`;});
+  h+=`<h3>Vocabulary</h3>`+cur.synonyms.map(g=>`<div class="rk"><span class="role">synonyms</span>${g.members.map(m=>`<span class="kchip">${esc(m)}</span>`).join("")}<span class="small muted">→ ${esc(g.canonical)}</span></div>`).join("")
+    +Object.entries(cur.value_source).sort().map(([k,v])=>`<div class="rk"><span class="role mono" style="font-size:12px">${esc(k)}</span><span class="small muted">${esc(v.join(", "))}</span></div>`).join("")
+    +`<div class="rk"><span class="role mono" style="font-size:12px">data-classification</span><span class="small muted">no value source: never guessed</span></div>`;
+  $("#std").innerHTML=h;
+}
+
+/* ── charts ── */
+function lineChart({series,xs,xv,ymax,ylab,mark,fmt}){
+  const W=520,H=230,m={l:44,r:40,t:14,b:30}; const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const xmax=xv?xv[xv.length-1]:xs.length-1;
+  const x=i=>m.l+iw*((xv?xv[i]:i)/xmax), y=v=>m.t+ih*(1-v/ymax);
+  const ticks=[0,.25,.5,.75,1].map(t=>t*ymax);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(ylab)}">`;
+  ticks.forEach(t=>{s+=`<line class="gridl" x1="${m.l}" x2="${W-m.r}" y1="${y(t)}" y2="${y(t)}"/><text x="${m.l-6}" y="${y(t)+4}" text-anchor="end">${fmt(t)}</text>`;});
+  xs.forEach((v,i)=>{s+=`<text x="${x(i)}" y="${H-10}" text-anchor="middle">${v}</text>`;});
+  if(mark!=null){s+=`<line x1="${x(mark.at)}" x2="${x(mark.at)}" y1="${m.t}" y2="${m.t+ih}" stroke="var(--muted)" stroke-dasharray="3 3"/><text x="${x(mark.at)+4}" y="${m.t+10}">${esc(mark.label)}</text>`;}
+  series.forEach(se=>{const pts=se.v.map((v,i)=>`${x(i)},${y(v)}`).join(" ");
+    s+=`<polyline fill="none" stroke="${se.c}" stroke-width="2.2" points="${pts}"/>`;
+    se.v.forEach((v,i)=>{s+=`<circle cx="${x(i)}" cy="${y(v)}" r="${i===se.v.length-1?4:2.5}" fill="${se.c}"><title>${esc(se.n)}: ${fmt(v)}</title></circle>`;});});
+  /* end labels to the right of the last point, pushed apart so they never overlap */
+  const last=xs.length-1; const lab=series.map(se=>({c:se.c,t:fmt(se.v[last]),y:y(se.v[last])})).sort((a,b)=>a.y-b.y);
+  for(let i=1;i<lab.length;i++) if(lab[i].y-lab[i-1].y<12) lab[i].y=lab[i-1].y+12;
+  lab.forEach(l=>{s+=`<text x="${x(last)+7}" y="${l.y+4}" style="fill:${l.c};font-weight:600">${l.t}</text>`;});
+  return s+`</svg>`;
+}
+const nice=v=>{const p=Math.pow(10,Math.floor(Math.log10(v))); return Math.ceil(v/p)*p;};
+function renderLoop(){
+  const L=D.results.loop, Sv=D.results.sensitivity; let h="";
+  if(L){ const xs=L.series.safe.map(r=>r.cycle); const at=L.params.new_role_at;
+    const mk=f=>[{n:"CLO's repairs",c:"var(--s1)",v:L.series.safe.map(f)},{n:"Team-majority repairs",c:"var(--s2)",v:L.series.naive.map(f)}];
+    const keyrow=`<div class="keyrow"><span><i style="background:var(--s1)"></i>CLO's repairs</span><span><i style="background:var(--s2)"></i>Team-majority repairs (8.x)</span></div>`;
+    h+=`<div class="panel"><h2>The loop over ${xs.length} cycles</h2><p class="note">Simulated owners accept ${Math.round(100*L.params.accept)} % of proposed values and renames and answer ${Math.round(100*L.params.answer)} % of requests with the true value;
+      the monitor re-reads ${Math.round(100*L.params.reread)} % of records without verdict; ${Math.round(100*L.params.drift)} % new resources arrive each cycle. At cycle ${at} a Sustainability role joins the standard. Mean of ${L.seeds} seeds.</p>${keyrow}
+      <div class="grid2">
+      <div class="chart"><h3>Open error findings</h3>${lineChart({series:mk(r=>r.open),xs,ymax:nice(Math.max(...L.series.safe.map(r=>r.open),...L.series.naive.map(r=>r.open))),ylab:"open findings",mark:{at,label:"new role"},fmt:v=>Math.round(v).toLocaleString()})}</div>
+      <div class="chart"><h3>Resources carrying their true values (%)</h3>${lineChart({series:mk(r=>r.true),xs,ymax:100,ylab:"true values",mark:{at,label:"new role"},fmt:v=>Math.round(v)})}</div>
+      <div class="chart"><h3>Silently wrong values written by accepted repairs</h3>${lineChart({series:mk(r=>r.wrong),xs,ymax:nice(Math.max(1,...L.series.naive.map(r=>r.wrong))),ylab:"wrong values",fmt:v=>Math.round(v)})}</div>
+      </div><p class="note">The team-majority policy closes more findings, but every wrong value it writes closes a finding for good: no rule can tell a plausible wrong value from a right one.</p></div>`; }
+  if(Sv){ const xs=Sv.levels.map(v=>Math.round(v*100)+" %");
+    const pol=[["safe","CLO's policy","var(--s1)"],["majority","Practitioner heuristic","var(--s3)"],["naive","Team majority (8.x)","var(--s2)"]];
+    const ser=f=>pol.map(([k,n,c])=>({n,c,v:Sv.rows.map(r=>100*r[k][f])}));
+    h+=`<div class="panel"><h2>How much of the repair accuracy comes from the generator?</h2>
+      <p class="note">The synthetic estates obey three regularities the value sources exploit: a child shares its parent's context, the environment is the account's, the cost centre is the team's.
+      The sweep breaks each one with the probability on the x axis (${Sv.seeds.length} seeds of ${Sv.n.toLocaleString()} resources).</p>
+      <div class="keyrow">${pol.map(([,n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join("")}</div>
+      <div class="grid2"><div class="chart"><h3>Accuracy of proposed values (%)</h3>${lineChart({series:ser("accuracy"),xs,xv:Sv.levels,ymax:100,ylab:"accuracy",fmt:v=>Math.round(v)})}</div>
+      <div class="chart"><h3>Missing keys that get a proposal (%)</h3>${lineChart({series:ser("coverage"),xs,xv:Sv.levels,ymax:100,ylab:"coverage",fmt:v=>Math.round(v)})}</div></div></div>`; }
+  $("#p-loop").innerHTML=h||`<p class="empty">No loop results in this build.</p>`;
+}
+function renderCorpus(){
+  const c=D.results.corpus, v=D.results.validation, B=D.results.baselines; if(!c){$("#p-corpus").innerHTML=`<p class="empty">No corpus results in this build.</p>`;return;}
+  const ev={A1:"AWS record carries a Tags / TagList / TagSet field",A2:"EC2, Auto Scaling, RDS Describe* embed tags: an absent field means none",A3:"Resource Groups Tagging API record",
+    Z1:"Azure ARM record carries a tags field",G1:"GCP record carries labels or labelFingerprint",N:"listing never returns tags (s3 ListBuckets, iam ListRoles, …)"};
+  let h=`<div class="panel"><h2>Record completeness, derived from the response</h2><p class="note">${c.resources.toLocaleString()} resources recorded by Cloud Custodian's test suite against AWS, Azure and GCP accounts.
+    A record is complete only when the shape of the provider response shows it; the rest receive no closed-world verdict.${v?" Witness check: another observation of the same resource in the same recorded test that shows a key the “complete” record lacks (an upper bound: tests also change tags between calls).":""}</p>
+    <div class="tscroll"><table><thead><tr><th>Rule</th><th>Evidence in the response</th><th class="num">Records</th>${v?`<th class="num">Observations with a sibling</th><th class="num">Contradicted</th>`:""}</tr></thead><tbody>`;
+  ["A1","A2","A3","Z1","G1","N"].forEach(k=>{const pr=v&&v.per_rule[k];
+    h+=`<tr><td><code>${k}</code></td><td>${esc(ev[k])}</td><td class="num">${(c.rules[k]||0).toLocaleString()}</td>${v?`<td class="num">${pr?pr.with_sibling||0:0}</td><td class="num">${pr?(k==="N"?`${pr.sibling_shows_tags||0} show tags`:(pr.contradicted||0)):"–"}</td>`:""}</tr>`;});
+  h+=`</tbody></table></div></div>`;
+  const sp=c.spellings; h+=`<div class="grid2"><div class="panel"><h2>One key, many spellings</h2>`;
+  Object.entries(sp).forEach(([canon,m])=>{const tot=Object.values(m).reduce((a,b)=>a+b,0); h+=`<h3>${esc(canon)}</h3>`;
+    Object.entries(m).forEach(([k,n])=>{h+=`<div class="sp"><code>${esc(k)}</code><span class="bar"><i style="width:${100*n/tot}%"></i></span><span class="mono" style="text-align:right">${n}</span></div>`;});});
+  h+=`<p class="note">CLO reports these as ${(c.root_counts["I-22"]||0).toLocaleString()} renames and ${(c.root_counts["I-25"]||0)} team conventions; an exact-key check reports them as missing keys.</p></div>`;
+  const ex=c.export; h+=`<div class="panel"><h2>Absence without evidence</h2><p class="note">On the ${ex.no_verdict_records} in-scope records without a verdict, an export-based check that reads the listing as it is reports
+    <b>${ex.pairs_on_no_verdict_records.toLocaleString()}</b> missing required keys for which the response carries no evidence. CLO reports none and re-reads them.</p>
+    <div class="tscroll"><table><thead><tr><th>Type</th><th class="num">Records without verdict</th></tr></thead><tbody>${Object.entries(ex.no_verdict_by_kind).slice(0,8).map(([k,n])=>`<tr><td><code>${esc(k)}</code></td><td class="num">${n}</td></tr>`).join("")}</tbody></table></div>
+    ${c.i17_top?`<p class="note">Most frequent unmanaged keys: ${c.i17_top.slice(0,6).map(([k,n])=>`<code>${esc(k)}</code> (${n})`).join(", ")}. Several are written by the test suite itself, a reminder that this corpus validates response shapes and spellings, not compliance.</p>`:""}</div></div>`;
+  if(B){ const row=(k,n)=>B[k]?`<tr><td>${n}</td><td class="num">${B[k].precision.toFixed(3)}</td><td class="num">${B[k].recall.toFixed(3)}</td><td class="num">${B[k].recall_flat!=null?B[k].recall_flat.toFixed(3):"–"}</td></tr>`:"";
+    h+=`<div class="panel"><h2>Missing required keys on synthetic estates (RQ3)</h2><p class="note">“Full” requirement: CLO's reach, with team policies and composition. “Flat”: what every tool can state (organisation, OU, account, category).</p>
+     <div class="tscroll"><table><thead><tr><th>System, reading provider-side tags</th><th class="num">Precision</th><th class="num">Recall, full</th><th class="num">Recall, flat</th></tr></thead><tbody>
+     ${row("A:CLO","CLO")}${row("A:OPA-full","OPA re-implementing CLO's semantics")}${row("A:OPA-team","OPA, idiomatic + team scope")}${row("A:OPA-idiom","OPA, idiomatic")}${row("A:CUSTODIAN","Cloud Custodian")}${row("A:NATIVE+","AWS Config + Azure Policy + GCP constraints")}${row("A:NATIVE","AWS Config + Azure Policy")}
+     </tbody><thead><tr><th>System, reading an export with truncated listings</th><th class="num">Precision</th><th class="num">Recall, full</th><th class="num">Recall, flat</th></tr></thead><tbody>
+     ${row("B:CLO","CLO")}${row("B:OPA-full","OPA re-implementing CLO's semantics")}${row("B:OPA-team","OPA, idiomatic + team scope")}${row("B:OPA-idiom","OPA, idiomatic")}${row("B:CLO-noLC","CLO without local closure")}</tbody></table></div></div>`; }
+  $("#p-corpus").innerHTML=h;
+}
+function renderEnforce(){
+  const e=sc().enforce, cov=sc().enforce_coverage; const files=Object.keys(e);
+  if(!files.includes(S.file)) S.file=files[0];
+  let h=`<div class="panel"><h2>Execute: the derived standard, compiled</h2><p class="note">CLO decides what the standard is; provider tools enforce the part they can express. Requirements with no native equivalent stay in CLO's audit.</p>
+   <div class="tscroll"><table><thead><tr><th>Policy</th><th>Scope</th><th>Keys</th><th>Compiled</th></tr></thead><tbody>${cov.map(c=>`<tr><td>${esc(c.policy)}</td><td><code>${esc(c.scope)}</code></td><td>${esc((c.keys||[]).join(", "))}</td>
+   <td>${c.compiled?`<span class="state-ok">yes</span>`:`<span class="state-nov">CLO only</span> <span class="small muted">${esc(c.why||"")}</span>`}</td></tr>`).join("")}</tbody></table></div></div>
+   <div class="panel"><div class="files">${files.map(f=>`<button class="chip" aria-pressed="${f===S.file}" data-f="${esc(f)}">${esc(f)}</button>`).join("")}</div>
+   <pre class="code" id="code">${esc(e[S.file])}</pre><button class="copy" id="copy">Copy file</button></div>`;
+  $("#p-enforce").innerHTML=h;
+  document.querySelectorAll("#p-enforce .chip").forEach(b=>b.onclick=()=>{S.file=b.dataset.f; renderEnforce();});
+  $("#copy").onclick=async()=>{const b=$("#copy"); try{await navigator.clipboard.writeText(e[S.file]); b.textContent="Copied";}
+    catch(err){const r=document.createRange(); r.selectNodeContents($("#code")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent="Selected: press Ctrl+C";}
+    setTimeout(()=>b.textContent="Copy file",1600);};
+}
+function renderTabs(){
+  document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tab===S.tab));
+  ["audit","loop","corpus","enforce"].forEach(t=>{$("#p-"+t).hidden=t!==S.tab;});
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{S.tab=t.dataset.tab; try{localStorage.setItem("clo-tab",S.tab);}catch(e){} render();});
+function render(){ renderSwitches(); renderTally(); renderTabs(); renderLens(); renderEstate(); renderDetail(); renderStd(); renderEnforce(); }
+const h0=(location.hash||"").slice(1); if(["audit","loop","corpus","enforce"].includes(h0)) S.tab=h0;
+render(); renderLoop(); renderCorpus();
+</script>

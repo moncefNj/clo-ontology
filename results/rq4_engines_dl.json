@@ -1,0 +1,181 @@
+{
+ "rows": [
+  {
+   "n": 250,
+   "labels": 1319,
+   "triples_abox": null,
+   "clo-r": {
+    "wall_s": [
+     0.065,
+     0.084,
+     0.072
+    ],
+    "E": 3515
+   },
+   "owlrl": {
+    "status": "ok",
+    "wall_s": 20.628,
+    "reason_s": 20.276,
+    "E": 3293,
+    "equal_to_clo_r": false,
+    "missing_vs_clo_r": 222,
+    "extra_vs_clo_r": 0,
+    "missing_examples": [
+     "('http://example.org/clo/ontology/clo#r138', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r153', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r45', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')"
+    ]
+   },
+   "hermit": {
+    "status": "ok",
+    "wall_s": 145.317,
+    "reason_s": 144.043,
+    "E": 3515,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   },
+   "pellet": {
+    "status": "ok",
+    "wall_s": 89.488,
+    "reason_s": 88.097,
+    "E": 3515,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   }
+  },
+  {
+   "n": 500,
+   "labels": 2583,
+   "triples_abox": null,
+   "clo-r": {
+    "wall_s": [
+     0.105,
+     0.113,
+     0.137
+    ],
+    "E": 5472
+   },
+   "owlrl": {
+    "status": "ok",
+    "wall_s": 42.802,
+    "reason_s": 42.231,
+    "E": 5034,
+    "equal_to_clo_r": false,
+    "missing_vs_clo_r": 438,
+    "extra_vs_clo_r": 0,
+    "missing_examples": [
+     "('http://example.org/clo/ontology/clo#r396', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r45', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r484', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')"
+    ]
+   },
+   "hermit": {
+    "status": "ok",
+    "wall_s": 569.28,
+    "reason_s": 567.021,
+    "E": 5472,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   },
+   "pellet": {
+    "status": "ok",
+    "wall_s": 429.13,
+    "reason_s": 427.071,
+    "E": 5472,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   }
+  },
+  {
+   "n": 1000,
+   "labels": 5187,
+   "triples_abox": null,
+   "clo-r": {
+    "wall_s": [
+     0.23,
+     0.234,
+     0.216
+    ],
+    "E": 9174
+   },
+   "owlrl": {
+    "status": "ok",
+    "wall_s": 127.139,
+    "reason_s": 126.122,
+    "E": 8295,
+    "equal_to_clo_r": false,
+    "missing_vs_clo_r": 879,
+    "extra_vs_clo_r": 0,
+    "missing_examples": [
+     "('http://example.org/clo/ontology/clo#r45', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r484', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r665', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')"
+    ]
+   },
+   "hermit": {
+    "status": "ok",
+    "wall_s": 3003.11,
+    "reason_s": 2999.438,
+    "E": 9174,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   },
+   "pellet": {
+    "status": "ok",
+    "wall_s": 2313.816,
+    "reason_s": 2309.592,
+    "E": 9174,
+    "equal_to_clo_r": true,
+    "missing_vs_clo_r": 0,
+    "extra_vs_clo_r": 0,
+    "missing_examples": []
+   }
+  },
+  {
+   "n": 2000,
+   "labels": 10039,
+   "triples_abox": null,
+   "clo-r": {
+    "wall_s": [
+     0.605,
+     0.696,
+     0.485
+    ],
+    "E": 16624
+   },
+   "owlrl": {
+    "status": "ok",
+    "wall_s": 395.591,
+    "reason_s": 393.484,
+    "E": 14888,
+    "equal_to_clo_r": false,
+    "missing_vs_clo_r": 1736,
+    "extra_vs_clo_r": 0,
+    "missing_examples": [
+     "('http://example.org/clo/ontology/clo#r1343', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r1678', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')",
+     "('http://example.org/clo/ontology/clo#r528', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://example.org/clo/ontology/clo#LabeledResource')"
+    ]
+   },
+   "hermit": {
+    "status": "timeout",
+    "wall_s": 1802.54
+   },
+   "pellet": {
+    "status": "timeout",
+    "wall_s": 1805.79
+   }
+  }
+ ],
+ "seed": 1
+}

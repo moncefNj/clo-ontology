@@ -1,0 +1,87 @@
+{
+ "triples": 1562,
+ "classes": 110,
+ "obj_props": 28,
+ "data_props": 35,
+ "chains": 8,
+ "defined": 22,
+ "disjointWith": 118,
+ "disjoint_pairs": 113,
+ "named_individuals": 69,
+ "basekinds": 40,
+ "providers": 11,
+ "categories": 13,
+ "functional_props": 7,
+ "transitive": 2,
+ "haskey": 1,
+ "alldifferent": 2,
+ "labels_en": 179,
+ "comments_en": 182,
+ "non_operative": 2,
+ "types_triples": 981,
+ "types": 165,
+ "types_by_provider": {
+  "AWS": 50,
+  "Azure": 59,
+  "DigitalOcean": 11,
+  "DockerHub": 1,
+  "GCP": 31,
+  "GitHub": 2,
+  "Kubernetes": 6,
+  "OneLogin": 2,
+  "Slack": 3
+ },
+ "support": {
+  "full": 101,
+  "none": 47,
+  "unknown": 17
+ },
+ "basekinds_used": 39,
+ "unmapped": 439,
+ "phantom": 14,
+ "basekind_unused": [
+  "RouteKind"
+ ],
+ "curated_rows": 151,
+ "evidence_domains": {
+  "docs.aws.amazon.com": 47,
+  "learn.microsoft.com": 41,
+  "github.com": 11,
+  "docs.digitalocean.com": 10,
+  "docs.docker.com": 1,
+  "docs.cloud.google.com": 29,
+  "docs.github.com": 2,
+  "kubernetes.io": 5,
+  "developers.onelogin.com": 2,
+  "api.slack.com": 3
+ },
+ "types_by_category": {
+  "Networking": 44,
+  "Storage": 22,
+  "Compute": 20,
+  "Security": 20,
+  "AIML": 15,
+  "Database": 14,
+  "Identity": 10,
+  "Secret": 9,
+  "Governance": 4,
+  "Container": 4,
+  "Messaging": 3
+ },
+ "test_abox_triples": 179,
+ "test_resources": 9,
+ "clo_entities": 192,
+ "entities_with_en_label": 192,
+ "curation": {
+  "full": 101,
+  "none": 33,
+  "unknown": 17
+ },
+ "curation_verdicts": 134,
+ "tests": 26,
+ "batched_800_identical": {
+  "class_assertions": 2996,
+  "policy_assertions": 681
+ },
+ "categories_in_use": 11
+}

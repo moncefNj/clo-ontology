@@ -1,0 +1,4897 @@
+{
+ "fixinventory_commit": "211833381fdd07690bc789d30ffc2bd84a67744e",
+ "types": 165,
+ "by_provider": {
+  "AWS": 50,
+  "Azure": 59,
+  "DigitalOcean": 11,
+  "DockerHub": 1,
+  "GCP": 31,
+  "GitHub": 2,
+  "Kubernetes": 6,
+  "OneLogin": 2,
+  "Slack": 3
+ },
+ "by_support": {
+  "full": 101,
+  "none": 47,
+  "unknown": 17
+ },
+ "by_provider_support": {
+  "AWS": {
+   "full": 41,
+   "none": 8,
+   "unknown": 1
+  },
+  "Azure": {
+   "none": 17,
+   "full": 31,
+   "unknown": 11
+  },
+  "DigitalOcean": {
+   "full": 4,
+   "none": 2,
+   "unknown": 5
+  },
+  "DockerHub": {
+   "none": 1
+  },
+  "GCP": {
+   "full": 21,
+   "none": 10
+  },
+  "GitHub": {
+   "none": 2
+  },
+  "Kubernetes": {
+   "none": 2,
+   "full": 4
+  },
+  "OneLogin": {
+   "none": 2
+  },
+  "Slack": {
+   "none": 3
+  }
+ },
+ "by_basekind": {
+  "AccountKind": 10,
+  "CertificateKind": 9,
+  "LoadBalancerKind": 7,
+  "AutoScalingGroupKind": 4,
+  "AIModelKind": 5,
+  "AIJobKind": 10,
+  "StackKind": 1,
+  "ServerlessFunctionKind": 4,
+  "UserKind": 7,
+  "DatabaseKind": 12,
+  "IPAddressKind": 4,
+  "InstanceKind": 7,
+  "InstanceTypeKind": 5,
+  "GatewayKind": 10,
+  "KeypairKind": 2,
+  "NetworkACLKind": 1,
+  "NetworkInterfaceKind": 2,
+  "RoutingTableKind": 2,
+  "SecurityGroupKind": 2,
+  "SnapshotKind": 6,
+  "SubnetKind": 3,
+  "VolumeKind": 5,
+  "VolumeTypeKind": 3,
+  "NetworkShareKind": 3,
+  "ManagedKubernetesClusterKind": 4,
+  "AccessKeyKind": 2,
+  "GroupKind": 4,
+  "PolicyKind": 2,
+  "RoleKind": 3,
+  "DNSRecordKind": 1,
+  "DNSZoneKind": 2,
+  "BucketKind": 5,
+  "QuotaKind": 3,
+  "QueueKind": 3,
+  "NetworkKind": 4,
+  "EndpointKind": 1,
+  "PeeringConnectionKind": 2,
+  "FirewallKind": 3,
+  "DatabaseInstanceTypeKind": 2
+ },
+ "basekinds_used": 39,
+ "phantom": 14,
+ "unmapped_resource_classes": {
+  "AWS": 124,
+  "Azure": 189,
+  "GCP": 75,
+  "Kubernetes": 38,
+  "DigitalOcean": 6,
+  "GitHub": 4,
+  "DockerHub": 1,
+  "Slack": 1,
+  "OneLogin": 1
+ },
+ "unmapped_kinds": [
+  {
+   "kind": "aws_alb_target_group",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_authorizer",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_deployment",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_domain_name",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_resource",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_rest_api",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_apigateway_stage",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_athena_data_catalog",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_athena_work_group",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_copy_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_framework",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_legal_hold",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_plan",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_protected_resource",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_recovery_point",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_report_plan",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_restore_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_restore_testing_plan",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_backup_vault",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_beanstalk_application",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_beanstalk_environment",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_agent",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_agent_flow",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_agent_flow_version",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_agent_knowledge_base",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_agent_prompt",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_guardrail",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_bedrock_provisioned_model_throughput",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloud_formation_stack_instance_summary",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloud_trail",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudformation_stack_set",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_cache_policy",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_distribution",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_field_level_encryption_config",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_field_level_encryption_profile",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_origin_access_control",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_public_key",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_realtime_log_config",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_response_headers_policy",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudfront_streaming_distribution",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudwatch_alarm",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudwatch_log_group",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cloudwatch_metric_filter",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cognito_group",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_cognito_user_pool",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_config_recorder",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_dynamodb_global_table",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_ec2_flow_log",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ec2_host",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ec2_image",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ec2_launch_template",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ec2_reserved_instances",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecr_repository",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_ecs_capacity_provider",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecs_cluster",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecs_container_instance",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecs_service",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecs_task",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ecs_task_definition",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_efs_access_point",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_efs_mount_target",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_eks_nodegroup",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_elasticache_cache_cluster",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_elasticache_replication_group",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_glacier_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_glacier_vault",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_guard_duty_finding",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "aws_iam_instance_profile",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseInstanceProfile",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_inspector_finding",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "aws_kinesis_stream",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_opensearch_domain",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_organizational_root",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseOrganizationalRoot",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_organizational_unit",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseOrganizationalUnit",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_apps",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_apps_library_item",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_application",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_conversation",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_data_source",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_data_source_sync_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_document",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_indice",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_message",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_plugin",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_retriever",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_q_business_web_experience",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_rds_cluster_snapshot",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_redshift_cluster",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_region",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "aws_resource",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_route53_resource_record_set",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseDNSRecordSet",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_s3_account_settings",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_algorithm",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_app",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_artifact",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_auto_ml_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_code_repository",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_compilation_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_domain",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_endpoint",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_experiment",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_hyper_parameter_tuning_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_image",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_inference_recommendations_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_labeling_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_model",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_notebook",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_pipeline",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_processing_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_project",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_training_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_transform_job",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_trial",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_user_profile",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sagemaker_workteam",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_secretsmanager_secret",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_sns_endpoint",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sns_platform_application",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sns_subscription",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_sns_topic",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "HasResourcePolicy"
+   ]
+  },
+  {
+   "kind": "aws_ssm_document",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ssm_instance",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "aws_ssm_resource_compliance",
+   "provider": "AWS",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_authorization_deny_assignment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_authorization_management_lock",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_authorization_role_assignment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_availability_set",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_capacity_reservation_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_cloud_service",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_dedicated_host_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_disk_access",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_disk_encryption_set",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_disk_type_pricing",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_gallery",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_image",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_proximity_placement_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_compute_restore_point_collection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_container_service_fleet",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_account_usage",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_cassandra_cluster",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_cassandra_cluster_data_center",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_cassandra_cluster_public_status",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_cassandra_keyspace",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_cassandra_table",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_gremlin_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_gremlin_graph",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_location",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_mongo_db_cluster",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_mongo_db_collection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_mongo_db_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_mongo_db_role_definition",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_mongo_db_user_definition",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_notebook_workspace",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_private_endpoint_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_private_link",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_role",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_server_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_private_link",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_account",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_gremlin_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_gremlin_graph",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_mongo_db_collection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_mongo_db_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_sql_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_sql_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_restorable_table",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_database_client_encryption_key",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_database_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_role_assignment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_role_definition",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_sql_throughput_setting",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_cosmos_db_table",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_key_vault",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_key_vault_key",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_key_vault_managed_hsm",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_key_vault_secret",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_location",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_batch_endpoint",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_compute",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_compute_node",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_datastore",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_endpoint",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_environment_version_base",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_feature",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_featureset_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_featureset_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_featurestore_entity_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_featurestore_entity_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_online_endpoint",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_private_endpoint_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_private_link",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_quota",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_code_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_code_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_component_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_component_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_data_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_data_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_environment_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_environment_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_registry_model_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_schedule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_serverless_endpoint",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_usage",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_code_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_code_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_component_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_component_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_data_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_data_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_environment_container",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_environment_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_machine_learning_workspace_model_version",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_action_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_activity_log_alert",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_data_collection_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_diagnostic_settings",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_log_profile",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_metric_alert",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_pipeline_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_private_link_scope",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_scheduled_query_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_monitor_workspace",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_ad_administrator",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_backup",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_firewall_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_log_file",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_mysql_server_maintenance",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_application_gateway_firewall_rule_set",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_bastion_host",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_custom_ip_prefix",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_ddos_protection_plan",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_dns_record_set",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseDNSRecordSet",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_dscp_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_express_route_circuit",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_express_route_cross_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_express_route_port",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_express_route_ports_location",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_flow_log",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_ip_allocation",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_ip_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_load_balancer_probe",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseHealthCheck",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_nat_gateway",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_private_link_service",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_profile",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_public_ip_prefix",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_route_filter",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_security_partner_provider",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_appliance",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_appliance_sku",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_hub",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_network_gateway_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "BaseTunnel"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_network_tap",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_router",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_wan",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_virtual_wan_vpn_connection",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "BaseTunnel"
+   ]
+  },
+  {
+   "kind": "azure_network_vpn_server_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_watcher",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_network_web_application_firewall_policy",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_postgresql_ad_administrator",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_postgresql_server_backup",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_postgresql_server_configuration",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_postgresql_server_database",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_postgresql_server_firewall_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_security_assessment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_security_auto_provisioning_setting",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_security_pricing",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_security_server_vulnerability_assessments_setting",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_security_setting",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_ad_administrator",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_advisor",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_database_geo_backup_policy",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_database_workload_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_elastic_pool",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_failover_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_firewall_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_job_agent",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_managed_instance",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_managed_instance_ad_administrator",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_managed_instance_failover_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_managed_instance_pool",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_trust_group",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_virtual_cluster",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_sql_server_virtual_network_rule",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_storage_account",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_storage_account_deleted",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_storage_account_usage",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_storage_sku",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_storage_table",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_usage",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_app_service_plan",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_app_static_site",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_certificate",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_container_app",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_domain",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_hosting_environment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "azure_web_kube_environment",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_graph_device",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_graph_entity",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_graph_organization_root",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_graph_policy",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_graph_service_principal",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "microsoft_resource",
+   "provider": "Azure",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_app",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_droplet_neighborhood",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_image",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_project",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_region",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "digitalocean_resource",
+   "provider": "DigitalOcean",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "dockerhub_repository",
+   "provider": "DockerHub",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_accelerator_type",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_backend_service",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_billing_account",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_commitment",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_container_operation",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_filestore_backup",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_filestore_instance_snapshot",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_firestore_backup",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_firestore_document",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_firewall_policy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_health_check",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseHealthCheck",
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_health_check_service",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_http_health_check",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_https_health_check",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_image",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_instance_group_manager",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_instance_template",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_interconnect",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_interconnect_attachment",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_interconnect_location",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_license",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_machine_image",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_network_edge_security_service",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_network_endpoint_group",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_node_group",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_node_template",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_node_type",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_notification_endpoint",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_object",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_operation",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_packet_mirroring",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_project_billing_info",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_public_advertised_prefix",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_public_delegated_prefix",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_pubsub_snapshot",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_pubsub_topic",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_region",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_region_quota",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_resource",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_resource_policy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_route",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_router",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_scc_finding",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_security_policy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_service",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_service_attachment",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_sku",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_sql_backup_run",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_sql_database",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_sql_operation",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_sql_user",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_ssl_policy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_grpc_proxy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_http_proxy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_https_proxy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_instance",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_pool",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_ssl_proxy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_tcp_proxy",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_target_vpn_gateway",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_url_map",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_dataset",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_dataset_version",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_endpoint",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_feature",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_feature_group",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_featurestore",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_index",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_index_endpoint",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_model_evaluation",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_schedule",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_tensorboard",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vertex_ai_training_pipeline",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "gcp_vpn_tunnel",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource",
+    "BaseTunnel"
+   ]
+  },
+  {
+   "kind": "gcp_zone",
+   "provider": "GCP",
+   "fixlib_bases": [
+    "BaseResource",
+    "BaseZone",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "github_org",
+   "provider": "GitHub",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "github_pull_request",
+   "provider": "GitHub",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "github_region",
+   "provider": "GitHub",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "github_repo",
+   "provider": "GitHub",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_cluster_role",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_cluster_role_binding",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_config_map",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_controller_revision",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_cron_job",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_csi_driver",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_csi_node",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_csi_storage_capacity",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_daemon_set",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_deployment",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_endpoint",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_endpoint_slice",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_flow_schema",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_horizontal_pod_autoscaler",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_ingress_class",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_job",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_limit_range",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_mutating_webhook_configuration",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_namespace",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_network_policy",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_persistent_volume_claim",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_pod",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_pod_disruption_budget",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_pod_template",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_priority_class",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_priority_level_configuration",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_replica_set",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_replication_controller",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_resource",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_role",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_role_binding",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_runtime_class",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_secret",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_service_account",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_stateful_set",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_storage_class",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_validating_webhook_configuration",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "kubernetes_volume_attachment",
+   "provider": "Kubernetes",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  },
+  {
+   "kind": "onelogin_region",
+   "provider": "OneLogin",
+   "fixlib_bases": [
+    "BaseRegion",
+    "BaseResource",
+    "PhantomBaseResource"
+   ]
+  },
+  {
+   "kind": "slack_conversation",
+   "provider": "Slack",
+   "fixlib_bases": [
+    "BaseResource"
+   ]
+  }
+ ],
+ "ambiguous": [],
+ "rows": [
+  {
+   "kind": "aws_account",
+   "provider": "AWS",
+   "basekind": "AccountKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsAccount",
+   "file": "plugins/aws/fix_plugin_aws/resource/base.py",
+   "evidence": "https://docs.aws.amazon.com/organizations/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_acm_certificate",
+   "provider": "AWS",
+   "basekind": "CertificateKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsAcmCertificate",
+   "file": "plugins/aws/fix_plugin_aws/resource/acm.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html"
+  },
+  {
+   "kind": "aws_alb",
+   "provider": "AWS",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsAlb",
+   "file": "plugins/aws/fix_plugin_aws/resource/elbv2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html"
+  },
+  {
+   "kind": "aws_autoscaling_group",
+   "provider": "AWS",
+   "basekind": "AutoScalingGroupKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsAutoScalingGroup",
+   "file": "plugins/aws/fix_plugin_aws/resource/autoscaling.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html"
+  },
+  {
+   "kind": "aws_bedrock_custom_model",
+   "provider": "AWS",
+   "basekind": "AIModelKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsBedrockCustomModel",
+   "file": "plugins/aws/fix_plugin_aws/resource/bedrock.py",
+   "evidence": "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_bedrock_evaluation_job",
+   "provider": "AWS",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsBedrockEvaluationJob",
+   "file": "plugins/aws/fix_plugin_aws/resource/bedrock.py",
+   "evidence": "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_bedrock_foundation_model",
+   "provider": "AWS",
+   "basekind": "AIModelKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AwsBedrockFoundationModel",
+   "file": "plugins/aws/fix_plugin_aws/resource/bedrock.py",
+   "evidence": "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_bedrock_model_customization_job",
+   "provider": "AWS",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsBedrockModelCustomizationJob",
+   "file": "plugins/aws/fix_plugin_aws/resource/bedrock.py",
+   "evidence": "https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_cloudformation_stack",
+   "provider": "AWS",
+   "basekind": "StackKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsCloudFormationStack",
+   "file": "plugins/aws/fix_plugin_aws/resource/cloudformation.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stack.html"
+  },
+  {
+   "kind": "aws_cloudfront_function",
+   "provider": "AWS",
+   "basekind": "ServerlessFunctionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsCloudFrontFunction",
+   "file": "plugins/aws/fix_plugin_aws/resource/cloudfront.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html"
+  },
+  {
+   "kind": "aws_cognito_user",
+   "provider": "AWS",
+   "basekind": "UserKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AwsCognitoUser",
+   "file": "plugins/aws/fix_plugin_aws/resource/cognito.py",
+   "evidence": "https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_TagResource.html"
+  },
+  {
+   "kind": "aws_dynamodb_table",
+   "provider": "AWS",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsDynamoDbTable",
+   "file": "plugins/aws/fix_plugin_aws/resource/dynamodb.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html"
+  },
+  {
+   "kind": "aws_ec2_elastic_ip",
+   "provider": "AWS",
+   "basekind": "IPAddressKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2ElasticIp",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-eip.html"
+  },
+  {
+   "kind": "aws_ec2_instance",
+   "provider": "AWS",
+   "basekind": "InstanceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2Instance",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instance.html"
+  },
+  {
+   "kind": "aws_ec2_instance_type",
+   "provider": "AWS",
+   "basekind": "InstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AwsEc2InstanceType",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "aws_ec2_internet_gateway",
+   "provider": "AWS",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2InternetGateway",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html"
+  },
+  {
+   "kind": "aws_ec2_keypair",
+   "provider": "AWS",
+   "basekind": "KeypairKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2KeyPair",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html"
+  },
+  {
+   "kind": "aws_ec2_nat_gateway",
+   "provider": "AWS",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2NatGateway",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html"
+  },
+  {
+   "kind": "aws_ec2_network_acl",
+   "provider": "AWS",
+   "basekind": "NetworkACLKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2NetworkAcl",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkacl.html"
+  },
+  {
+   "kind": "aws_ec2_network_interface",
+   "provider": "AWS",
+   "basekind": "NetworkInterfaceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2NetworkInterface",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterface.html"
+  },
+  {
+   "kind": "aws_ec2_route_table",
+   "provider": "AWS",
+   "basekind": "RoutingTableKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2RouteTable",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routetable.html"
+  },
+  {
+   "kind": "aws_ec2_security_group",
+   "provider": "AWS",
+   "basekind": "SecurityGroupKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2SecurityGroup",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-securitygroup.html"
+  },
+  {
+   "kind": "aws_ec2_snapshot",
+   "provider": "AWS",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2Snapshot",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshot.html"
+  },
+  {
+   "kind": "aws_ec2_subnet",
+   "provider": "AWS",
+   "basekind": "SubnetKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2Subnet",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html"
+  },
+  {
+   "kind": "aws_ec2_volume",
+   "provider": "AWS",
+   "basekind": "VolumeKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2Volume",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html"
+  },
+  {
+   "kind": "aws_ec2_volume_type",
+   "provider": "AWS",
+   "basekind": "VolumeTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AwsEc2VolumeType",
+   "file": "plugins/aws/fix_plugin_aws/resource/base.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "aws_efs_file_system",
+   "provider": "AWS",
+   "basekind": "NetworkShareKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEfsFileSystem",
+   "file": "plugins/aws/fix_plugin_aws/resource/efs.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html"
+  },
+  {
+   "kind": "aws_eks_cluster",
+   "provider": "AWS",
+   "basekind": "ManagedKubernetesClusterKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEksCluster",
+   "file": "plugins/aws/fix_plugin_aws/resource/eks.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-cluster.html"
+  },
+  {
+   "kind": "aws_elb",
+   "provider": "AWS",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsElb",
+   "file": "plugins/aws/fix_plugin_aws/resource/elb.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancing-loadbalancer.html"
+  },
+  {
+   "kind": "aws_iam_access_key",
+   "provider": "AWS",
+   "basekind": "AccessKeyKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AwsIamAccessKey",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html"
+  },
+  {
+   "kind": "aws_iam_group",
+   "provider": "AWS",
+   "basekind": "GroupKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AwsIamGroup",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html"
+  },
+  {
+   "kind": "aws_iam_policy",
+   "provider": "AWS",
+   "basekind": "PolicyKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsIamPolicy",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/IAM/latest/APIReference/API_TagPolicy.html"
+  },
+  {
+   "kind": "aws_iam_role",
+   "provider": "AWS",
+   "basekind": "RoleKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsIamRole",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html"
+  },
+  {
+   "kind": "aws_iam_server_certificate",
+   "provider": "AWS",
+   "basekind": "CertificateKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsIamServerCertificate",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-servercertificate.html"
+  },
+  {
+   "kind": "aws_iam_user",
+   "provider": "AWS",
+   "basekind": "UserKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsIamUser",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html"
+  },
+  {
+   "kind": "aws_kms_key",
+   "provider": "AWS",
+   "basekind": "AccessKeyKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsKmsKey",
+   "file": "plugins/aws/fix_plugin_aws/resource/kms.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html"
+  },
+  {
+   "kind": "aws_lambda_function",
+   "provider": "AWS",
+   "basekind": "ServerlessFunctionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsLambdaFunction",
+   "file": "plugins/aws/fix_plugin_aws/resource/lambda_.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html"
+  },
+  {
+   "kind": "aws_rds_cluster",
+   "provider": "AWS",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsRdsCluster",
+   "file": "plugins/aws/fix_plugin_aws/resource/rds.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html"
+  },
+  {
+   "kind": "aws_rds_instance",
+   "provider": "AWS",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsRdsInstance",
+   "file": "plugins/aws/fix_plugin_aws/resource/rds.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html"
+  },
+  {
+   "kind": "aws_rds_snapshot",
+   "provider": "AWS",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsRdsSnapshot",
+   "file": "plugins/aws/fix_plugin_aws/resource/rds.py",
+   "evidence": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html"
+  },
+  {
+   "kind": "aws_root_user",
+   "provider": "AWS",
+   "basekind": "UserKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AwsRootUser",
+   "file": "plugins/aws/fix_plugin_aws/resource/iam.py",
+   "evidence": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html"
+  },
+  {
+   "kind": "aws_route53_resource_record",
+   "provider": "AWS",
+   "basekind": "DNSRecordKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AwsRoute53ResourceRecord",
+   "file": "plugins/aws/fix_plugin_aws/resource/route53.py",
+   "evidence": "https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeTagsForResource.html"
+  },
+  {
+   "kind": "aws_route53_zone",
+   "provider": "AWS",
+   "basekind": "DNSZoneKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsRoute53Zone",
+   "file": "plugins/aws/fix_plugin_aws/resource/route53.py",
+   "evidence": "https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeTagsForResource.html"
+  },
+  {
+   "kind": "aws_s3_bucket",
+   "provider": "AWS",
+   "basekind": "BucketKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsS3Bucket",
+   "file": "plugins/aws/fix_plugin_aws/resource/s3.py",
+   "evidence": "https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html"
+  },
+  {
+   "kind": "aws_service_quota",
+   "provider": "AWS",
+   "basekind": "QuotaKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AwsServiceQuota",
+   "file": "plugins/aws/fix_plugin_aws/resource/service_quotas.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "aws_sqs_queue",
+   "provider": "AWS",
+   "basekind": "QueueKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsSqsQueue",
+   "file": "plugins/aws/fix_plugin_aws/resource/sqs.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html"
+  },
+  {
+   "kind": "aws_vpc",
+   "provider": "AWS",
+   "basekind": "NetworkKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2Vpc",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html"
+  },
+  {
+   "kind": "aws_vpc_endpoint",
+   "provider": "AWS",
+   "basekind": "EndpointKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2VpcEndpoint",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html"
+  },
+  {
+   "kind": "aws_vpc_peering_connection",
+   "provider": "AWS",
+   "basekind": "PeeringConnectionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsEc2VpcPeeringConnection",
+   "file": "plugins/aws/fix_plugin_aws/resource/ec2.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html"
+  },
+  {
+   "kind": "aws_waf_web_acl",
+   "provider": "AWS",
+   "basekind": "FirewallKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AwsWafWebACL",
+   "file": "plugins/aws/fix_plugin_aws/resource/waf.py",
+   "evidence": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html"
+  },
+  {
+   "kind": "azure_authorization_role_definition",
+   "provider": "Azure",
+   "basekind": "RoleKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureAuthorizationRoleDefinition",
+   "file": "plugins/azure/fix_plugin_azure/resource/authorization.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_compute_disk",
+   "provider": "Azure",
+   "basekind": "VolumeKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureComputeDisk",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_disk_type",
+   "provider": "Azure",
+   "basekind": "VolumeTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureComputeDiskType",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_compute_ssh_public_key",
+   "provider": "Azure",
+   "basekind": "KeypairKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureComputeSshPublicKey",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_virtual_machine",
+   "provider": "Azure",
+   "basekind": "InstanceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureComputeVirtualMachine",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_virtual_machine_base",
+   "provider": "Azure",
+   "basekind": "InstanceKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureComputeVirtualMachineBase",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_virtual_machine_scale_set",
+   "provider": "Azure",
+   "basekind": "AutoScalingGroupKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureComputeVirtualMachineScaleSet",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_virtual_machine_scale_set_instance",
+   "provider": "Azure",
+   "basekind": "InstanceKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureComputeVirtualMachineScaleSetInstance",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_compute_virtual_machine_size",
+   "provider": "Azure",
+   "basekind": "InstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureComputeVirtualMachineSize",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_compute_virtual_machine_snapshot",
+   "provider": "Azure",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureComputeVirtualMachineSnapshot",
+   "file": "plugins/azure/fix_plugin_azure/resource/compute.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_container_service_managed_cluster",
+   "provider": "Azure",
+   "basekind": "ManagedKubernetesClusterKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureContainerServiceManagedCluster",
+   "file": "plugins/azure/fix_plugin_azure/resource/containerservice.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_container_service_managed_cluster_snapshot",
+   "provider": "Azure",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureContainerServiceManagedClusterSnapshot",
+   "file": "plugins/azure/fix_plugin_azure/resource/containerservice.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_cosmos_db_account",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureCosmosDBAccount",
+   "file": "plugins/azure/fix_plugin_azure/resource/cosmosdb.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_cosmos_db_postgresql_cluster_server",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureCosmosDBPostgresqlClusterServer",
+   "file": "plugins/azure/fix_plugin_azure/resource/cosmosdb.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_machine_learning_job",
+   "provider": "Azure",
+   "basekind": "AIJobKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureMachineLearningJob",
+   "file": "plugins/azure/fix_plugin_azure/resource/machinelearning.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_machine_learning_labeling_job",
+   "provider": "Azure",
+   "basekind": "AIJobKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureMachineLearningLabelingJob",
+   "file": "plugins/azure/fix_plugin_azure/resource/machinelearning.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_machine_learning_registry_model_container",
+   "provider": "Azure",
+   "basekind": "AIModelKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureMachineLearningRegistryModelContainer",
+   "file": "plugins/azure/fix_plugin_azure/resource/machinelearning.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_machine_learning_virtual_machine_size",
+   "provider": "Azure",
+   "basekind": "InstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureMachineLearningVirtualMachineSize",
+   "file": "plugins/azure/fix_plugin_azure/resource/machinelearning.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_machine_learning_workspace_model_container",
+   "provider": "Azure",
+   "basekind": "AIModelKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureMachineLearningWorkspaceModelContainer",
+   "file": "plugins/azure/fix_plugin_azure/resource/machinelearning.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_mysql_server",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureMysqlServer",
+   "file": "plugins/azure/fix_plugin_azure/resource/mysql.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_mysql_server_type",
+   "provider": "Azure",
+   "basekind": "DatabaseInstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureMysqlServerType",
+   "file": "plugins/azure/fix_plugin_azure/resource/mysql.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_network_application_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkApplicationGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_application_gateway_authentication_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkApplicationGatewayAuthenticationCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_application_gateway_ssl_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkApplicationGatewaySslCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_application_gateway_trusted_client_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkApplicationGatewayTrustedClientCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_application_gateway_trusted_root_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkApplicationGatewayTrustedRootCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_dns_zone",
+   "provider": "Azure",
+   "basekind": "DNSZoneKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkDNSZone",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_express_route_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkExpressRouteGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_firewall",
+   "provider": "Azure",
+   "basekind": "FirewallKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkFirewall",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_firewall_policy",
+   "provider": "Azure",
+   "basekind": "PolicyKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkFirewallPolicy",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_interface",
+   "provider": "Azure",
+   "basekind": "NetworkInterfaceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkInterface",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_load_balancer",
+   "provider": "Azure",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkLoadBalancer",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_local_network_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkLocalNetworkGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_p2_s_vpn_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkP2SVpnGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_public_ip_address",
+   "provider": "Azure",
+   "basekind": "IPAddressKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkPublicIPAddress",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_route_table",
+   "provider": "Azure",
+   "basekind": "RoutingTableKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkRouteTable",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_security_group",
+   "provider": "Azure",
+   "basekind": "SecurityGroupKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkSecurityGroup",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_subnet",
+   "provider": "Azure",
+   "basekind": "SubnetKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "AzureNetworkSubnet",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_usage",
+   "provider": "Azure",
+   "basekind": "QuotaKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzureNetworkUsage",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_network_virtual_network",
+   "provider": "Azure",
+   "basekind": "NetworkKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkVirtualNetwork",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_virtual_network_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkVirtualNetworkGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_virtual_wan_vpn_gateway",
+   "provider": "Azure",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkVirtualWANVpnGateway",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_network_vpn_client_revoked_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkVpnClientRevokedCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_vpn_client_root_certificate",
+   "provider": "Azure",
+   "basekind": "CertificateKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureNetworkVpnClientRootCertificate",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_network_vpn_site",
+   "provider": "Azure",
+   "basekind": "PeeringConnectionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureNetworkVpnSite",
+   "file": "plugins/azure/fix_plugin_azure/resource/network.py",
+   "evidence": "https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv"
+  },
+  {
+   "kind": "azure_postgresql_server",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzurePostgresqlServer",
+   "file": "plugins/azure/fix_plugin_azure/resource/postgresql.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_postgresql_server_type",
+   "provider": "Azure",
+   "basekind": "DatabaseInstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "AzurePostgresqlServerType",
+   "file": "plugins/azure/fix_plugin_azure/resource/postgresql.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "azure_resource_group",
+   "provider": "Azure",
+   "basekind": "GroupKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureResourceGroup",
+   "file": "plugins/azure/fix_plugin_azure/resource/base.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_sql_server_database",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureSqlServerDatabase",
+   "file": "plugins/azure/fix_plugin_azure/resource/sql_server.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_sql_server_managed_instance_database",
+   "provider": "Azure",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureSqlServerManagedInstanceDatabase",
+   "file": "plugins/azure/fix_plugin_azure/resource/sql_server.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_storage_blob_container",
+   "provider": "Azure",
+   "basekind": "BucketKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureStorageBlobContainer",
+   "file": "plugins/azure/fix_plugin_azure/resource/storage.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_storage_file_share",
+   "provider": "Azure",
+   "basekind": "NetworkShareKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureStorageFileShare",
+   "file": "plugins/azure/fix_plugin_azure/resource/storage.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_storage_queue",
+   "provider": "Azure",
+   "basekind": "QueueKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "AzureStorageQueue",
+   "file": "plugins/azure/fix_plugin_azure/resource/storage.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_subscription",
+   "provider": "Azure",
+   "basekind": "AccountKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureSubscription",
+   "file": "plugins/azure/fix_plugin_azure/resource/base.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "azure_web_app",
+   "provider": "Azure",
+   "basekind": "ServerlessFunctionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "AzureWebApp",
+   "file": "plugins/azure/fix_plugin_azure/resource/web.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support"
+  },
+  {
+   "kind": "microsoft_graph_group",
+   "provider": "Azure",
+   "basekind": "GroupKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "MicrosoftGraphGroup",
+   "file": "plugins/azure/fix_plugin_azure/resource/microsoft_graph.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles"
+  },
+  {
+   "kind": "microsoft_graph_organization",
+   "provider": "Azure",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "MicrosoftGraphOrganization",
+   "file": "plugins/azure/fix_plugin_azure/resource/microsoft_graph.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles"
+  },
+  {
+   "kind": "microsoft_graph_role",
+   "provider": "Azure",
+   "basekind": "RoleKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "MicrosoftGraphRole",
+   "file": "plugins/azure/fix_plugin_azure/resource/microsoft_graph.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles"
+  },
+  {
+   "kind": "microsoft_graph_user",
+   "provider": "Azure",
+   "basekind": "UserKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "MicrosoftGraphUser",
+   "file": "plugins/azure/fix_plugin_azure/resource/microsoft_graph.py",
+   "evidence": "https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles"
+  },
+  {
+   "kind": "digitalocean_database",
+   "provider": "DigitalOcean",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "DigitalOceanDatabase",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_droplet",
+   "provider": "DigitalOcean",
+   "basekind": "InstanceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "DigitalOceanDroplet",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_droplet_size",
+   "provider": "DigitalOcean",
+   "basekind": "InstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "DigitalOceanDropletSize",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "digitalocean_floating_ip",
+   "provider": "DigitalOcean",
+   "basekind": "IPAddressKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "DigitalOceanFloatingIP",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_kubernetes_cluster",
+   "provider": "DigitalOcean",
+   "basekind": "ManagedKubernetesClusterKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "DigitalOceanKubernetesCluster",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Kubernetes"
+  },
+  {
+   "kind": "digitalocean_load_balancer",
+   "provider": "DigitalOcean",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "DigitalOceanLoadBalancer",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Load-Balancers"
+  },
+  {
+   "kind": "digitalocean_snapshot",
+   "provider": "DigitalOcean",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "DigitalOceanSnapshot",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_space",
+   "provider": "DigitalOcean",
+   "basekind": "BucketKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "DigitalOceanSpace",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/products/spaces/"
+  },
+  {
+   "kind": "digitalocean_team",
+   "provider": "DigitalOcean",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "DigitalOceanTeam",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_volume",
+   "provider": "DigitalOcean",
+   "basekind": "VolumeKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "DigitalOceanVolume",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags"
+  },
+  {
+   "kind": "digitalocean_vpc",
+   "provider": "DigitalOcean",
+   "basekind": "NetworkKind",
+   "labelingSupport": "unknown",
+   "phantom": false,
+   "class": "DigitalOceanVPC",
+   "file": "plugins/digitalocean/fix_plugin_digitalocean/resources.py",
+   "evidence": "https://docs.digitalocean.com/reference/api/digitalocean/#tag/VPCs"
+  },
+  {
+   "kind": "dockerhub_namespace",
+   "provider": "DockerHub",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "DockerHubNamespace",
+   "file": "plugins/dockerhub/fix_plugin_dockerhub/resources.py",
+   "evidence": "https://docs.docker.com/reference/api/hub/latest/"
+  },
+  {
+   "kind": "gcp_address",
+   "provider": "GCP",
+   "basekind": "IPAddressKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpAddress",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/addresses"
+  },
+  {
+   "kind": "gcp_autoscaler",
+   "provider": "GCP",
+   "basekind": "AutoScalingGroupKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpAutoscaler",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/autoscalers"
+  },
+  {
+   "kind": "gcp_backend_bucket",
+   "provider": "GCP",
+   "basekind": "BucketKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpBackendBucket",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/backendBuckets"
+  },
+  {
+   "kind": "gcp_bucket",
+   "provider": "GCP",
+   "basekind": "BucketKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpBucket",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/storage.py",
+   "evidence": "https://docs.cloud.google.com/storage/docs/json_api/v1/buckets"
+  },
+  {
+   "kind": "gcp_cloud_function",
+   "provider": "GCP",
+   "basekind": "ServerlessFunctionKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpCloudFunction",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/cloudfunctions.py",
+   "evidence": "https://docs.cloud.google.com/functions/docs/reference/rest/v2/projects.locations.functions"
+  },
+  {
+   "kind": "gcp_container_cluster",
+   "provider": "GCP",
+   "basekind": "ManagedKubernetesClusterKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpContainerCluster",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/container.py",
+   "evidence": "https://docs.cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters"
+  },
+  {
+   "kind": "gcp_disk",
+   "provider": "GCP",
+   "basekind": "VolumeKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpDisk",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/disks"
+  },
+  {
+   "kind": "gcp_disk_type",
+   "provider": "GCP",
+   "basekind": "VolumeTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "GcpDiskType",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "gcp_external_vpn_gateway",
+   "provider": "GCP",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpExternalVpnGateway",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways"
+  },
+  {
+   "kind": "gcp_filestore_instance",
+   "provider": "GCP",
+   "basekind": "NetworkShareKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpFilestoreInstance",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/filestore.py",
+   "evidence": "https://docs.cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances"
+  },
+  {
+   "kind": "gcp_firestore_database",
+   "provider": "GCP",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpFirestoreDatabase",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/firestore.py",
+   "evidence": "https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases"
+  },
+  {
+   "kind": "gcp_firewall",
+   "provider": "GCP",
+   "basekind": "FirewallKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpFirewall",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/firewalls"
+  },
+  {
+   "kind": "gcp_forwarding_rule",
+   "provider": "GCP",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpForwardingRule",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/forwardingRules"
+  },
+  {
+   "kind": "gcp_instance",
+   "provider": "GCP",
+   "basekind": "InstanceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpInstance",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/instances"
+  },
+  {
+   "kind": "gcp_instance_group",
+   "provider": "GCP",
+   "basekind": "AutoScalingGroupKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpInstanceGroup",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/instanceGroups"
+  },
+  {
+   "kind": "gcp_machine_type",
+   "provider": "GCP",
+   "basekind": "InstanceTypeKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "GcpMachineType",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "gcp_network",
+   "provider": "GCP",
+   "basekind": "NetworkKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpNetwork",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/networks"
+  },
+  {
+   "kind": "gcp_project",
+   "provider": "GCP",
+   "basekind": "AccountKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpProject",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/base.py",
+   "evidence": "https://docs.cloud.google.com/resource-manager/reference/rest/v3/projects"
+  },
+  {
+   "kind": "gcp_pubsub_subscription",
+   "provider": "GCP",
+   "basekind": "QueueKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpPubSubSubscription",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/pubsub.py",
+   "evidence": "https://docs.cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions"
+  },
+  {
+   "kind": "gcp_snapshot",
+   "provider": "GCP",
+   "basekind": "SnapshotKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpSnapshot",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/snapshots"
+  },
+  {
+   "kind": "gcp_sql_database_instance",
+   "provider": "GCP",
+   "basekind": "DatabaseKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpSqlDatabaseInstance",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/sqladmin.py",
+   "evidence": "https://docs.cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances"
+  },
+  {
+   "kind": "gcp_ssl_certificate",
+   "provider": "GCP",
+   "basekind": "CertificateKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpSslCertificate",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/sslCertificates"
+  },
+  {
+   "kind": "gcp_subnetwork",
+   "provider": "GCP",
+   "basekind": "SubnetKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GcpSubnetwork",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/subnetworks"
+  },
+  {
+   "kind": "gcp_vertex_ai_batch_prediction_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAIBatchPredictionJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs"
+  },
+  {
+   "kind": "gcp_vertex_ai_custom_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAICustomJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.customJobs"
+  },
+  {
+   "kind": "gcp_vertex_ai_hyperparameter_tuning_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAIHyperparameterTuningJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.hyperparameterTuningJobs"
+  },
+  {
+   "kind": "gcp_vertex_ai_model",
+   "provider": "GCP",
+   "basekind": "AIModelKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAIModel",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.models"
+  },
+  {
+   "kind": "gcp_vertex_ai_model_deployment_monitoring_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAIModelDeploymentMonitoringJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.modelDeploymentMonitoringJobs"
+  },
+  {
+   "kind": "gcp_vertex_ai_pipeline_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAIPipelineJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.pipelineJobs"
+  },
+  {
+   "kind": "gcp_vertex_ai_tuning_job",
+   "provider": "GCP",
+   "basekind": "AIJobKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVertexAITuningJob",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/aiplatform.py",
+   "evidence": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/projects.locations.tuningJobs"
+  },
+  {
+   "kind": "gcp_vpn_gateway",
+   "provider": "GCP",
+   "basekind": "GatewayKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "GcpVpnGateway",
+   "file": "plugins/gcp/fix_plugin_gcp/resources/compute.py",
+   "evidence": "https://docs.cloud.google.com/compute/docs/reference/rest/v1/vpnGateways"
+  },
+  {
+   "kind": "github_account",
+   "provider": "GitHub",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GithubAccount",
+   "file": "plugins/github/fix_plugin_github/resources.py",
+   "evidence": "https://docs.github.com/en/rest/users"
+  },
+  {
+   "kind": "github_user",
+   "provider": "GitHub",
+   "basekind": "UserKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "GithubUser",
+   "file": "plugins/github/fix_plugin_github/resources.py",
+   "evidence": "https://docs.github.com/en/rest/users"
+  },
+  {
+   "kind": "kubernetes_cluster",
+   "provider": "Kubernetes",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "KubernetesCluster",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+  },
+  {
+   "kind": "kubernetes_ingress",
+   "provider": "Kubernetes",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "KubernetesIngress",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+  },
+  {
+   "kind": "kubernetes_node",
+   "provider": "Kubernetes",
+   "basekind": "InstanceKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "KubernetesNode",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+  },
+  {
+   "kind": "kubernetes_persistent_volume",
+   "provider": "Kubernetes",
+   "basekind": "VolumeKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "KubernetesPersistentVolume",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+  },
+  {
+   "kind": "kubernetes_resource_quota",
+   "provider": "Kubernetes",
+   "basekind": "QuotaKind",
+   "labelingSupport": "none",
+   "phantom": true,
+   "class": "KubernetesResourceQuota",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "fixlib PhantomBaseResource: does not maintain tags"
+  },
+  {
+   "kind": "kubernetes_service",
+   "provider": "Kubernetes",
+   "basekind": "LoadBalancerKind",
+   "labelingSupport": "full",
+   "phantom": false,
+   "class": "KubernetesService",
+   "file": "plugins/k8s/fix_plugin_k8s/resources.py",
+   "evidence": "https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/"
+  },
+  {
+   "kind": "onelogin_account",
+   "provider": "OneLogin",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "OneLoginAccount",
+   "file": "plugins/onelogin/fix_plugin_onelogin/__init__.py",
+   "evidence": "https://developers.onelogin.com/api-docs/2/getting-started/dev-overview"
+  },
+  {
+   "kind": "onelogin_user",
+   "provider": "OneLogin",
+   "basekind": "UserKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "OneLoginUser",
+   "file": "plugins/onelogin/fix_plugin_onelogin/__init__.py",
+   "evidence": "https://developers.onelogin.com/api-docs/2/users/user-resource"
+  },
+  {
+   "kind": "slack_team",
+   "provider": "Slack",
+   "basekind": "AccountKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "SlackTeam",
+   "file": "plugins/slack/fix_plugin_slack/resources.py",
+   "evidence": "https://api.slack.com/methods"
+  },
+  {
+   "kind": "slack_user",
+   "provider": "Slack",
+   "basekind": "UserKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "SlackUser",
+   "file": "plugins/slack/fix_plugin_slack/resources.py",
+   "evidence": "https://api.slack.com/methods"
+  },
+  {
+   "kind": "slack_usergroup",
+   "provider": "Slack",
+   "basekind": "GroupKind",
+   "labelingSupport": "none",
+   "phantom": false,
+   "class": "SlackUsergroup",
+   "file": "plugins/slack/fix_plugin_slack/resources.py",
+   "evidence": "https://api.slack.com/methods"
+  }
+ ]
+}

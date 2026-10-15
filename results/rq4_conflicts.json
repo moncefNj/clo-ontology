@@ -1,0 +1,21 @@
+{
+ "conflicts": {
+  "two types, same category": {
+   "clo_r_E": 1589,
+   "hermit_status": "ok",
+   "hermit_E": 1592,
+   "extra": 3,
+   "missing": 0,
+   "extra_resources": 3,
+   "extra_examples": [
+    "orphan_vm hostedBy GCP",
+    "rt_aws_ec2_instance hostedBy GCP",
+    "rt_gcp_instance hostedBy AWS"
+   ]
+  },
+  "two types, different categories": {
+   "clo_r_E": 1591,
+   "hermit_status": "inconsistent"
+  }
+ }
+}

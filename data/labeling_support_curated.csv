@@ -1,0 +1,152 @@
+kind,support,evidence_url,note
+aws_account,full,https://docs.aws.amazon.com/organizations/latest/APIReference/API_TagResource.html,Organizations TagResource supports AWS accounts
+aws_acm_certificate,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-certificatemanager-certificate.html,CFN AWS::CertificateManager::Certificate has Tags
+aws_alb,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-loadbalancer.html,CFN AWS::ElasticLoadBalancingV2::LoadBalancer has Tags
+aws_autoscaling_group,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html,CFN AWS::AutoScaling::AutoScalingGroup has Tags
+aws_bedrock_custom_model,full,https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html,Bedrock TagResource ARN pattern includes custom-model
+aws_bedrock_evaluation_job,full,https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html,Bedrock TagResource ARN pattern includes evaluation-job
+aws_bedrock_foundation_model,none,https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html,AWS-owned; foundation-model ARN not in TagResource pattern
+aws_bedrock_model_customization_job,full,https://docs.aws.amazon.com/bedrock/latest/APIReference/API_TagResource.html,Bedrock TagResource ARN pattern includes model-customization-job
+aws_cloudformation_stack,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-stack.html,CFN AWS::CloudFormation::Stack has Tags
+aws_cloudfront_function,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudfront-function.html,CFN AWS::CloudFront::Function has Tags
+aws_cognito_user,none,https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_TagResource.html,Only user pools taggable; UserPoolUser has no Tags
+aws_dynamodb_table,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html,CFN AWS::DynamoDB::Table has Tags
+aws_ec2_elastic_ip,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-eip.html,CFN AWS::EC2::EIP has Tags
+aws_ec2_instance,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-instance.html,CFN AWS::EC2::Instance has Tags
+aws_ec2_internet_gateway,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-internetgateway.html,CFN AWS::EC2::InternetGateway has Tags
+aws_ec2_keypair,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-keypair.html,CFN AWS::EC2::KeyPair has Tags
+aws_ec2_nat_gateway,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html,CFN AWS::EC2::NatGateway has Tags
+aws_ec2_network_acl,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkacl.html,CFN AWS::EC2::NetworkAcl has Tags
+aws_ec2_network_interface,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-networkinterface.html,CFN AWS::EC2::NetworkInterface has Tags
+aws_ec2_route_table,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-routetable.html,CFN AWS::EC2::RouteTable has Tags
+aws_ec2_security_group,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-securitygroup.html,CFN AWS::EC2::SecurityGroup has Tags
+aws_ec2_snapshot,full,https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshot.html,CreateSnapshot TagSpecification tags the snapshot
+aws_ec2_subnet,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet.html,CFN AWS::EC2::Subnet has Tags
+aws_ec2_volume,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-volume.html,CFN AWS::EC2::Volume has Tags
+aws_efs_file_system,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-filesystem.html,CFN AWS::EFS::FileSystem has FileSystemTags
+aws_eks_cluster,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-eks-cluster.html,CFN AWS::EKS::Cluster has Tags
+aws_elb,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancing-loadbalancer.html,CFN AWS::ElasticLoadBalancing::LoadBalancer has Tags
+aws_iam_access_key,none,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html,CFN AWS::IAM::AccessKey has no Tags; no tag API
+aws_iam_group,none,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html,IAM docs: groups cannot be tagged
+aws_iam_policy,full,https://docs.aws.amazon.com/IAM/latest/APIReference/API_TagPolicy.html,IAM TagPolicy tags customer managed policies
+aws_iam_role,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html,CFN AWS::IAM::Role has Tags
+aws_iam_server_certificate,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-servercertificate.html,CFN AWS::IAM::ServerCertificate has Tags
+aws_iam_user,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html,CFN AWS::IAM::User has Tags
+aws_kms_key,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-kms-key.html,CFN AWS::KMS::Key has Tags
+aws_lambda_function,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html,CFN AWS::Lambda::Function has Tags
+aws_rds_cluster,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbcluster.html,CFN AWS::RDS::DBCluster has Tags
+aws_rds_instance,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-rds-dbinstance.html,CFN AWS::RDS::DBInstance has Tags
+aws_rds_snapshot,full,https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html,RDS tagging doc lists DB snapshots
+aws_root_user,unknown,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html,Root user not in taggable IAM list; no explicit statement
+aws_route53_resource_record,none,https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeTagsForResource.html,Only healthcheck/hostedzone taggable; RecordSet has no Tags
+aws_route53_zone,full,https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeTagsForResource.html,ChangeTagsForResource supports hostedzone
+aws_s3_bucket,full,https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html,PutBucketTagging sets bucket tags
+aws_sqs_queue,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queue.html,CFN AWS::SQS::Queue has Tags
+aws_vpc,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpc.html,CFN AWS::EC2::VPC has Tags
+aws_vpc_endpoint,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcendpoint.html,CFN AWS::EC2::VPCEndpoint has Tags
+aws_vpc_peering_connection,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-vpcpeeringconnection.html,CFN AWS::EC2::VPCPeeringConnection has Tags
+aws_waf_web_acl,full,https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webacl.html,CFN AWS::WAFv2::WebACL has Tags
+azure_compute_disk,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/disks: Yes
+azure_compute_ssh_public_key,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/sshPublicKeys: Yes
+azure_compute_virtual_machine,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/virtualMachines: Yes
+azure_compute_virtual_machine_base,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,"Abstract base: virtualMachines Yes, virtualMachineScaleSets/virtualMachines No"
+azure_compute_virtual_machine_scale_set,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/virtualMachineScaleSets: Yes
+azure_compute_virtual_machine_scale_set_instance,none,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/virtualMachineScaleSets/virtualMachines: No
+azure_compute_virtual_machine_snapshot,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Compute/snapshots: Yes
+azure_container_service_managed_cluster,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.ContainerService/managedClusters: Yes
+azure_container_service_managed_cluster_snapshot,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.ContainerService/managedclustersnapshots: Yes
+azure_cosmos_db_account,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.DocumentDB/databaseAccounts: Yes
+azure_cosmos_db_postgresql_cluster_server,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.DBforPostgreSQL/serverGroupsv2/servers not listed (parent Yes)
+azure_machine_learning_job,none,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.MachineLearningServices/workspaces/jobs: No
+azure_machine_learning_labeling_job,none,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.MachineLearningServices/workspaces/labelingJobs: No
+azure_machine_learning_registry_model_container,none,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.MachineLearningServices/registries/models: No
+azure_machine_learning_workspace_model_container,none,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.MachineLearningServices/workspaces/models: No
+azure_mysql_server,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.DBforMySQL/servers and flexibleServers: Yes
+azure_network_application_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/applicationGateways: Yes (official linked CSV)
+azure_network_application_gateway_authentication_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,applicationGateways sub-property; not listed as resource type
+azure_network_application_gateway_ssl_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,applicationGateways sub-property; not listed as resource type
+azure_network_application_gateway_trusted_client_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,applicationGateways sub-property; not listed as resource type
+azure_network_application_gateway_trusted_root_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,applicationGateways sub-property; not listed as resource type
+azure_network_dns_zone,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/dnszones: Yes (official linked CSV)
+azure_network_express_route_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/expressRouteGateways: Yes (official linked CSV)
+azure_network_firewall,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/azureFirewalls: Yes (official linked CSV)
+azure_network_firewall_policy,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/firewallPolicies: Yes (official linked CSV)
+azure_network_interface,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/networkInterfaces: Yes
+azure_network_load_balancer,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/loadBalancers: Yes
+azure_network_local_network_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/localNetworkGateways: Yes (official linked CSV)
+azure_network_p2_s_vpn_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/p2sVpnGateways: Yes (official linked CSV)
+azure_network_public_ip_address,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/publicIPAddresses: Yes
+azure_network_route_table,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/routeTables: Yes
+azure_network_security_group,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/networkSecurityGroups: Yes
+azure_network_subnet,none,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/virtualNetworks/subnets: No (official linked CSV)
+azure_network_virtual_network,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Network/virtualNetworks: Yes
+azure_network_virtual_network_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/virtualNetworkGateways: Yes (official linked CSV)
+azure_network_virtual_wan_vpn_gateway,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/vpnGateways: Yes (official linked CSV)
+azure_network_vpn_client_revoked_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,virtualNetworkGateways sub-property; not listed as resource type
+azure_network_vpn_client_root_certificate,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,virtualNetworkGateways sub-property; not listed as resource type
+azure_network_vpn_site,full,https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv,Microsoft.Network/vpnSites: Yes (official linked CSV)
+azure_postgresql_server,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.DBforPostgreSQL/servers and flexibleServers: Yes
+azure_resource_group,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Resources/resourceGroups: Yes
+azure_sql_server_database,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Sql/servers/databases: Yes
+azure_sql_server_managed_instance_database,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Sql/managedInstances/databases: Yes
+azure_storage_blob_container,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,blobServices/containers not listed; storageAccounts/blobServices: No
+azure_storage_file_share,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,fileServices/shares not listed; storageAccounts/fileServices: No
+azure_storage_queue,unknown,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,queueServices/queues not listed; storageAccounts/queueServices: No
+azure_subscription,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Resources/subscriptions: Yes
+azure_web_app,full,https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-support,Microsoft.Web/sites: Yes
+digitalocean_database,full,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Tags API resource type database
+digitalocean_droplet,full,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Tags API resource type droplet
+digitalocean_floating_ip,unknown,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Not a Tags API resource type; not confirmed
+digitalocean_kubernetes_cluster,unknown,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Kubernetes,Not a Tags API resource type; not confirmed
+digitalocean_load_balancer,unknown,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Load-Balancers,Tag field selects droplets; own tags not confirmed
+digitalocean_snapshot,full,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Tags API resource type volume_snapshot
+digitalocean_space,unknown,https://docs.digitalocean.com/products/spaces/,Not a Tags API resource type; not confirmed
+digitalocean_team,none,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Account entity; not a Tags API resource type
+digitalocean_volume,full,https://docs.digitalocean.com/reference/api/digitalocean/#tag/Tags,Tags API resource type volume
+digitalocean_vpc,unknown,https://docs.digitalocean.com/reference/api/digitalocean/#tag/VPCs,Not a Tags API resource type; not confirmed
+dockerhub_namespace,none,https://docs.docker.com/reference/api/hub/latest/,No key-value tagging of namespaces in Hub API
+gcp_address,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/addresses,compute v1 addresses: labels field present
+gcp_autoscaler,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/autoscalers,compute v1 autoscalers: no labels field
+gcp_backend_bucket,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/backendBuckets,compute v1 backendBuckets: no labels field
+gcp_bucket,full,https://docs.cloud.google.com/storage/docs/json_api/v1/buckets,storage v1 buckets: labels field present
+gcp_cloud_function,full,https://docs.cloud.google.com/functions/docs/reference/rest/v2/projects.locations.functions,functions v2: labels field present
+gcp_container_cluster,full,https://docs.cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters,GKE v1 clusters: resourceLabels field present
+gcp_disk,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/disks,compute v1 disks: labels field present
+gcp_external_vpn_gateway,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways,compute v1 externalVpnGateways: labels field and setLabels
+gcp_filestore_instance,full,https://docs.cloud.google.com/filestore/docs/reference/rest/v1/projects.locations.instances,filestore v1 instances: labels field present
+gcp_firestore_database,none,https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases,firestore v1 databases: no labels field (tags only)
+gcp_firewall,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/firewalls,compute v1 firewalls: no labels field
+gcp_forwarding_rule,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/forwardingRules,compute v1 forwardingRules: labels field present
+gcp_instance,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/instances,compute v1 instances: labels field present
+gcp_instance_group,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/instanceGroups,compute v1 instanceGroups: no labels field
+gcp_network,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/networks,compute v1 networks: no labels field
+gcp_project,full,https://docs.cloud.google.com/resource-manager/reference/rest/v3/projects,resourcemanager v3 projects: labels field present
+gcp_pubsub_subscription,full,https://docs.cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions,pubsub v1 subscriptions: labels field present
+gcp_snapshot,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/snapshots,compute v1 snapshots: labels field present
+gcp_sql_database_instance,full,https://docs.cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances,sqladmin v1 instances: settings.userLabels present
+gcp_ssl_certificate,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/sslCertificates,compute v1 sslCertificates: no labels field
+gcp_subnetwork,none,https://docs.cloud.google.com/compute/docs/reference/rest/v1/subnetworks,compute v1 subnetworks: no labels field
+gcp_vertex_ai_batch_prediction_job,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.batchPredictionJobs,aiplatform v1 BatchPredictionJob: labels field present
+gcp_vertex_ai_custom_job,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.customJobs,aiplatform v1 CustomJob: labels field present
+gcp_vertex_ai_hyperparameter_tuning_job,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.hyperparameterTuningJobs,aiplatform v1 HyperparameterTuningJob: labels field present
+gcp_vertex_ai_model,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.models,aiplatform v1 Model: labels field present
+gcp_vertex_ai_model_deployment_monitoring_job,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.modelDeploymentMonitoringJobs,aiplatform v1 ModelDeploymentMonitoringJob: labels field present
+gcp_vertex_ai_pipeline_job,full,https://docs.cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.pipelineJobs,aiplatform v1 PipelineJob: labels field present
+gcp_vertex_ai_tuning_job,full,https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/projects.locations.tuningJobs,aiplatform v1 TuningJob: labels field present
+gcp_vpn_gateway,full,https://docs.cloud.google.com/compute/docs/reference/rest/v1/vpnGateways,compute v1 vpnGateways: labels field and setLabels
+github_account,none,https://docs.github.com/en/rest/users,No key-value labels on accounts
+github_user,none,https://docs.github.com/en/rest/users,No key-value labels on users
+kubernetes_cluster,none,https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/,Fix Inventory cluster root; not a Kubernetes API object
+kubernetes_ingress,full,https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/,metadata.labels on every API object
+kubernetes_node,full,https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/,metadata.labels on every API object
+kubernetes_persistent_volume,full,https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/,metadata.labels on every API object
+kubernetes_service,full,https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/,metadata.labels on every API object
+microsoft_graph_group,none,https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles,"Entra ID group; not an ARM resource, no Azure tags"
+microsoft_graph_organization,none,https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles,Entra ID tenant/organization; not an ARM resource
+microsoft_graph_role,none,https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles,Entra directory role; not an ARM resource
+microsoft_graph_user,none,https://learn.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles,"Entra ID user; not an ARM resource, no Azure tags"
+onelogin_account,none,https://developers.onelogin.com/api-docs/2/getting-started/dev-overview,No key-value tagging in OneLogin API
+onelogin_user,none,https://developers.onelogin.com/api-docs/2/users/user-resource,Custom attributes exist; no key-value tags
+slack_team,none,https://api.slack.com/methods,No key-value tagging in Slack API
+slack_user,none,https://api.slack.com/methods,No key-value tagging in Slack API
+slack_usergroup,none,https://api.slack.com/methods,No key-value tagging in Slack API
