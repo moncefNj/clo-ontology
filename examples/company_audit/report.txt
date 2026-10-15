@@ -1,0 +1,31 @@
+== Findings by root cause (closed world, complete records only)
+   I-11   error   i-legacy-7                              missing cost-center, data-classification, environment, owner
+   I-11   error   sql-analytics                           missing cost-center, data-classification, environment, owner
+   I-22   error   i-pay-01         environment            for Operations -> rename 'env' to 'environment'
+   I-07   error   db-pay           app                    for Development -> ask the owning team for 'app'
+   I-07   error   db-pay           data-classification    for Security -> ask the owning team for 'data-classification'
+   I-22   error   db-pay           environment            for Operations -> rename 'env' to 'environment'
+   I-07   error   pay-receipts     app                    for Development -> ask the owning team for 'app'
+   I-07   error   pay-receipts     cost-center            for FinOps -> set cost-center=CC-1001 (owning team's default)
+   I-22   error   pay-receipts     environment            for Operations -> rename 'env' to 'environment'
+   I-07   error   pay-receipts     owner                  for Operations -> ask the owning team for 'owner'
+   I-07   error   vm-build         cost-center            for FinOps -> ask the owning team for 'cost-center'
+   I-07   error   vm-build         data-classification    for Security -> ask the owning team for 'data-classification'
+   I-07   error   vpc-core         cost-center            for FinOps -> ask the owning team for 'cost-center'
+   I-07   error   vpc-core         data-classification    for Security -> ask the owning team for 'data-classification'
+   I-07   error   vpc-core         environment            for Operations -> ask the owning team for 'environment'
+   I-07   error   vpc-core         owner                  for Operations -> ask the owning team for 'owner'
+   I-26   error   i-legacy-7                             
+   I-25   info                     env                    team Payments
+   I-12   warning                  prod                  
+== Raw finding counts: {"I-07": 19, "I-11": 2, "I-12": 1, "I-22": 3, "I-25": 1, "I-26": 1}
+== Root-cause counts:  {"I-07": 11, "I-11": 2, "I-12": 1, "I-22": 3, "I-25": 1, "I-26": 1}
+== Role coverage (resources governed by a policy serving the role)
+   Development            1/3  needs app
+   FinOps                 3/8  needs cost-center
+   Operations             2/8  needs environment, owner
+   Platform engineering   0/0  needs managed-by
+   Security               3/8  needs data-classification
+== No closed-world verdict (record incomplete): vol-scratch
+== Out of audit scope (untaggable type): admins
+== Labelling support unknown: -

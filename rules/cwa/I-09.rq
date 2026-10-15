@@ -1,0 +1,6 @@
+# I-09 value outside the key's controlled vocabulary (the vocabulary is closed by declaration)
+SELECT ?r ?k ?value WHERE {
+  ?r clo:hasLabel ?l . ?l clo:hasLabelKey ?k ; clo:hasLabelValue/clo:valueName ?value .
+  ?k clo:hasVocabulary ?voc .
+  FILTER NOT EXISTS { ?voc clo:hasAllowedValue/clo:valueName ?value }
+}

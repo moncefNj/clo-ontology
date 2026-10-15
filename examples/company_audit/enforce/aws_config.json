@@ -1,0 +1,12 @@
+[
+ {
+  "Type": "AWS::Config::OrganizationConfigRule",
+  "Properties": {
+   "OrganizationConfigRuleName": "clo-pol-shared-0",
+   "OrganizationManagedRuleMetadata": {
+    "RuleIdentifier": "REQUIRED_TAGS",
+    "InputParameters": "{\"tag1Key\": \"cost-center\", \"tag2Key\": \"data-classification\", \"tag3Key\": \"environment\", \"tag4Key\": \"owner\"}"
+   }
+  }
+ }
+]

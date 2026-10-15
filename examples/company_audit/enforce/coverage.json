@@ -1,0 +1,28 @@
+[
+ {
+  "policy": "pol_payments",
+  "scope": "team:team_payments",
+  "keys": [
+   "app"
+  ],
+  "compiled": false,
+  "why": "no team scope in AWS Config, Azure Policy or Custodian; enforced by CLO's audit only"
+ },
+ {
+  "policy": "pol_shared",
+  "scope": "organization",
+  "keys": [
+   "cost-center",
+   "data-classification",
+   "environment",
+   "owner"
+  ],
+  "compiled": true
+ },
+ {
+  "policy": "*",
+  "scope": "partOf",
+  "compiled": false,
+  "why": "composition inheritance (C-3) has no provider-native equivalent; CLO's audit only"
+ }
+]

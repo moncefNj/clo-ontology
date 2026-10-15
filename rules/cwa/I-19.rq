@@ -1,0 +1,6 @@
+# I-19 coverage of a key per BaseKind and provider (aggregate; complete records only, with denominators)
+# ?key is bound by clo/audit.py (canonical key name).
+SELECT ?kind ?provider (COUNT(DISTINCT ?r) AS ?n) (COUNT(DISTINCT ?c) AS ?covered) WHERE {
+  ?r a clo:AuditableResource ; clo:recordComplete true ; clo:hasBaseKind ?kind ; clo:hostedBy ?provider .
+  OPTIONAL { ?r clo:hasLabel/clo:hasLabelKey/clo:keyName ?kname . FILTER(?kname = ?KEY) BIND(?r AS ?c) }
+} GROUP BY ?kind ?provider

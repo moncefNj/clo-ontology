@@ -1,0 +1,147 @@
+@prefix clo: <http://example.org/clo/ontology/clo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# A small company on three clouds: four teams, five governance roles, one
+# shared policy derived from role needs, one team policy, and the label
+# conventions that teams actually use. Load with ../ontology/clo_ontology_v8.ttl,
+# ../ontology/clo_types.ttl and ../ontology/clo_org.ttl.
+
+<http://example.org/clo/ontology/clo-company-example> a owl:Ontology .
+
+# ── Label keys and what each role needs ──────────────────────────────────────
+clo:k_cost_center a clo:LabelKey , owl:NamedIndividual ; clo:keyName "cost-center" .
+clo:k_data_class  a clo:LabelKey , owl:NamedIndividual ; clo:keyName "data-classification" .
+clo:k_owner       a clo:LabelKey , owl:NamedIndividual ; clo:keyName "owner" .
+clo:k_environment a clo:LabelKey , owl:NamedIndividual ; clo:keyName "environment" .
+clo:k_env         a clo:LabelKey , owl:NamedIndividual ; clo:keyName "env" .
+clo:k_app         a clo:LabelKey , owl:NamedIndividual ; clo:keyName "app" .
+clo:k_managed_by  a clo:LabelKey , owl:NamedIndividual ; clo:keyName "managed-by" .
+
+# Repair policy per key: data-classification is never guessed.
+clo:k_cost_center clo:valueSource "inherit" , "team-default" .
+clo:k_environment clo:valueSource "inherit" , "account-default" .
+clo:k_owner       clo:valueSource "inherit" .
+clo:k_app         clo:valueSource "inherit" , "team-default" .
+
+clo:FinOpsRole     clo:needsLabel clo:k_cost_center .
+clo:SecurityRole   clo:needsLabel clo:k_data_class .
+clo:OperationsRole clo:needsLabel clo:k_owner , clo:k_environment .
+clo:DeveloperRole  clo:needsLabel clo:k_app .
+clo:PlatformRole   clo:needsLabel clo:k_managed_by .
+
+# Two teams spell the same key differently
+clo:sg_environment a clo:SynonymGroup , owl:NamedIndividual ;
+    clo:canonicalKey "environment" ;
+    clo:hasMember clo:k_environment , clo:k_env .
+
+# ── Organisation ─────────────────────────────────────────────────────────────
+clo:org_root a clo:OrganizationalRoot , owl:NamedIndividual ;
+    rdfs:label "Company" ;
+    clo:governedBy clo:pol_shared .
+
+# The shared, company-wide standard: written for three roles, not as a key list
+clo:pol_shared a clo:LabelingPolicy , owl:NamedIndividual ;
+    rdfs:label "Shared labelling standard" ;
+    clo:servesRole clo:FinOpsRole , clo:SecurityRole , clo:OperationsRole .
+
+# A team-level addition
+clo:pol_payments a clo:LabelingPolicy , owl:NamedIndividual ;
+    rdfs:label "Payments team standard" ;
+    clo:servesRole clo:DeveloperRole .
+
+clo:acct_aws_prod a clo:Account , owl:NamedIndividual ; rdfs:label "aws-prod" ; clo:orgPartOf clo:org_root .
+clo:acct_azure    a clo:Account , owl:NamedIndividual ; rdfs:label "azure-sub" ; clo:orgPartOf clo:org_root .
+clo:acct_gcp      a clo:Account , owl:NamedIndividual ; rdfs:label "gcp-project" ; clo:orgPartOf clo:org_root .
+
+clo:team_payments a clo:Team , owl:NamedIndividual ; rdfs:label "Payments" ;
+    clo:playsRole clo:DeveloperRole ; clo:governedBy clo:pol_payments .
+clo:team_platform a clo:Team , owl:NamedIndividual ; rdfs:label "Platform" ;
+    clo:playsRole clo:PlatformRole , clo:OperationsRole .
+clo:team_data     a clo:Team , owl:NamedIndividual ; rdfs:label "Data" ;
+    clo:playsRole clo:DeveloperRole .
+clo:team_finops   a clo:Team , owl:NamedIndividual ; rdfs:label "FinOps" ;
+    clo:playsRole clo:FinOpsRole .
+
+# ── Label values ─────────────────────────────────────────────────────────────
+clo:v_prod     a clo:LabelValue , owl:NamedIndividual ; clo:valueName "prod" .
+clo:v_cc_pay   a clo:LabelValue , owl:NamedIndividual ; clo:valueName "CC-1001" .
+clo:v_cc_plat  a clo:LabelValue , owl:NamedIndividual ; clo:valueName "CC-2002" .
+clo:v_internal a clo:LabelValue , owl:NamedIndividual ; clo:valueName "internal" .
+clo:v_confid   a clo:LabelValue , owl:NamedIndividual ; clo:valueName "confidential" .
+clo:v_alice    a clo:LabelValue , owl:NamedIndividual ; clo:valueName "alice" .
+clo:v_bob      a clo:LabelValue , owl:NamedIndividual ; clo:valueName "bob" .
+clo:v_checkout a clo:LabelValue , owl:NamedIndividual ; clo:valueName "checkout" .
+clo:v_terraform a clo:LabelValue , owl:NamedIndividual ; clo:valueName "terraform" .
+
+# ── Resources (only type, account, owner and labels are asserted) ────────────
+# Payments: uses "env", forgets data-classification on the database
+clo:pay_vm a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-pay-01" ; clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:ownedBy clo:team_payments ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pv1 , clo:l_pv2 , clo:l_pv3 , clo:l_pv4 , clo:l_pv5 .
+clo:l_pv1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_env ;         clo:hasLabelValue clo:v_prod .
+clo:l_pv2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_owner ;       clo:hasLabelValue clo:v_alice .
+clo:l_pv3 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_cost_center ; clo:hasLabelValue clo:v_cc_pay .
+clo:l_pv4 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_app ;         clo:hasLabelValue clo:v_checkout .
+clo:l_pv5 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_data_class ;  clo:hasLabelValue clo:v_internal .
+
+clo:pay_db a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "db-pay" ; clo:hasResourceType clo:rt_aws_rds_instance ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:ownedBy clo:team_payments ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pd1 , clo:l_pd2 , clo:l_pd3 .
+clo:l_pd1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_env ;         clo:hasLabelValue clo:v_prod .
+clo:l_pd2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_owner ;       clo:hasLabelValue clo:v_alice .
+clo:l_pd3 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_cost_center ; clo:hasLabelValue clo:v_cc_pay .
+
+clo:pay_bucket a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "pay-receipts" ; clo:hasResourceType clo:rt_gcp_bucket ;
+    clo:belongsToAccount clo:acct_gcp ; clo:ownedBy clo:team_payments ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pb1 , clo:l_pb2 .
+clo:l_pb1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_env ;        clo:hasLabelValue clo:v_prod .
+clo:l_pb2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_data_class ; clo:hasLabelValue clo:v_confid .
+
+# Platform: uses "environment", has no cost-center habit
+clo:plat_vnet_vm a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "vm-build" ; clo:hasResourceType clo:rt_azure_compute_virtual_machine ;
+    clo:belongsToAccount clo:acct_azure ; clo:ownedBy clo:team_platform ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pa1 , clo:l_pa2 , clo:l_pa3 .
+clo:l_pa1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_environment ; clo:hasLabelValue clo:v_prod .
+clo:l_pa2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_owner ;       clo:hasLabelValue clo:v_bob .
+clo:l_pa3 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_managed_by ;  clo:hasLabelValue clo:v_terraform .
+
+clo:plat_gke a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "gke-shared" ; clo:hasResourceType clo:rt_gcp_container_cluster ;
+    clo:belongsToAccount clo:acct_gcp ; clo:ownedBy clo:team_platform ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pg1 , clo:l_pg2 , clo:l_pg3 , clo:l_pg4 .
+clo:l_pg1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_environment ; clo:hasLabelValue clo:v_prod .
+clo:l_pg2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_owner ;       clo:hasLabelValue clo:v_bob .
+clo:l_pg3 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_cost_center ; clo:hasLabelValue clo:v_cc_plat .
+clo:l_pg4 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_data_class ;  clo:hasLabelValue clo:v_internal .
+
+clo:plat_vpc a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "vpc-core" ; clo:hasResourceType clo:rt_aws_vpc ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:ownedBy clo:team_platform ; clo:recordComplete true ;
+    clo:hasLabel clo:l_pn1 .
+clo:l_pn1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_managed_by ; clo:hasLabelValue clo:v_terraform .
+
+# Data: a SQL instance without any label
+clo:data_sql a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "sql-analytics" ; clo:hasResourceType clo:rt_gcp_sql_database_instance ;
+    clo:belongsToAccount clo:acct_gcp ; clo:ownedBy clo:team_data ; clo:recordComplete true .
+
+# No owning team
+clo:orphan_vm a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-legacy-7" ; clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:recordComplete true .
+
+# Record possibly truncated by the API: no closed-world verdict
+clo:data_vol a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "vol-scratch" ; clo:hasResourceType clo:rt_aws_ec2_volume ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:ownedBy clo:team_data ; clo:recordComplete false .
+
+# Untaggable type: excluded from scope by inference
+clo:iam_admins a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "admins" ; clo:hasResourceType clo:rt_aws_iam_group ;
+    clo:belongsToAccount clo:acct_aws_prod ; clo:ownedBy clo:team_platform ; clo:recordComplete true .

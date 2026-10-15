@@ -1,0 +1,6 @@
+# I-27 several owning teams. OWL has no unique-name assumption: declaring ownedBy functional
+# would make a reasoner merge the two teams (or, with owl:differentFrom, make the whole
+# knowledge base inconsistent). The conflict is therefore a closed-world finding.
+SELECT ?r (COUNT(DISTINCT ?t) AS ?n) (GROUP_CONCAT(DISTINCT STR(?t); separator=" ") AS ?teams) WHERE {
+  ?r a clo:CloudResource ; clo:ownedBy ?t .
+} GROUP BY ?r HAVING (COUNT(DISTINCT ?t) > 1)

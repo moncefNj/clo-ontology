@@ -1,0 +1,5 @@
+# I-25 team convention diverging from the shared key (C-10 + declared synonym groups)
+SELECT ?t ?used ?usedName ?canonName WHERE {
+  ?t a clo:Team ; clo:usesKey ?used . ?used clo:keyName ?usedName .
+  ?g clo:hasMember ?used ; clo:canonicalKey ?canonName . FILTER(?usedName != ?canonName)
+}

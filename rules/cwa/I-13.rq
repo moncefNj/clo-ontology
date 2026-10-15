@@ -1,0 +1,6 @@
+# I-13 key violates the provider's case constraint (lowercaseOnly providers)
+SELECT ?r ?k ?name WHERE {
+  ?r clo:hasLabel/clo:hasLabelKey ?k ; clo:hostedBy ?p .
+  ?p clo:hasProviderConstraint ?c . ?c clo:lowercaseOnly true .
+  ?k clo:keyName ?name . FILTER(LCASE(?name) != ?name)
+}

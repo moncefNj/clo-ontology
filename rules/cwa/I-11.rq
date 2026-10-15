@@ -1,0 +1,5 @@
+# I-11 unlabelled resource (complete records in audit scope only)
+SELECT ?r WHERE {
+  ?r a clo:AuditableResource ; clo:recordComplete true .
+  FILTER NOT EXISTS { ?r clo:hasLabel ?l }
+}

@@ -1,0 +1,7 @@
+# CQ5  May a missing value of each required key be filled in automatically, and from where?
+# Answered by clo:valueSource; a key without one is never guessed (R6).
+SELECT ?key (GROUP_CONCAT(?src; separator=", ") AS ?sources) WHERE {
+  ?p clo:requiresLabel ?k . ?k clo:keyName ?key .
+  OPTIONAL { ?k clo:valueSource ?s0 }
+  BIND(COALESCE(?s0, "none: ask the owner") AS ?src)
+} GROUP BY ?key ORDER BY ?key

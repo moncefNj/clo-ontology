@@ -1,0 +1,4 @@
+# I-28 several resource types for one record (merge error in the inventory); same reasoning as I-27.
+SELECT ?r (COUNT(DISTINCT ?t) AS ?n) WHERE {
+  ?r a clo:CloudResource ; clo:hasResourceType ?t .
+} GROUP BY ?r HAVING (COUNT(DISTINCT ?t) > 1)

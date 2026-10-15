@@ -1,0 +1,7 @@
+# I-22 declared synonym on a resource: ?used is a member of the synonym group of canonical ?canon.
+# clo/audit.py also treats case/separator variants of a managed key as synonyms (I-22v).
+SELECT ?r ?used ?canonName ?usedName WHERE {
+  ?g clo:hasMember ?used ; clo:canonicalKey ?canonName .
+  ?used clo:keyName ?usedName . FILTER(?usedName != ?canonName)
+  ?r clo:hasLabel/clo:hasLabelKey ?used .
+}

@@ -1,0 +1,125 @@
+policies:
+- name: clo-pol-shared-gcp-bucket
+  resource: gcp.bucket
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - labels."cost-center": absent
+    - labels."data-classification": absent
+    - labels."environment": absent
+    - labels."owner": absent
+  actions:
+  - type: notify
+    to:
+    - resource-owner
+    template: default
+    transport:
+      type: pubsub
+      topic: projects/example/topics/clo
+- name: clo-pol-shared-gcp-disk
+  resource: gcp.disk
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - labels."cost-center": absent
+    - labels."data-classification": absent
+    - labels."environment": absent
+    - labels."owner": absent
+  actions:
+  - type: notify
+    to:
+    - resource-owner
+    template: default
+    transport:
+      type: pubsub
+      topic: projects/example/topics/clo
+- name: clo-pol-shared-gcp-instance
+  resource: gcp.instance
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - labels."cost-center": absent
+    - labels."data-classification": absent
+    - labels."environment": absent
+    - labels."owner": absent
+  actions:
+  - type: notify
+    to:
+    - resource-owner
+    template: default
+    transport:
+      type: pubsub
+      topic: projects/example/topics/clo
+- name: clo-pol-shared-gcp-snapshot
+  resource: gcp.snapshot
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - labels."cost-center": absent
+    - labels."data-classification": absent
+    - labels."environment": absent
+    - labels."owner": absent
+  actions:
+  - type: notify
+    to:
+    - resource-owner
+    template: default
+    transport:
+      type: pubsub
+      topic: projects/example/topics/clo
+- name: clo-pol-shared-gcp-sql-instance
+  resource: gcp.sql-instance
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - labels."cost-center": absent
+    - labels."data-classification": absent
+    - labels."environment": absent
+    - labels."owner": absent
+  actions:
+  - type: notify
+    to:
+    - resource-owner
+    template: default
+    transport:
+      type: pubsub
+      topic: projects/example/topics/clo
+- name: clo-pol-shared-k8s-node
+  resource: k8s.node
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - metadata.labels."cost-center": absent
+    - metadata.labels."data-classification": absent
+    - metadata.labels."environment": absent
+    - metadata.labels."owner": absent
+  actions:
+  - type: label
+    labels:
+      clo-missing-labels: 'true'
+- name: clo-pol-shared-k8s-service
+  resource: k8s.service
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - metadata.labels."cost-center": absent
+    - metadata.labels."data-classification": absent
+    - metadata.labels."environment": absent
+    - metadata.labels."owner": absent
+  actions:
+  - type: label
+    labels:
+      clo-missing-labels: 'true'
+- name: clo-pol-shared-k8s-volume
+  resource: k8s.volume
+  comment: CLO policy pol_shared, scope organization
+  filters:
+  - or:
+    - metadata.labels."cost-center": absent
+    - metadata.labels."data-classification": absent
+    - metadata.labels."environment": absent
+    - metadata.labels."owner": absent
+  actions:
+  - type: label
+    labels:
+      clo-missing-labels: 'true'

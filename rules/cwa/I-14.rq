@@ -1,0 +1,12 @@
+# I-14 key or value longer than the provider allows
+# (each UNION branch binds everything it uses: SPARQL evaluates groups bottom-up)
+SELECT ?r ?k ?what ?len ?max WHERE {
+  ?r clo:hasLabel ?l ; clo:hostedBy ?p . ?p clo:hasProviderConstraint ?c . ?l clo:hasLabelKey ?k .
+  {
+    ?c clo:keyMaxLength ?max . ?k clo:keyName ?kn .
+    BIND("key" AS ?what) BIND(STRLEN(?kn) AS ?len) FILTER(?len > ?max)
+  } UNION {
+    ?c clo:valueMaxLength ?max . ?l clo:hasLabelValue/clo:valueName ?vn .
+    BIND("value" AS ?what) BIND(STRLEN(?vn) AS ?len) FILTER(?len > ?max)
+  }
+}

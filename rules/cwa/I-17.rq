@@ -1,0 +1,9 @@
+# I-17 unmanaged ("orphan") key: used on a resource but required by no policy, needed by no
+# role, member of no synonym group and without vocabulary. System keys are removed in clo/audit.py.
+SELECT ?r ?k ?name WHERE {
+  ?r clo:hasLabel/clo:hasLabelKey ?k . ?k clo:keyName ?name .
+  FILTER NOT EXISTS { ?p clo:requiresLabel ?k }
+  FILTER NOT EXISTS { ?ro clo:needsLabel ?k }
+  FILTER NOT EXISTS { ?g clo:hasMember ?k }
+  FILTER NOT EXISTS { ?k clo:hasVocabulary ?v }
+}

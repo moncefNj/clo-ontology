@@ -1,0 +1,5 @@
+# I-26 no owning team (complete records in audit scope)
+SELECT ?r WHERE {
+  ?r a clo:AuditableResource ; clo:recordComplete true .
+  FILTER NOT EXISTS { ?r clo:ownedBy ?t }
+}

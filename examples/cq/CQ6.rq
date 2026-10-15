@@ -1,0 +1,10 @@
+# CQ6  For each governance role: how many complete, in-scope resources do policies serving it govern, and how many carry every key it needs?
+# Answered by C-9 and the governedBy chains; the denominator is explicit, as for every aggregate in CLO.
+SELECT ?role (COUNT(DISTINCT ?r) AS ?governed) (COUNT(DISTINCT ?ok) AS ?covered) WHERE {
+  ?ro a clo:GovernanceRole ; rdfs:label ?role .
+  OPTIONAL {
+    ?r a clo:AuditableResource ; clo:recordComplete true ; clo:governedBy ?p . ?p clo:servesRole ?ro .
+    # ?ok is bound only when no key the role needs is missing on ?r (IF on an unbound ?none leaves it unbound)
+    BIND(IF(EXISTS { ?ro clo:needsLabel ?k . FILTER NOT EXISTS { ?r clo:hasLabel/clo:hasLabelKey ?k } }, ?none, ?r) AS ?ok)
+  }
+} GROUP BY ?role ORDER BY ?role

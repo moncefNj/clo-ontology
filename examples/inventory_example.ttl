@@ -1,0 +1,50 @@
+@prefix clo: <http://example.org/clo/ontology/clo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# A small multi-cloud inventory for the use cases of examples/README.md.
+# Load together with ../clo_ontology_v8.ttl and ../clo_types.ttl.
+# Resource types (rt_*) come from the catalogue; nothing here repeats them.
+
+<http://example.org/clo/ontology/clo-example> a owl:Ontology .
+
+clo:acct_prod a clo:Account , owl:NamedIndividual ; clo:accountId "prod-001" .
+
+# One policy for every compute resource, on any provider (chain C-5)
+clo:pol_compute a clo:LabelingPolicy , owl:NamedIndividual ;
+    clo:appliesToCategory clo:Compute ;
+    clo:requiresLabel clo:k_environment , clo:k_owner .
+
+clo:k_environment a clo:LabelKey , owl:NamedIndividual ; clo:keyName "environment" .
+clo:k_owner       a clo:LabelKey , owl:NamedIndividual ; clo:keyName "owner" .
+clo:v_prod        a clo:LabelValue , owl:NamedIndividual ; clo:valueName "prod" .
+clo:v_alice       a clo:LabelValue , owl:NamedIndividual ; clo:valueName "alice" .
+
+# Three VMs on three clouds: only hasResourceType is asserted
+clo:vm_aws a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "i-0a1" ; clo:hasResourceType clo:rt_aws_ec2_instance ;
+    clo:belongsToAccount clo:acct_prod ; clo:recordComplete true ;
+    clo:hasLabel clo:l1 , clo:l2 .
+clo:l1 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_environment ; clo:hasLabelValue clo:v_prod .
+clo:l2 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_owner ; clo:hasLabelValue clo:v_alice .
+
+clo:vm_azure a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "vm-7" ; clo:hasResourceType clo:rt_azure_compute_virtual_machine ;
+    clo:belongsToAccount clo:acct_prod ; clo:recordComplete true ;
+    clo:hasLabel clo:l3 .
+clo:l3 a clo:Label , owl:NamedIndividual ; clo:hasLabelKey clo:k_environment ; clo:hasLabelValue clo:v_prod .
+
+clo:vm_gcp a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "gce-3" ; clo:hasResourceType clo:rt_gcp_instance ;
+    clo:belongsToAccount clo:acct_prod ; clo:recordComplete true .
+
+# Untaggable type: excluded from the audit scope by inference (I-05)
+clo:grp_admins a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "admins" ; clo:hasResourceType clo:rt_aws_iam_group ;
+    clo:belongsToAccount clo:acct_prod ; clo:recordComplete true .
+
+# Unlabelled bucket whose record may be truncated: no closed-world verdict
+clo:bkt_logs a clo:CloudResource , owl:NamedIndividual ;
+    clo:resourceId "logs" ; clo:hasResourceType clo:rt_aws_s3_bucket ;
+    clo:belongsToAccount clo:acct_prod ; clo:recordComplete false .

@@ -1,0 +1,62 @@
+[
+ {
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "clo-pol-shared-cost-center",
+  "scope": "/providers/Microsoft.Management/managementGroups/root",
+  "properties": {
+   "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+   "parameters": {
+    "tagName": {
+     "value": "cost-center"
+    }
+   },
+   "enforcementMode": "DoNotEnforce"
+  }
+ },
+ {
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "clo-pol-shared-data-classification",
+  "scope": "/providers/Microsoft.Management/managementGroups/root",
+  "properties": {
+   "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+   "parameters": {
+    "tagName": {
+     "value": "data-classification"
+    }
+   },
+   "enforcementMode": "DoNotEnforce"
+  }
+ },
+ {
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "clo-pol-shared-environment",
+  "scope": "/providers/Microsoft.Management/managementGroups/root",
+  "properties": {
+   "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+   "parameters": {
+    "tagName": {
+     "value": "environment"
+    }
+   },
+   "enforcementMode": "DoNotEnforce"
+  }
+ },
+ {
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "clo-pol-shared-owner",
+  "scope": "/providers/Microsoft.Management/managementGroups/root",
+  "properties": {
+   "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/871b6d14-10aa-478d-b590-94f262ecfa99",
+   "parameters": {
+    "tagName": {
+     "value": "owner"
+    }
+   },
+   "enforcementMode": "DoNotEnforce"
+  }
+ }
+]

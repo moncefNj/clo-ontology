@@ -1,0 +1,500 @@
+{
+ "resources": {
+  "iam_admins": {
+   "id": "admins",
+   "type": "aws_iam_group",
+   "provider": "AWS",
+   "category": "Security",
+   "complete": true,
+   "in_scope": false,
+   "teams": [
+    "Platform"
+   ]
+  },
+  "data_vol": {
+   "id": "vol-scratch",
+   "type": "aws_ec2_volume",
+   "provider": "AWS",
+   "category": "Storage",
+   "complete": false,
+   "in_scope": true,
+   "teams": [
+    "Data"
+   ]
+  },
+  "orphan_vm": {
+   "id": "i-legacy-7",
+   "type": "aws_ec2_instance",
+   "provider": "AWS",
+   "category": "Compute",
+   "complete": true,
+   "in_scope": true,
+   "teams": []
+  },
+  "data_sql": {
+   "id": "sql-analytics",
+   "type": "gcp_sql_database_instance",
+   "provider": "GCP",
+   "category": "Database",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Data"
+   ]
+  },
+  "plat_vpc": {
+   "id": "vpc-core",
+   "type": "aws_vpc",
+   "provider": "AWS",
+   "category": "Networking",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Platform"
+   ]
+  },
+  "plat_gke": {
+   "id": "gke-shared",
+   "type": "gcp_container_cluster",
+   "provider": "GCP",
+   "category": "Container",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Platform"
+   ]
+  },
+  "plat_vnet_vm": {
+   "id": "vm-build",
+   "type": "azure_compute_virtual_machine",
+   "provider": "Azure",
+   "category": "Compute",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Platform"
+   ]
+  },
+  "pay_bucket": {
+   "id": "pay-receipts",
+   "type": "gcp_bucket",
+   "provider": "GCP",
+   "category": "Storage",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Payments"
+   ]
+  },
+  "pay_db": {
+   "id": "db-pay",
+   "type": "aws_rds_instance",
+   "provider": "AWS",
+   "category": "Database",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Payments"
+   ]
+  },
+  "pay_vm": {
+   "id": "i-pay-01",
+   "type": "aws_ec2_instance",
+   "provider": "AWS",
+   "category": "Compute",
+   "complete": true,
+   "in_scope": true,
+   "teams": [
+    "Payments"
+   ]
+  }
+ },
+ "findings": [
+  {
+   "rule": "I-11",
+   "severity": "error",
+   "resource": "i-legacy-7",
+   "iri": "http://example.org/clo/ontology/clo#orphan_vm",
+   "key": null,
+   "roles": null,
+   "repair": null,
+   "repair_value": null,
+   "repair_action": null,
+   "missing": [
+    "cost-center",
+    "data-classification",
+    "environment",
+    "owner"
+   ]
+  },
+  {
+   "rule": "I-11",
+   "severity": "error",
+   "resource": "sql-analytics",
+   "iri": "http://example.org/clo/ontology/clo#data_sql",
+   "key": null,
+   "roles": null,
+   "repair": null,
+   "repair_value": null,
+   "repair_action": null,
+   "missing": [
+    "cost-center",
+    "data-classification",
+    "environment",
+    "owner"
+   ]
+  },
+  {
+   "rule": "I-22",
+   "severity": "error",
+   "resource": "i-pay-01",
+   "iri": "http://example.org/clo/ontology/clo#pay_vm",
+   "key": "environment",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "rename 'env' to 'environment'",
+   "repair_value": null,
+   "repair_action": "rename",
+   "used": "env"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "db-pay",
+   "iri": "http://example.org/clo/ontology/clo#pay_db",
+   "key": "app",
+   "roles": [
+    "Development"
+   ],
+   "repair": "ask the owning team for 'app'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "db-pay",
+   "iri": "http://example.org/clo/ontology/clo#pay_db",
+   "key": "data-classification",
+   "roles": [
+    "Security"
+   ],
+   "repair": "ask the owning team for 'data-classification'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-22",
+   "severity": "error",
+   "resource": "db-pay",
+   "iri": "http://example.org/clo/ontology/clo#pay_db",
+   "key": "environment",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "rename 'env' to 'environment'",
+   "repair_value": null,
+   "repair_action": "rename",
+   "used": "env"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "pay-receipts",
+   "iri": "http://example.org/clo/ontology/clo#pay_bucket",
+   "key": "app",
+   "roles": [
+    "Development"
+   ],
+   "repair": "ask the owning team for 'app'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "pay-receipts",
+   "iri": "http://example.org/clo/ontology/clo#pay_bucket",
+   "key": "cost-center",
+   "roles": [
+    "FinOps"
+   ],
+   "repair": "set cost-center=CC-1001 (owning team's default)",
+   "repair_value": "CC-1001",
+   "repair_action": "team-default"
+  },
+  {
+   "rule": "I-22",
+   "severity": "error",
+   "resource": "pay-receipts",
+   "iri": "http://example.org/clo/ontology/clo#pay_bucket",
+   "key": "environment",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "rename 'env' to 'environment'",
+   "repair_value": null,
+   "repair_action": "rename",
+   "used": "env"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "pay-receipts",
+   "iri": "http://example.org/clo/ontology/clo#pay_bucket",
+   "key": "owner",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "ask the owning team for 'owner'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vm-build",
+   "iri": "http://example.org/clo/ontology/clo#plat_vnet_vm",
+   "key": "cost-center",
+   "roles": [
+    "FinOps"
+   ],
+   "repair": "ask the owning team for 'cost-center'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vm-build",
+   "iri": "http://example.org/clo/ontology/clo#plat_vnet_vm",
+   "key": "data-classification",
+   "roles": [
+    "Security"
+   ],
+   "repair": "ask the owning team for 'data-classification'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vpc-core",
+   "iri": "http://example.org/clo/ontology/clo#plat_vpc",
+   "key": "cost-center",
+   "roles": [
+    "FinOps"
+   ],
+   "repair": "ask the owning team for 'cost-center'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vpc-core",
+   "iri": "http://example.org/clo/ontology/clo#plat_vpc",
+   "key": "data-classification",
+   "roles": [
+    "Security"
+   ],
+   "repair": "ask the owning team for 'data-classification'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vpc-core",
+   "iri": "http://example.org/clo/ontology/clo#plat_vpc",
+   "key": "environment",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "ask the owning team for 'environment'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-07",
+   "severity": "error",
+   "resource": "vpc-core",
+   "iri": "http://example.org/clo/ontology/clo#plat_vpc",
+   "key": "owner",
+   "roles": [
+    "Operations"
+   ],
+   "repair": "ask the owning team for 'owner'",
+   "repair_value": null,
+   "repair_action": "ask-owner"
+  },
+  {
+   "rule": "I-26",
+   "severity": "error",
+   "resource": "i-legacy-7",
+   "iri": "http://example.org/clo/ontology/clo#orphan_vm",
+   "key": null,
+   "roles": null,
+   "repair": null,
+   "repair_value": null,
+   "repair_action": null
+  },
+  {
+   "rule": "I-25",
+   "severity": "info",
+   "resource": null,
+   "iri": null,
+   "key": null,
+   "roles": null,
+   "repair": null,
+   "repair_value": null,
+   "repair_action": null,
+   "used": "env",
+   "canonical": "environment",
+   "team": "Payments"
+  },
+  {
+   "rule": "I-12",
+   "severity": "warning",
+   "resource": null,
+   "iri": null,
+   "key": null,
+   "roles": null,
+   "repair": null,
+   "repair_value": null,
+   "repair_action": null,
+   "value": "prod",
+   "n": 5,
+   "bad": 4
+  }
+ ],
+ "propagation": [],
+ "raw_counts": {
+  "I-07": 19,
+  "I-11": 2,
+  "I-12": 1,
+  "I-22": 3,
+  "I-25": 1,
+  "I-26": 1
+ },
+ "root_cause_counts": {
+  "I-07": 11,
+  "I-11": 2,
+  "I-12": 1,
+  "I-22": 3,
+  "I-25": 1,
+  "I-26": 1
+ },
+ "role_coverage": [
+  {
+   "role": "Development",
+   "governed": 3,
+   "covered": 1,
+   "keys": [
+    "app"
+   ]
+  },
+  {
+   "role": "FinOps",
+   "governed": 8,
+   "covered": 3,
+   "keys": [
+    "cost-center"
+   ]
+  },
+  {
+   "role": "Operations",
+   "governed": 8,
+   "covered": 2,
+   "keys": [
+    "environment",
+    "owner"
+   ]
+  },
+  {
+   "role": "Platform engineering",
+   "governed": 0,
+   "covered": 0,
+   "keys": [
+    "managed-by"
+   ]
+  },
+  {
+   "role": "Security",
+   "governed": 8,
+   "covered": 3,
+   "keys": [
+    "data-classification"
+   ]
+  }
+ ],
+ "no_verdict": [
+  "vol-scratch"
+ ],
+ "out_of_scope": [
+  "admins"
+ ],
+ "support_unknown": [],
+ "cross_provider": {
+  "key": "environment",
+  "per_kind": {
+   "DatabaseKind": {
+    "AWS": "0/1",
+    "GCP": "0/1"
+   },
+   "NetworkKind": {
+    "AWS": "0/1"
+   },
+   "InstanceKind": {
+    "AWS": "0/2",
+    "Azure": "1/1"
+   },
+   "ManagedKubernetesClusterKind": {
+    "GCP": "1/1"
+   },
+   "BucketKind": {
+    "GCP": "0/1"
+   }
+  },
+  "flagged": [
+   {
+    "kind": "InstanceKind",
+    "coverage": {
+     "AWS": "0/2",
+     "Azure": "1/1"
+    }
+   }
+  ]
+ },
+ "required_keys_by_policy": [
+  [
+   "pol_payments",
+   "app"
+  ],
+  [
+   "pol_shared",
+   "cost-center"
+  ],
+  [
+   "pol_shared",
+   "data-classification"
+  ],
+  [
+   "pol_shared",
+   "environment"
+  ],
+  [
+   "pol_shared",
+   "owner"
+  ]
+ ],
+ "timing": {
+  "engine": "clo-r",
+  "materialise_s": 0.016,
+  "audit_s": 0.008,
+  "load_s": 0.007349912999870867,
+  "reason_s": 0.008232959999986633,
+  "rounds": 2
+ }
+}

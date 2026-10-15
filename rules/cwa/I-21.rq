@@ -1,0 +1,8 @@
+# I-21 parent-to-child propagation: a required key present on a (transitive) parent is missing
+# on a complete child record.
+SELECT ?r ?k ?parent ?value WHERE {
+  ?r a clo:AuditableResource ; clo:recordComplete true ; clo:partOf ?parent ; clo:governedBy ?pol .
+  ?pol clo:requiresLabel ?k .
+  ?parent clo:hasLabel ?pl . ?pl clo:hasLabelKey ?k ; clo:hasLabelValue/clo:valueName ?value .
+  MINUS { ?r clo:hasLabel ?l0 . ?l0 clo:hasLabelKey ?k }   # see I-07
+}

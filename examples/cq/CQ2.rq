@@ -1,0 +1,10 @@
+# CQ2  Which resources on other providers are of the same kind as a given one?
+# Answered by C-6/C-7 (implementsBaseKind, sameBaseKindAs) and C-1 (hostedBy).
+SELECT ?resource ?provider ?other ?otherProvider ?kind WHERE {
+  ?r clo:resourceId ?resource ; clo:hasResourceType ?t ; clo:hostedBy ?pv ; clo:hasBaseKind ?bk .
+  ?t clo:sameBaseKindAs ?u .
+  ?s clo:hasResourceType ?u ; clo:resourceId ?other ; clo:hostedBy ?pv2 .
+  FILTER(?pv != ?pv2 && ?resource = "i-pay-01")
+  BIND(STRAFTER(STR(?pv), "#") AS ?provider) BIND(STRAFTER(STR(?pv2), "#") AS ?otherProvider)
+  BIND(STRAFTER(STR(?bk), "#") AS ?kind)
+} ORDER BY ?other

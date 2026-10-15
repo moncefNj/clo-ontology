@@ -1,0 +1,20 @@
+# I-15 reserved-prefix (provider-system) keys. Such keys are set by the provider and excluded
+# from the key rules; a finding is raised only when a policy requires such a key (users cannot
+# set it) or when it appears on a resource of another provider. Prefixes of container
+# orchestrators are exempt from the second case: an orchestrator labels the cloud resources it
+# runs on (EKS writes kubernetes.io/cluster/... on AWS subnets).
+SELECT DISTINCT ?r ?k ?name ?why WHERE {
+  ?k clo:keyName ?name .
+  ?c clo:reservedPrefix ?pre . ?owner clo:hasProviderConstraint ?c .
+  FILTER(STRSTARTS(LCASE(?name), LCASE(?pre)))
+  {
+    ?pol clo:requiresLabel ?k . ?r clo:governedBy ?pol . ?r a clo:AuditableResource ; clo:recordComplete true .
+    BIND("required by a policy" AS ?why)
+  } UNION {
+    ?r clo:hasLabel/clo:hasLabelKey ?k ; clo:hostedBy ?p . ?p clo:providerName ?pn .
+    BIND("reserved by another provider" AS ?why)
+  }
+  # outside the UNION: ?owner is bound here (SPARQL evaluates groups bottom-up)
+  FILTER(?why != "reserved by another provider"
+         || (?p != ?owner && NOT EXISTS { ?owner a clo:ContainerOrchestrationProvider }))
+}

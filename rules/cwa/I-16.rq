@@ -1,0 +1,8 @@
+# I-16 declared semantic conflict (two key=value pairs declared incompatible)
+SELECT ?r ?rule ?ka ?va ?kb ?vb WHERE {
+  ?rule a clo:SemanticConflictRule ; clo:conflictKeyA ?ka ; clo:conflictValueA ?va ;
+        clo:conflictKeyB ?kb ; clo:conflictValueB ?vb .
+  ?r clo:hasLabel ?la , ?lb .
+  ?la clo:hasLabelKey/clo:keyName ?ka ; clo:hasLabelValue/clo:valueName ?va .
+  ?lb clo:hasLabelKey/clo:keyName ?kb ; clo:hasLabelValue/clo:valueName ?vb .
+}

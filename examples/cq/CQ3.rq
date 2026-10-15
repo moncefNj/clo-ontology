@@ -1,0 +1,8 @@
+# CQ3  Which keys does each team actually use that differ from the shared (canonical) key?
+# Answered by C-10 (ownedBy^- o hasLabel o hasLabelKey -> usesKey) and the declared synonym groups.
+SELECT ?team ?used ?canonical WHERE {
+  ?t a clo:Team ; rdfs:label ?team ; clo:usesKey ?k .
+  ?k clo:keyName ?used .
+  ?g clo:hasMember ?k ; clo:canonicalKey ?canonical .
+  FILTER(?used != ?canonical)
+} ORDER BY ?team

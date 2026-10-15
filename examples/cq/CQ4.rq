@@ -1,0 +1,9 @@
+# CQ4  Which resources are in audit scope, and on which of them may absence be concluded?
+# Answered by the defined class AuditableResource (I-05) and the response-derived recordComplete flag.
+SELECT ?resource ?type ?verdict WHERE {
+  ?r a clo:CloudResource ; clo:resourceId ?resource ; clo:hasResourceType/clo:resourceTypeName ?type .
+  OPTIONAL { ?r clo:recordComplete ?c }
+  BIND(IF(EXISTS { ?r a clo:AuditableResource },
+          IF(?c = true, "closed-world verdict", "in scope, no verdict (record incomplete)"),
+          "out of audit scope") AS ?verdict)
+} ORDER BY ?verdict ?resource

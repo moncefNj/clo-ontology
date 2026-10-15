@@ -1,0 +1,10 @@
+# I-07 missing required key (negation as failure; complete records in audit scope only)
+# A key is required on ?r when a policy that governs ?r requires it (asserted or via C-9).
+# The roles that need it are those served by that policy (per-policy attribution).
+SELECT ?r ?k ?pol WHERE {
+  ?r a clo:AuditableResource ; clo:recordComplete true ; clo:governedBy ?pol .
+  ?pol clo:requiresLabel ?k .
+  # MINUS rather than FILTER NOT EXISTS: same answers here (?r and ?k are shared), but Oxigraph
+  # evaluates NOT EXISTS per solution, which made this rule quadratic in the estate (9.1).
+  MINUS { ?r clo:hasLabel ?l . ?l clo:hasLabelKey ?k }
+}

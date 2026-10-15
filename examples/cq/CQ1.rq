@@ -1,0 +1,9 @@
+# CQ1  Which keys must a resource carry, which role needs each, and which policy imposes it?
+# Answered by C-9 (servesRole o needsLabel -> requiresLabel) and the governedBy chains (C-3, C-4, C-5, C-8, C-11).
+SELECT ?resource ?key ?role ?policy WHERE {
+  ?r clo:resourceId ?resource ; clo:governedBy ?p .
+  ?p rdfs:label ?policy ; clo:servesRole ?ro .
+  ?ro rdfs:label ?role ; clo:needsLabel ?k .
+  ?k clo:keyName ?key .
+  FILTER(?resource = "pay-receipts")
+} ORDER BY ?key
